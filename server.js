@@ -13,3 +13,8 @@ app.get('*', (req, res) => {
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
+// Keep alive log every minute (solo para probar que no se cierra)
+setInterval(() => {
+  console.log('Server is alive...');
+}, 60000);
