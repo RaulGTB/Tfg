@@ -1,0 +1,60 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.full-width-navbar {
+  background-color: #121212;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0;
+}
+
+.nav-link {
+  color: #888;
+  font-weight: bold;
+}
+
+.nav-link.active,
+.nav-link:hover {
+  color: white;
+}
+
+.btn-login {
+  background-color: #cddc39;
+  color: black;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 6px 14px;
+}
+
+.btn-register {
+  background-color: transparent;
+  border: 2px solid #cddc39;
+  color: #cddc39;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 6px 14px;
+}
+
+.search-icon {
+  color: #888;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.virtual-coins {
+  color: #ffd700;
+  font-weight: bold;
+}
+
+.coin-icon {
+  font-size: 1.2rem;
+  margin-right: 5px;
+  color: #ffd700;
+}
+
+.coin-amount {
+  font-size: 0.95rem;
+}

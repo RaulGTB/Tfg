@@ -1,0 +1,22 @@
+.btn-register {
+  background-color: transparent;
+  border: 1px solid #cddc39;
+  color: #cddc39;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-register:hover {
+  background-color: #cddc39;
+  color: #1a1a1a;
+  transform: scale(1.03);
+  box-shadow: 0 0 10px #cddc39aa;
+}
+
+.register-section input:focus {
+  outline: none;
+  box-shadow: 0 0 5px #cddc39;
+}
+.register-section {
+  margin-top: 2%; /* o ajusta según necesidad */
+  margin-bottom: 8%; /* o ajusta según necesidad */
+}

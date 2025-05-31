@@ -1,0 +1,123 @@
+/* ===== ESTILOS PRINCIPALES ===== */
+.esports-home {
+  padding-top: 3rem;
+  background-color: #1a1a1a;
+  min-height: 100vh;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  border-left: 6px solid #cddc39;
+  padding-left: 1rem;
+  color: #cddc39;
+  margin-bottom: 2rem;
+}
+
+/* ===== ESTILO PARA TARJETAS ===== */
+.live-card,
+.category-card,
+.recommended-card,
+.reward-card {
+  background-color: #2e2e2e !important;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+}
+
+.live-card:hover,
+.category-card:hover,
+.recommended-card:hover,
+.reward-card:hover {
+  transform: scale(1.03);
+  background-color: #3a3a3a !important;
+  box-shadow: 0 0 15px rgba(205, 220, 57, 0.3);
+  color: #cddc39;
+}
+
+/* ===== UTILIDADES ===== */
+.bg-secondary {
+  background-color: #2a2a2a !important;
+}
+
+.text-muted {
+  color: #bbb !important;
+}
+
+/* ===== FILTROS ===== */
+.section-filters {
+  background-color: #121212;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #333;
+}
+
+.section-filters .btn {
+  background-color: transparent;
+  border: 1px solid #cddc39;
+  color: #cddc39;
+  transition: all 0.3s ease;
+}
+
+.section-filters .btn:hover,
+.section-filters .btn:focus {
+  background-color: #cddc39;
+  color: #1a1a1a;
+  transform: scale(1.05);
+  box-shadow: 0 0 8px #cddc39aa;
+  border-color: #cddc39;
+}
+
+.section-filters .btn:active {
+  background-color: #a0b92b;
+  border-color: #a0b92b;
+  color: #121212;
+  transform: scale(0.98);
+}
+
+.section-filters span {
+  color: #cddc39;
+  font-weight: 600;
+}
+
+/* ===== LAYOUT GENERAL ===== */
+.row.g-4,
+.d-flex.flex-wrap.gap-3,
+.d-flex.flex-wrap.gap-4 {
+  gap: 1.5rem !important;
+}
+
+.col-md-3,
+.col-md-4 {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 22%;
+}
+
+@media (max-width: 768px) {
+  .col-md-3,
+  .col-md-4 {
+    max-width: 100%;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+/* ===== ANIMACIONES ===== */
+.section-title,
+.live-card,
+.category-card,
+.recommended-card,
+.reward-card {
+  animation: fadeIn 0.7s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

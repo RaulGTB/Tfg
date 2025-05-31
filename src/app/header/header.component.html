@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg full-width-navbar">
+  <div class="d-flex flex-grow-1 justify-content-between align-items-center px-3">
+    <!-- Logo -->
+    <a class="navbar-brand text-white" routerLink="/">
+      <i class="bi bi-arrows-fullscreen"></i>
+    </a>
+
+    <!-- Menú -->
+    <div class="d-none d-lg-block">
+      <ul class="navbar-nav flex-row gap-4">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home" routerLinkActive="active">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/categories" routerLinkActive="active">CATEGORIES</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/discover" routerLinkActive="active">DISCOVER</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/favs" routerLinkActive="active">FAVS</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Zona derecha -->
+    <div class="d-flex align-items-center gap-3">
+      <!-- Buscar -->
+      <i class="bi bi-search search-icon"></i>
+
+      <!-- Monedas -->
+      <div class="virtual-coins d-flex align-items-center">
+        <i class="bi bi-coin coin-icon"></i>
+        <span class="coin-amount">1,250</span>
+      </div>
+
+      <!-- Botones -->
+<a class="btn btn-register nav-link" routerLink="register" routerLinkActive="active">REGISTER</a>
+
+<a class="btn btn-login nav-link" routerLink="/login" routerLinkActive="active">LOG IN</a>
+
+    </div>
+  </div>
+</nav>

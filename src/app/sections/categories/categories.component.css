@@ -1,0 +1,74 @@
+/* FONDO GENERAL */
+.esports-home {
+  padding-top: 3rem;
+  background-color: #1a1a1a;
+  min-height: 100vh;
+}
+
+/* TÍTULOS GENERALES */
+.section-title,
+.game-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #cddc39;
+  border-left: 5px solid #cddc39;
+  padding-left: 1rem;
+}
+
+/* CENTRADO DE FILTROS POR JUEGO */
+.game-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ESTILO BOTONES FILTRO */
+.game-filters .btn {
+  background-color: transparent;
+  border: 1px solid #cddc39;
+  color: #cddc39;
+  transition: all 0.3s ease;
+}
+
+.game-filters .btn:hover {
+  background-color: #cddc39;
+  color: #1a1a1a;
+  transform: scale(1.05);
+  box-shadow: 0 0 8px #e5fe00aa;
+}
+
+/* TARJETAS DE CATEGORÍA MÁS CLARAS PARA CONTRASTE */
+.category-card {
+  background-color: #2a2a2a !important;
+  color: #fff;
+  text-align: center;
+  height: 100%;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.category-card:hover {
+  transform: scale(1.03);
+  background-color: #3a3a3a !important;
+  box-shadow: 0 0 10px #cddc39aa;
+}
+
+.category-card small {
+  color: #bbb;
+}
+
+/* MEJORA EN ESPACIADOS */
+.section-categories .mb-5 {
+  margin-bottom: 3rem !important;
+}
+/* BLOQUES DE JUEGO SEPARADOS */
+.game-block {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
