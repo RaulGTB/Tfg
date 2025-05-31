@@ -4,20 +4,13 @@ const app = express();
 
 const port = process.env.PORT || 8080;
 
+// Cambia esta ruta para que apunte a la carpeta 'browser' dentro de 'dist/esport-app'
 app.use(express.static(path.join(__dirname, 'dist/esport-app/browser')));
 
-
-
 app.get('*', (req, res) => {
-res.sendFile(path.join(__dirname, 'dist/esport-app/browser/index.html'));
-
+  res.sendFile(path.join(__dirname, 'dist/esport-app/browser/index.html'));
 });
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
-
-// Keep alive log every minute (solo para probar que no se cierra)
-setInterval(() => {
-  console.log('Server is alive...');
-}, 60000);
