@@ -1,3 +1,4 @@
+import { DataService } from './../../data.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,5 +8,19 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+
+  constructor(private data:DataService){
+    this.getDpts()
+}
+
+  leagues: any[] = []
+
+  getDpts(){
+    this.data.getLeagues().subscribe((res:any)=>{
+      this.leagues = res
+      console.log(this.leagues)
+    });
+  }
+
 
 }

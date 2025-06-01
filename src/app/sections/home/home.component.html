@@ -9,7 +9,13 @@
         <button class="btn btn-outline-light btn-sm">Dota 2</button>
         <button class="btn btn-outline-light btn-sm">CS:GO</button>
         <button class="btn btn-outline-light btn-sm">Más populares</button>
+
+        <ul>
+          @for (l of leagues; track $index ) {
+            <li>{{l.name}}</li>
+          }
         <button class="btn btn-outline-light btn-sm">Transmisión en vivo</button>
+        </ul>
       </div>
     </div>
   </section>
