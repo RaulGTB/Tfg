@@ -1,16 +1,15 @@
-const path = require('path');
 const express = require('express');
+const path = require('path');
+
 const app = express();
+const PORT = process.env.PORT || 8080;
 
-const port = process.env.PORT || 8080;
-
-// Cambia esta ruta para que apunte a la carpeta 'browser' dentro de 'dist/esport-app'
-app.use(express.static(path.join(__dirname, 'dist/esport-app/browser')));
+app.use(express.static(path.join(__dirname, 'dist/esport-app')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/esport-app/browser/index.html'));
+  res.sendFile(path.join(__dirname, 'dist/esport-app/index.html'));
 });
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Servidor Angular escuchando en el puerto ${PORT}`);
 });
