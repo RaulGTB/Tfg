@@ -1,18 +1,22 @@
-<main class="esports-home bg-dark text-white d-flex align-items-center justify-content-center" style="min-height: 100vh;">
-  <section class="register-section bg-black p-5 rounded shadow " style="max-width: 600px; width: 100%;">
-    <h2 class="section-title mb-4 text-center">Log in</h2>
-    <form>
-      <div class="mb-3">
-        <label for="username" class="form-label text-white">Nombre de usuario</label>
-        <input type="text" class="form-control bg-secondary text-white border-0" id="username" placeholder="Introduce tu nombre de usuario">
-      </div>
+<<main class="wiki-main bg-dark text-white d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+  <section class="wiki-section bg-black p-5 rounded shadow" style="max-width: 800px; width: 100%;">
+    <div class="text-center">
+      <h2 class="section-title mb-5">WIKI</h2>
 
-      <div class="mb-3">
-        <label for="password" class="form-label text-white">Contraseña</label>
-        <input type="password" class="form-control bg-secondary text-white border-0" id="password" placeholder="********">
-      </div>
+      <!-- Filtros circulares -->
+      <div class="wiki-filters d-flex justify-content-center gap-4 mb-4">
+        <button class="btn btn-circle" type="button" aria-label="Dota 2">
+          <img src="assets/images/dota2-logo.jpg" alt="Dota 2" />
+        </button>
 
-      <button type="submit" class="btn btn-outline-light w-100">Entrar</button>
-    </form>
+        <button class="btn btn-circle" type="button" aria-label="CS:GO">
+          <img src="assets/images/csgo-logo.png" alt="CS:GO" />
+        </button>
+
+        <button class="btn btn-circle" type="button" aria-label="League of Legends">
+          <img src="assets/images/lol-logo.jpg" alt="League of Legends" />
+        </button>
+      </div>
+    </div>
   </section>
 </main>

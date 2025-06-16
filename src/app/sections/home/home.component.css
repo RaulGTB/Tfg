@@ -108,3 +108,31 @@
   font-weight: 600;
   font-size: 1rem;
 }
+.hero-header {
+  height: 300px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-img-blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(1.4px) brightness(0.6);
+  z-index: 0;
+}
+
+.hero-header .container {
+  z-index: 2;
+}
+
+.text-shadow {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
