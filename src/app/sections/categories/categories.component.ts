@@ -11,10 +11,13 @@ import { CommonModule } from '@angular/common';
 export class CategoriesComponent {
   constructor(private data: DataService) {
     this.getLolLeagues();
+    this.getLolSeries();
     this.getLolMatches();
     this.getCSGOLeagues();
+    this.getCSGOSeries();
     this.getCSGOMatches();
     this.getDota2Leagues();
+    this.getDota2Series();
     this.getDota2Matches();
   }
 
@@ -24,12 +27,15 @@ export class CategoriesComponent {
 
   lolLeagues: any[] = [];
   lolMatches: any[] = [];
+  lolSeries: any[] = [];
 
   CSGOLeagues: any[] = [];
   CSGOMatches: any[] = [];
+  CSGOSeries: any[] = [];
 
   dota2Leagues: any[] = [];
   dota2Matches: any[] = [];
+  dota2Series: any[] = [];
 
   // LoL
 
@@ -38,6 +44,14 @@ export class CategoriesComponent {
       this.lolLeagues = res;
 
       console.log(this.lolLeagues);
+    });
+  }
+
+  getLolSeries() {
+    this.data.getLolSeries().subscribe((res: any) => {
+      this.lolSeries = res;
+
+      console.log(this.lolSeries);
     });
   }
 
@@ -59,6 +73,14 @@ export class CategoriesComponent {
     });
   }
 
+  getCSGOSeries() {
+    this.data.getCSGOSeries().subscribe((res: any) => {
+      this.CSGOSeries = res;
+
+      console.log(this.CSGOSeries);
+    });
+  }
+
   getCSGOMatches() {
     this.data.getCSGOMatches().subscribe((res: any) => {
       this.CSGOMatches = res;
@@ -74,6 +96,14 @@ export class CategoriesComponent {
       this.dota2Leagues = res;
 
       console.log(this.dota2Leagues);
+    });
+  }
+
+  getDota2Series() {
+    this.data.getDota2Series().subscribe((res: any) => {
+      this.dota2Series = res;
+
+      console.log(this.dota2Series);
     });
   }
 

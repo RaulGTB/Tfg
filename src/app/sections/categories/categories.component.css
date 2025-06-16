@@ -231,3 +231,34 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.card-series {
+  background-color: #1d1d1d;
+  border-radius: 1.25rem;
+  border: 1px solid #2e2e2e;
+  padding: 1.5rem;
+  color: #fff;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(205, 220, 57, 0.1);
+}
+
+.card-series:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 14px #cddc39aa;
+}
+
+.card-series h5 {
+  font-size: 1.1rem;
+  color: #5df0d9;
+}
+
+.card-series .badge-custom {
+  background-color: transparent;
+  border: 1px solid #cddc39;
+  color: #cddc39;
+  padding: 0.35rem 0.75rem;
+  border-radius: 2rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
