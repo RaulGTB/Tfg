@@ -233,35 +233,50 @@
 }
 
 .card-series {
-  background-color: #1d1d1d;
-  border-radius: 1.25rem;
+  background-color: #1c1c1c;
+  border-radius: 1.5rem;
   border: 1px solid #2e2e2e;
   padding: 1.5rem;
-  color: #fff;
   transition: all 0.3s ease;
-  box-shadow: 0 0 10px rgba(205, 220, 57, 0.1);
+  box-shadow: 0 0 10px rgba(205, 220, 57, 0.08);
+  color: #eaeaea;
 }
 
 .card-series:hover {
   transform: scale(1.03);
-  box-shadow: 0 0 14px #cddc39aa;
+  box-shadow: 0 0 16px #cddc39aa;
 }
 
-.card-series h5 {
+.series-title {
   font-size: 1.1rem;
+  font-weight: 600;
   color: #5df0d9;
+  display: flex;
+  align-items: center;
 }
 
-.card-series .badge-custom {
-  background-color: transparent;
-  border: 1px solid #cddc39;
-  color: #cddc39;
-  padding: 0.35rem 0.75rem;
-  border-radius: 2rem;
-  font-size: 0.7rem;
-  font-weight: 500;
-  text-transform: uppercase;
+.text-gold {
+  color: #fbc02d;
 }
+
+.series-header {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #cddc39;
+  border: 1px solid #cddc39;
+  border-radius: 1.25rem;
+  padding: 0.25rem 0.75rem;
+  letter-spacing: 0.5px;
+  background-color: transparent;
+}
+
+.card-series p,
+.card-series .text-muted,
+.card-series .small {
+  color: #fff !important;
+}
+
 
 .card-tournament-rich {
   background-color: #1b1b1b;
