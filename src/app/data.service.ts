@@ -49,7 +49,7 @@ export class DataService {
   }
 
   getCSGOSeries() {
-    return this.http.get('https://api.pandascore.co/CSGO/series?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://api.pandascore.co/csgo/series?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
   }
 
   getCSGOMatches() {
