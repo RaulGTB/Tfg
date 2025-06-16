@@ -24,7 +24,7 @@
           <div class="col-12 col-md-6 col-xl-4">
             <div class="card card-league h-100 text-center">
               <!-- Logo/imagen de la liga -->
-              <img *ngIf="league.image_url" [src]="league.image_url" class="card-img-top img-fluid p-3"
+              <img [src]="league.image_url || 'assets/images/red-cross.png'" class="card-img-top img-fluid p-3"
                 [alt]="league.name" />
 
               <div class="card-body p-3">
@@ -187,7 +187,7 @@
           <div class="col-12 col-md-6 col-xl-4">
             <div class="card card-league h-100 text-center">
               <!-- Logo/imagen de la liga -->
-              <img *ngIf="league.image_url" [src]="league.image_url" class="card-img-top img-fluid p-3"
+              <img [src]="league.image_url || 'assets/images/red-cross.png'" class="card-img-top img-fluid p-3"
                 [alt]="league.name" />
 
               <div class="card-body p-3">
@@ -341,7 +341,7 @@
           <div class="col-12 col-md-6 col-xl-4">
             <div class="card card-league h-100 text-center">
               <!-- Logo/imagen de la liga -->
-              <img *ngIf="league.image_url" [src]="league.image_url" class="card-img-top img-fluid p-3"
+              <img [src]="league.image_url || 'assets/images/red-cross.png'" class="card-img-top img-fluid p-3"
                 [alt]="league.name" />
 
               <div class="card-body p-3">
