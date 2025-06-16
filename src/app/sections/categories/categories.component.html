@@ -47,19 +47,30 @@
         <div class="row g-4 mt-4">
           @for (serie of lolSeries; track serie.id) {
           <div class="col-12 col-md-6 col-xl-4">
-            <div class="card card-series h-100">
+            <div class="card card-series h-100 d-flex flex-column">
               <div class="card-body d-flex flex-column gap-2">
-                <h5 class="text-info fw-bold mb-1">{{ serie.full_name || serie.name }}</h5>
-                <p class="mb-0 small text-light">
-                  <i class="bi bi-trophy me-2 text-warning"></i>{{ serie.league?.name || 'Liga desconocida' }}
-                </p>
-                <p class="mb-0 small text-light">
-                  <i class="bi bi-calendar me-2 text-warning"></i>
-                  {{ serie.begin_at | date:'MMM d, y' }} - {{ serie.end_at | date:'MMM d, y' }}
-                </p>
-                <span class="badge badge-custom mt-auto align-self-start">
+                <!-- Temporada/Año -->
+                <span class="series-header align-self-start">
                   {{ serie.season ? (serie.season + ' ' + serie.year) : serie.year }}
                 </span>
+
+                <!-- Nombre completo de la serie -->
+                <h5 class="series-title">
+                  <i class="bi bi-trophy-fill me-2 text-gold"></i>
+                  {{ serie.full_name || serie.name }}
+                </h5>
+
+                <!-- Liga -->
+                <p class="small text-muted mb-0">
+                  <i class="bi bi-shield-fill me-2 text-info"></i>
+                  {{ serie.league?.name || 'Liga desconocida' }}
+                </p>
+
+                <!-- Fechas -->
+                <p class="small text-muted mb-0">
+                  <i class="bi bi-calendar-event me-2 text-warning"></i>
+                  {{ serie.begin_at | date:'MMM d, y' }} - {{ serie.end_at | date:'MMM d, y' }}
+                </p>
               </div>
             </div>
           </div>
