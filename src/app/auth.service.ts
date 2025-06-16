@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  private baseUrl = 'https://tudominioapi.azurewebsites.net/api/auth'; // cambia esto a tu API real
+  private baseUrl = 'https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/auth/register'; // cambia esto a tu API real
 
   constructor(private http: HttpClient) { }
 

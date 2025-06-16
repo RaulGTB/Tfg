@@ -12,9 +12,9 @@
           class="form-control bg-secondary text-white border-0"
           placeholder="Introduce tu nombre de usuario"
         />
-        <div *ngIf="submitted && f.username.errors" class="text-danger mt-1 small">
-          <div *ngIf="f.username.errors.required">El nombre de usuario es obligatorio.</div>
-          <div *ngIf="f.username.errors.minlength">Debe tener al menos 3 caracteres.</div>
+        <div *ngIf="submitted && f['username'].errors">
+          <div *ngIf="f['username'].errors?.['required']" class="text-danger mt-1 small">El nombre de usuario es obligatorio.</div>
+          <div *ngIf="f['username'].errors?.['minlength']" class="text-danger mt-1 small">Debe tener al menos 3 caracteres.</div>
         </div>
       </div>
 
@@ -27,9 +27,9 @@
           class="form-control bg-secondary text-white border-0"
           placeholder="ejemplo@correo.com"
         />
-        <div *ngIf="submitted && f.email.errors" class="text-danger mt-1 small">
-          <div *ngIf="f.email.errors.required">El correo es obligatorio.</div>
-          <div *ngIf="f.email.errors.email">Introduce un correo válido.</div>
+        <div *ngIf="submitted && f['email'].errors">
+          <div *ngIf="f['email'].errors?.['required']" class="text-danger mt-1 small">El correo es obligatorio.</div>
+          <div *ngIf="f['email'].errors?.['email']" class="text-danger mt-1 small">Introduce un correo válido.</div>
         </div>
       </div>
 
@@ -42,9 +42,9 @@
           class="form-control bg-secondary text-white border-0"
           placeholder="********"
         />
-        <div *ngIf="submitted && f.password.errors" class="text-danger mt-1 small">
-          <div *ngIf="f.password.errors.required">La contraseña es obligatoria.</div>
-          <div *ngIf="f.password.errors.minlength">Debe tener al menos 6 caracteres.</div>
+        <div *ngIf="submitted && f['password'].errors">
+          <div *ngIf="f['password'].errors?.['required']" class="text-danger mt-1 small">La contraseña es obligatoria.</div>
+          <div *ngIf="f['password'].errors?.['minlength']" class="text-danger mt-1 small">Debe tener al menos 6 caracteres.</div>
         </div>
       </div>
 
@@ -57,9 +57,9 @@
           class="form-control bg-secondary text-white border-0"
           placeholder="********"
         />
-        <div *ngIf="submitted && (f.confirmPassword.errors || registerForm.errors?.mismatch)" class="text-danger mt-1 small">
-          <div *ngIf="f.confirmPassword.errors?.required">Debes confirmar la contraseña.</div>
-          <div *ngIf="registerForm.errors?.mismatch">Las contraseñas no coinciden.</div>
+        <div *ngIf="submitted && (f['confirmPassword'].errors || registerForm.errors?.['mismatch'])">
+          <div *ngIf="f['confirmPassword'].errors?.['required']" class="text-danger mt-1 small">Debes confirmar la contraseña.</div>
+          <div *ngIf="registerForm.errors?.['mismatch']" class="text-danger mt-1 small">Las contraseñas no coinciden.</div>
         </div>
       </div>
 
