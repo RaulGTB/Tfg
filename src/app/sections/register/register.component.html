@@ -1,24 +1,73 @@
 <main class="esports-home bg-dark text-white d-flex align-items-center justify-content-center" style="min-height: 100vh;">
-  <section class="register-section bg-black p-5 rounded shadow " style="max-width: 600px; width: 100%;">
+  <section class="register-section bg-black p-5 rounded shadow" style="max-width: 600px; width: 100%;">
     <h2 class="section-title mb-4 text-center">Registro</h2>
-    <form>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+
       <div class="mb-3">
         <label for="username" class="form-label text-white">Nombre de usuario</label>
-        <input type="text" class="form-control bg-secondary text-white border-0" id="username" placeholder="Introduce tu nombre de usuario">
+        <input
+          id="username"
+          type="text"
+          formControlName="username"
+          class="form-control bg-secondary text-white border-0"
+          placeholder="Introduce tu nombre de usuario"
+        />
+        <div *ngIf="submitted && f.username.errors" class="text-danger mt-1 small">
+          <div *ngIf="f.username.errors.required">El nombre de usuario es obligatorio.</div>
+          <div *ngIf="f.username.errors.minlength">Debe tener al menos 3 caracteres.</div>
+        </div>
       </div>
+
       <div class="mb-3">
         <label for="email" class="form-label text-white">Correo electrónico</label>
-        <input type="email" class="form-control bg-secondary text-white border-0" id="email" placeholder="ejemplo@correo.com">
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          class="form-control bg-secondary text-white border-0"
+          placeholder="ejemplo@correo.com"
+        />
+        <div *ngIf="submitted && f.email.errors" class="text-danger mt-1 small">
+          <div *ngIf="f.email.errors.required">El correo es obligatorio.</div>
+          <div *ngIf="f.email.errors.email">Introduce un correo válido.</div>
+        </div>
       </div>
+
       <div class="mb-3">
         <label for="password" class="form-label text-white">Contraseña</label>
-        <input type="password" class="form-control bg-secondary text-white border-0" id="password" placeholder="********">
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          class="form-control bg-secondary text-white border-0"
+          placeholder="********"
+        />
+        <div *ngIf="submitted && f.password.errors" class="text-danger mt-1 small">
+          <div *ngIf="f.password.errors.required">La contraseña es obligatoria.</div>
+          <div *ngIf="f.password.errors.minlength">Debe tener al menos 6 caracteres.</div>
+        </div>
       </div>
+
       <div class="mb-4">
-        <label for="confirm-password" class="form-label text-white">Confirmar contraseña</label>
-        <input type="password" class="form-control bg-secondary text-white border-0" id="confirm-password" placeholder="********">
+        <label for="confirmPassword" class="form-label text-white">Confirmar contraseña</label>
+        <input
+          id="confirmPassword"
+          type="password"
+          formControlName="confirmPassword"
+          class="form-control bg-secondary text-white border-0"
+          placeholder="********"
+        />
+        <div *ngIf="submitted && (f.confirmPassword.errors || registerForm.errors?.mismatch)" class="text-danger mt-1 small">
+          <div *ngIf="f.confirmPassword.errors?.required">Debes confirmar la contraseña.</div>
+          <div *ngIf="registerForm.errors?.mismatch">Las contraseñas no coinciden.</div>
+        </div>
       </div>
+
       <button type="submit" class="btn btn-outline-light w-100">Registrarse</button>
+
+      <div *ngIf="errorMsg" class="alert alert-danger mt-3">{{ errorMsg }}</div>
+      <div *ngIf="successMsg" class="alert alert-success mt-3">{{ successMsg }}</div>
+
     </form>
   </section>
 </main>
