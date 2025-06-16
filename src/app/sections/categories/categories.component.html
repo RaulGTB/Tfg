@@ -7,97 +7,182 @@
       <div class="game-block">
         <h3 class="game-title mb-3">League of Legends</h3>
         <div class="game-filters">
-          <button class="btn btn-outline-light btn-sm">PC</button>
-          <button class="btn btn-outline-light btn-sm">Mobile</button>
-          <button class="btn btn-outline-light btn-sm">Replay</button>
-          <button class="btn btn-outline-light btn-sm">Competitivo</button>
+          <button (click)="currentViewLoL === 'leagues' ? currentViewLoL = '' : currentViewLoL = 'leagues'"
+            class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewLoL === 'leagues'}">Ligas</button>
+          <button (click)="currentViewLoL === 'series' ? currentViewLoL = '' : currentViewLoL = 'series'"
+            class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewLoL === 'series'}">Series</button>
+          <button (click)="currentViewLoL === 'tournaments' ? currentViewLoL = '' : currentViewLoL = 'tournaments'"
+            class="btn btn-outline-light btn-sm"
+            [ngClass]="{'active': currentViewLoL === 'tournaments'}">Torneos</button>
+          <button (click)="currentViewLoL === 'matches' ? currentViewLoL = '' : currentViewLoL = 'matches'"
+            class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewLoL === 'matches'}">Partidos</button>
         </div>
-        <div class="row g-4">
-          <div class="col-md-3"><div class="category-card rounded p-4">Final Europea<br><small>PC - En Vivo</small></div></div>
-          <div class="col-md-3"><div class="category-card rounded p-4">LCS América<br><small>PC - Competitivo</small></div></div>
-          <div class="col-md-3"><div class="category-card rounded p-4">Wild Rift<br><small>Mobile - Replay</small></div></div>
-          <div class="col-md-3"><div class="category-card rounded p-4">All-Stars<br><small>PC - Replay</small></div></div>
-        </div>
-      </div>
 
-      <!-- === Valorant === -->
-      <div class="game-block">
-        <h3 class="game-title mb-3">Valorant</h3>
-        <div class="game-filters">
-          <button class="btn btn-outline-light btn-sm">PC</button>
-          <button class="btn btn-outline-light btn-sm">Mobile</button>
-          <button class="btn btn-outline-light btn-sm">Replay</button>
-          <button class="btn btn-outline-light btn-sm">Competitivo</button>
+        @if (currentViewLoL === 'matches') {
+        <div class="row g-4 mt-4">
+          @for (match of lolMatches; track $index) {
+          <div class="col-12 col-md-6 col-xl-4">
+            <div class="card card-match h-100">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <div class="text-white small fw-semibold">
+                  {{ match.league.name }}
+                </div>
+                <span class="badge badge-custom text-uppercase">
+                  {{ formatSlug(match.tournament.slug) }}
+                </span>
+              </div>
+              <div class="card-body p-0">
+                <h5 class="match-title mb-3">{{ match.name }}</h5>
+                <ul class="list-unstyled match-info mb-0">
+                  <li class="mb-1">
+                    <i class="bi bi-calendar-event me-2 text-warning"></i>
+                    {{ match.begin_at | date: 'fullDate' }} – {{ match.begin_at | date: 'shortTime' }}
+                  </li>
+                  <li class="mb-1">
+                    <i class="bi bi-globe-americas me-2 text-primary"></i>
+                    Región: {{ match.tournament.region || 'N/A' }} | País: {{ match.tournament.country || 'N/A' }}
+                  </li>
+                  <li class="mb-1">
+                    <i class="bi bi-controller me-2 text-success"></i>
+                    Formato: Bo{{ match.number_of_games }}
+                  </li>
+                  <li>
+                    <i class="bi bi-circle me-2" [ngClass]="{
+                          'text-success': match.status === 'finished',
+                          'text-warning': match.status === 'running',
+                          'text-muted': match.status === 'not_started'
+                        }"></i>
+                    Estado: {{ match.status | titlecase }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          }
         </div>
-        <div class="row g-4">
-          <div class="col-md-3"><div class="category-card rounded p-4">Masters Tokyo<br><small>PC - En Vivo</small></div></div>
-          <div class="col-md-3"><div class="category-card rounded p-4">VCT LATAM<br><small>Mobile - Replay</small></div></div>
-          <div class="col-md-3"><div class="category-card rounded p-4">Challengers<br><small>PC - Competitivo</small></div></div>
-          <div class="col-md-3"><div class="category-card rounded p-4">Valorant Mix<br><small>Mobile - Replay</small></div></div>
-        </div>
+        }
       </div>
 
       <!-- === CS:GO === -->
       <div class="game-block">
         <h3 class="game-title mb-3">CS:GO</h3>
         <div class="game-filters">
-          <button class="btn btn-outline-light btn-sm">PC</button>
-          <button class="btn btn-outline-light btn-sm">Replay</button>
-          <button class="btn btn-outline-light btn-sm">Torneo</button>
+          <button (click)="currentViewCSGO === 'leagues' ? currentViewCSGO = '' : currentViewCSGO = 'leagues'"
+            class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewCSGO === 'leagues'}">Ligas</button>
+          <button (click)="currentViewCSGO === 'series' ? currentViewCSGO = '' : currentViewCSGO = 'series'"
+            class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewCSGO === 'series'}">Series</button>
+          <button (click)="currentViewCSGO === 'tournaments' ? currentViewCSGO = '' : currentViewCSGO = 'tournaments'"
+            class="btn btn-outline-light btn-sm"
+            [ngClass]="{'active': currentViewCSGO === 'tournaments'}">Torneos</button>
+          <button (click)="currentViewCSGO === 'matches' ? currentViewCSGO = '' : currentViewCSGO = 'matches'"
+            class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewCSGO === 'matches'}">Partidos</button>
         </div>
-        <div class="row g-4">
-          <div class="col-md-3"><div class="category-card rounded p-4">Major Brasil<br><small>PC - En Vivo</small></div></div>
-          <div class="col-md-3"><div class="category-card rounded p-4">BLAST Series<br><small>PC - Replay</small></div></div>
-          <div class="col-md-3"><div class="category-card rounded p-4">ESL Pro League<br><small>PC - Competitivo</small></div></div>
-          <div class="col-md-3"><div class="category-card rounded p-4">Mix Casuales<br><small>PC - Replay</small></div></div>
+
+        @if (currentViewCSGO === 'matches') {
+        <div class="row g-4 mt-4">
+          @for (match of CSGOMatches; track $index) {
+          <div class="col-12 col-md-6 col-xl-4">
+            <div class="card card-match h-100">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <div class="text-white small fw-semibold">
+                  {{ match.league.name }}
+                </div>
+                <span class="badge badge-custom text-uppercase">
+                  {{ formatSlug(match.tournament.slug) }}
+                </span>
+              </div>
+              <div class="card-body p-0">
+                <h5 class="match-title mb-3">{{ match.name }}</h5>
+                <ul class="list-unstyled match-info mb-0">
+                  <li class="mb-1">
+                    <i class="bi bi-calendar-event me-2 text-warning"></i>
+                    {{ match.begin_at | date: 'fullDate' }} – {{ match.begin_at | date: 'shortTime' }}
+                  </li>
+                  <li class="mb-1">
+                    <i class="bi bi-globe-americas me-2 text-primary"></i>
+                    Región: {{ match.tournament.region || 'N/A' }} | País: {{ match.tournament.country || 'N/A' }}
+                  </li>
+                  <li class="mb-1">
+                    <i class="bi bi-controller me-2 text-success"></i>
+                    Formato: Bo{{ match.number_of_games }}
+                  </li>
+                  <li>
+                    <i class="bi bi-circle me-2" [ngClass]="{
+                          'text-success': match.status === 'finished',
+                          'text-warning': match.status === 'running',
+                          'text-muted': match.status === 'not_started'
+                        }"></i>
+                    Estado: {{ match.status | titlecase }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          }
         </div>
+        }
       </div>
 
       <!-- === Dota 2 === -->
       <div class="game-block">
         <h3 class="game-title mb-3">Dota 2</h3>
         <div class="game-filters">
-          <button class="btn btn-outline-light btn-sm">Replay</button>
-          <button class="btn btn-outline-light btn-sm">Mobile</button>
-          <button class="btn btn-outline-light btn-sm">Competitivo</button>
+          <button (click)="currentViewDota2 === 'leagues' ? currentViewDota2 = '' : currentViewDota2 = 'leagues'"
+            class="btn btn-outline-light btn-sm" [ngClass]="{ 'active': currentViewDota2 === 'leagues' }">Ligas</button>
+          <button (click)="currentViewDota2 === 'series' ? currentViewDota2 = '' : currentViewDota2 = 'series'"
+            class="btn btn-outline-light btn-sm" [ngClass]="{ 'active': currentViewDota2 === 'series' }">Series</button>
+          <button
+            (click)="currentViewDota2 === 'tournaments' ? currentViewDota2 = '' : currentViewDota2 = 'tournaments'"
+            class="btn btn-outline-light btn-sm"
+            [ngClass]="{ 'active': currentViewDota2 === 'tournaments' }">Torneos</button>
+          <button (click)="currentViewDota2 === 'matches' ? currentViewDota2 = '' : currentViewDota2 = 'matches'"
+            class="btn btn-outline-light btn-sm"
+            [ngClass]="{ 'active': currentViewDota2 === 'matches' }">Partidos</button>
         </div>
-        <div class="row g-4">
-          <div class="col-md-3"><div class="category-card rounded p-4">The International<br><small>PC - En Vivo</small></div></div>
-          <div class="col-md-3"><div class="category-card rounded p-4">Dota Pro Circuit<br><small>PC - Replay</small></div></div>
-          <div class="col-md-3"><div class="category-card rounded p-4">Pubstomp<br><small>Mobile - Replay</small></div></div>
-          <div class="col-md-3"><div class="category-card rounded p-4">Mix Latino<br><small>Replay</small></div></div>
-        </div>
-      </div>
 
-      <!-- === Fortnite === -->
-      <div class="game-block">
-        <h3 class="game-title mb-3">Fortnite</h3>
-        <div class="game-filters">
-          <button class="btn btn-outline-light btn-sm">PC</button>
-          <button class="btn btn-outline-light btn-sm">Mobile</button>
-          <button class="btn btn-outline-light btn-sm">Replay</button>
+        @if (currentViewDota2 === 'matches') {
+        <div class="row g-4 mt-4">
+          @for (match of dota2Matches; track $index) {
+          <div class="col-12 col-md-6 col-xl-4">
+            <div class="card card-match h-100">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <div class="text-white small fw-semibold">
+                  {{ match.league.name }}
+                </div>
+                <span class="badge badge-custom text-uppercase">
+                  {{ formatSlug(match.tournament.slug) }}
+                </span>
+              </div>
+              <div class="card-body p-0">
+                <h5 class="match-title mb-3">{{ match.name }}</h5>
+                <ul class="list-unstyled match-info mb-0">
+                  <li class="mb-1">
+                    <i class="bi bi-calendar-event me-2 text-warning"></i>
+                    {{ match.begin_at | date: 'fullDate' }} – {{ match.begin_at | date: 'shortTime' }}
+                  </li>
+                  <li class="mb-1">
+                    <i class="bi bi-globe-americas me-2 text-primary"></i>
+                    Región: {{ match.tournament.region || 'N/A' }} | País: {{ match.tournament.country || 'N/A' }}
+                  </li>
+                  <li class="mb-1">
+                    <i class="bi bi-controller me-2 text-success"></i>
+                    Formato: Bo{{ match.number_of_games }}
+                  </li>
+                  <li>
+                    <i class="bi bi-circle me-2" [ngClass]="{
+                    'text-success': match.status === 'finished',
+                    'text-warning': match.status === 'running',
+                    'text-muted': match.status === 'not_started'
+                  }"></i>
+                    Estado: {{ match.status | titlecase }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          }
         </div>
-        <div class="row g-4">
-          <div class="col-md-3"><div class="category-card rounded p-4">Copa Mundial<br><small>PC - En Vivo</small></div></div>
-          <div class="col-md-3"><div class="category-card rounded p-4">Battle Royale<br><small>Mobile - Replay</small></div></div>
-          <div class="col-md-3"><div class="category-card rounded p-4">Eventos Comunitarios<br><small>PC - Replay</small></div></div>
-          <div class="col-md-3"><div class="category-card rounded p-4">Zonas Creativas<br><small>Replay</small></div></div>
-        </div>
-      </div>
-
-      <!-- === Apex Legends === -->
-      <div class="game-block">
-        <h3 class="game-title mb-3">Apex Legends</h3>
-        <div class="game-filters">
-          <button class="btn btn-outline-light btn-sm">Replay</button>
-          <button class="btn btn-outline-light btn-sm">Competitivo</button>
-        </div>
-        <div class="row g-4">
-          <div class="col-md-3"><div class="category-card rounded p-4">Global Series<br><small>PC - Competitivo</small></div></div>
-          <div class="col-md-3"><div class="category-card rounded p-4">Apex Mobile<br><small>Mobile - Replay</small></div></div>
-          <div class="col-md-3"><div class="category-card rounded p-4">Squads Latam<br><small>Replay</small></div></div>
-          <div class="col-md-3"><div class="category-card rounded p-4">Pubs y Partidas Privadas<br><small>Replay</small></div></div>
-        </div>
+        }
       </div>
     </div>
   </section>

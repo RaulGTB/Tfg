@@ -14,12 +14,12 @@
   </section>
 
   <!-- EN VIVO HOY -->
- <section class="section-filters py-4 bg-black">
-  <div class="container">
-    <h2 class="section-title mb-4">EN VIVO HOY</h2>
+  <section class="section-filters py-4 bg-black">
+    <div class="container">
+      <h2 class="section-title mb-4">EN VIVO HOY</h2>
 
-    <div class="row g-4"> <!-- g-4 da separación entre columnas -->
-      @for (f of filteredGames.slice(0, 10); track $index) {
+      <div class="row g-4"> <!-- g-4 da separación entre columnas -->
+        @for (f of filteredGames.slice(0, 10); track $index) {
         <div class="col-12 col-md-6"> <!-- 100% en móvil, 50% en md+ -->
           <div class="live-card bg-dark border border-secondary p-3 rounded text-light shadow-sm h-100">
             <h5 class="mb-2 text-info">
@@ -33,11 +33,11 @@
             </small>
           </div>
         </div>
-      }
-    </div>
+        }
+      </div>
 
-  </div>
-</section>
+    </div>
+  </section>
 
 
   <!-- RECOMENDADOS -->
@@ -58,96 +58,98 @@
             <h2 class="section-title mb-4">UN POCO DE TO </h2>
             <div class="d-flex flex-wrap gap-4">
 
-             <!-- PLAYERS -->
-@if (currentView === 'players') {
-  <div class="row g-4">
-    @for (p of players.slice(0,12); track $index) {
-      <div class="col-12 col-md-6">
-        <div class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow-sm h-100">
-          <h5 class="mb-2 text-warning">
-            <i class="bi bi-person-fill me-2"></i>{{ p.name }}
-          </h5>
-          <p class="mb-1">
-            <strong>Nombre real:</strong> {{ p.first_name || 'Desconocido'}}
-          </p>
-          <p class="mb-1">
-            <strong>Juego:</strong> {{ p.current_videogame.name }}
-          </p>
-          <small class="text-muted">
-            <i class="bi bi-star-fill text-warning me-1"></i>Jugador destacado
-          </small>
-        </div>
-      </div>
-    }
-  </div>
-}
+              <!-- PLAYERS -->
+              @if (currentView === 'players') {
+              <div class="row g-4">
+                @for (p of players.slice(0,12); track $index) {
+                <div class="col-12 col-md-6">
+                  <div class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow-sm h-100">
+                    <h5 class="mb-2 text-warning">
+                      <i class="bi bi-person-fill me-2"></i>{{ p.name }}
+                    </h5>
+                    <p class="mb-1">
+                      <strong>Nombre real:</strong> {{ p.first_name || 'Desconocido'}}
+                    </p>
+                    <p class="mb-1">
+                      <strong>Juego:</strong> {{ p.current_videogame.name }}
+                    </p>
+                    <small class="text-muted">
+                      <i class="bi bi-star-fill text-warning me-1"></i>Jugador destacado
+                    </small>
+                  </div>
+                </div>
+                }
+              </div>
+              }
 
 
-<!-- TEAMS -->
-@if (currentView === 'teams') {
-  <div class="row g-4">
-    @for (p of teams; track $index) {
-      <div class="col-12 col-md-6">
-        <div class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow-sm h-100">
-          <h5 class="mb-2 text-info">
-            <i class="bi bi-people-fill me-2"></i>{{ p.name }}
-          </h5>
-          <p class="mb-1">
-            <strong>Ubicación:</strong> {{ p.location || 'Desconocida' }}
-          </p>
-          <p class="mb-1">
-            <strong>Juego:</strong> {{ p.current_videogame.name }}
-          </p>
-          <small class="text-muted">
-            <i class="bi bi-trophy-fill text-info me-1"></i>Equipo competitivo
-          </small>
-        </div>
-      </div>
-    }
-  </div>
-}
+              <!-- TEAMS -->
+              @if (currentView === 'teams') {
+              <div class="row g-4">
+                @for (p of teams; track $index) {
+                <div class="col-12 col-md-6">
+                  <div class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow-sm h-100">
+                    <h5 class="mb-2 text-info">
+                      <i class="bi bi-people-fill me-2"></i>{{ p.name }}
+                    </h5>
+                    <p class="mb-1">
+                      <strong>Ubicación:</strong> {{ p.location || 'Desconocida' }}
+                    </p>
+                    <p class="mb-1">
+                      <strong>Juego:</strong> {{ p.current_videogame.name }}
+                    </p>
+                    <small class="text-muted">
+                      <i class="bi bi-trophy-fill text-info me-1"></i>Equipo competitivo
+                    </small>
+                  </div>
+                </div>
+                }
+              </div>
+              }
 
 
-<!-- MATCHES -->
-@if (currentView === 'matches') {
-  @for (p of matches; track $index) {
-    @if (p.opponents?.length === 2) {
-      <div class="recommended-card bg-dark border border-secondary p-4 rounded text-light w-100 shadow-sm">
-        <div class="d-flex justify-content-between align-items-center mb-2">
-          <!-- Team 1 -->
-          <div class="text-center w-25">
-            <img [src]="p.opponents[0].opponent.image_url" alt="{{ p.opponents[0].opponent.name }}" class="img-fluid rounded mb-2" style="max-width: 60px;">
-            <p class="mb-0 small">{{ p.opponents[0].opponent.name }}</p>
+              <!-- MATCHES -->
+              @if (currentView === 'matches') {
+              @for (p of matches; track $index) {
+              @if (p.opponents?.length === 2) {
+              <div class="recommended-card bg-dark border border-secondary p-4 rounded text-light w-100 shadow-sm">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <!-- Team 1 -->
+                  <div class="text-center w-25">
+                    <img [src]="p.opponents[0].opponent.image_url" alt="{{ p.opponents[0].opponent.name }}"
+                      class="img-fluid rounded mb-2" style="max-width: 60px;">
+                    <p class="mb-0 small">{{ p.opponents[0].opponent.name }}</p>
+                  </div>
+
+                  <!-- VS info -->
+                  <div class="text-center w-50">
+                    <p class="fw-bold mb-1">VS</p>
+                    <p class="mb-1">
+                      <i class="bi bi-controller me-1"></i><strong>Juego:</strong> {{ p.videogame?.name || 'Desconocido'
+                      }}
+                    </p>
+                    <p class="mb-0">
+                      <i class="bi bi-clock-fill me-1"></i><strong>Fecha:</strong> {{ p.scheduled_at | date: 'medium' }}
+                    </p>
+                  </div>
+
+                  <!-- Team 2 -->
+                  <div class="text-center w-25">
+                    <img [src]="p.opponents[1].opponent.image_url" alt="{{ p.opponents[1].opponent.name }}"
+                      class="img-fluid rounded mb-2" style="max-width: 60px;">
+                    <p class="mb-0 small">{{ p.opponents[1].opponent.name }}</p>
+                  </div>
+                </div>
+                <small class="text-muted d-block text-center">
+                  <i class="bi bi-broadcast-pin me-1 text-danger"></i>Transmisión en vivo disponible
+                </small>
+              </div>
+              }
+              }
+              }
+            </div>
           </div>
-
-          <!-- VS info -->
-          <div class="text-center w-50">
-            <p class="fw-bold mb-1">VS</p>
-            <p class="mb-1">
-              <i class="bi bi-controller me-1"></i><strong>Juego:</strong> {{ p.videogame?.name || 'Desconocido' }}
-            </p>
-            <p class="mb-0">
-              <i class="bi bi-clock-fill me-1"></i><strong>Fecha:</strong> {{ p.scheduled_at | date: 'medium' }}
-            </p>
-          </div>
-
-          <!-- Team 2 -->
-          <div class="text-center w-25">
-            <img [src]="p.opponents[1].opponent.image_url" alt="{{ p.opponents[1].opponent.name }}" class="img-fluid rounded mb-2" style="max-width: 60px;">
-            <p class="mb-0 small">{{ p.opponents[1].opponent.name }}</p>
-          </div>
-        </div>
-        <small class="text-muted d-block text-center">
-          <i class="bi bi-broadcast-pin me-1 text-danger"></i>Transmisión en vivo disponible
-        </small>
-      </div>
-    }
-  }
-}
-
-        </div>
-      </div>
-    </section>
+        </section>
 
         <!-- RECOMPENSAS -->
       </div>
@@ -157,25 +159,28 @@
     <div class="container">
       <h2 class="section-title mb-4">RECOMPENSAS</h2>
       <div class="row g-4 justify-content-center">
-  <div class="col-12 col-md-4">
-    <div class="reward-card bg-secondary p-4 rounded text-center shadow-sm border border-info h-100 d-flex flex-column justify-content-center">
-      <h4 class="text-warning mb-3">💰 500 Monedas</h4>
-      <p class="mb-0 text-light fw-semibold">Por ver 3 partidas en vivo</p>
-    </div>
-  </div>
-  <div class="col-12 col-md-4">
-    <div class="reward-card bg-secondary p-4 rounded text-center shadow-sm border border-info h-100 d-flex flex-column justify-content-center">
-      <h4 class="text-warning mb-3">🆕 Registro</h4>
-      <p class="mb-0 text-light fw-semibold">Por registrarte en la plataforma</p>
-    </div>
-  </div>
-  <div class="col-12 col-md-4">
-    <div class="reward-card bg-secondary p-4 rounded text-center shadow-sm border border-info h-100 d-flex flex-column justify-content-center">
-      <h4 class="text-warning mb-3">🏅 Insignia dorada</h4>
-      <p class="mb-0 text-light fw-semibold">Por loguearte 7 días seguidos</p>
-    </div>
-  </div>
-</div>
+        <div class="col-12 col-md-4">
+          <div
+            class="reward-card bg-secondary p-4 rounded text-center shadow-sm border border-info h-100 d-flex flex-column justify-content-center">
+            <h4 class="text-warning mb-3">💰 500 Monedas</h4>
+            <p class="mb-0 text-light fw-semibold">Por ver 3 partidas en vivo</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div
+            class="reward-card bg-secondary p-4 rounded text-center shadow-sm border border-info h-100 d-flex flex-column justify-content-center">
+            <h4 class="text-warning mb-3">🆕 Registro</h4>
+            <p class="mb-0 text-light fw-semibold">Por registrarte en la plataforma</p>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div
+            class="reward-card bg-secondary p-4 rounded text-center shadow-sm border border-info h-100 d-flex flex-column justify-content-center">
+            <h4 class="text-warning mb-3">🏅 Insignia dorada</h4>
+            <p class="mb-0 text-light fw-semibold">Por loguearte 7 días seguidos</p>
+          </div>
+        </div>
+      </div>
 
     </div>
   </section>
