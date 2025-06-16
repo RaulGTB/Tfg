@@ -16,6 +16,7 @@ export class CategoriesComponent {
     this.getLolMatches();
     this.getCSGOLeagues();
     this.getCSGOSeries();
+    this.getCSGOTournaments();
     this.getCSGOMatches();
     this.getDota2Leagues();
     this.getDota2Series();
