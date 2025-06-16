@@ -67,6 +67,30 @@
         </div>
         }
 
+        @if (currentViewLoL === 'tournaments') {
+        <div class="row g-4 mt-4">
+          @for (tournament of lolTournaments; track tournament.id) {
+          <div class="col-12 col-md-6 col-xl-4">
+            <div class="card card-tournament-modern h-100">
+              <div class="card-body d-flex flex-column gap-2">
+                <span class="tournament-badge align-self-start">
+                  {{ tournament.tier?.toUpperCase() || 'N/A' }}
+                </span>
+                <h5 class="tournament-title mt-2 mb-1">
+                  <i class="bi bi-flag-fill me-2 text-gold"></i>{{ tournament.name }}
+                </h5>
+                <p class="tournament-date small mb-0">
+                  <i class="bi bi-calendar-event me-2"></i>
+                  {{ tournament.begin_at | date:'MMM d, y' }} – {{ tournament.end_at | date:'MMM d, y' }}
+                </p>
+              </div>
+            </div>
+          </div>
+          }
+        </div>
+        }
+
+
         @if (currentViewLoL === 'matches') {
         <div class="row g-4 mt-4">
           @for (match of lolMatches; track $index) {

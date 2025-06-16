@@ -262,3 +262,46 @@
   font-weight: 500;
   text-transform: uppercase;
 }
+
+.card-tournament-modern {
+  background-color: #1a1a1a;
+  border-radius: 1.5rem;
+  border: 1px solid #2b2b2b;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #f1f1f1;
+  box-shadow: 0 0 12px rgba(205, 220, 57, 0.05);
+}
+
+.card-tournament-modern:hover {
+  transform: scale(1.025);
+  box-shadow: 0 0 18px #cddc39aa;
+}
+
+.tournament-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #cddc39;
+  border: 1px solid #cddc39;
+  border-radius: 1.25rem;
+  padding: 0.2rem 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+.tournament-title {
+  font-size: 1.05rem;
+  color: #5df0d9;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.tournament-date {
+  font-size: 0.85rem;
+  color: #bbb;
+}
+
+.text-gold {
+  color: #fbc02d;
+}

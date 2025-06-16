@@ -38,6 +38,10 @@ export class DataService {
     return this.http.get('https://api.pandascore.co/lol/series?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
   }
 
+  getLolTournaments() {
+    return this.http.get('https://api.pandascore.co/lol/tournaments?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+  }
+
   getLolMatches() {
     return this.http.get('https://api.pandascore.co/lol/matches?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
   }
@@ -52,6 +56,10 @@ export class DataService {
     return this.http.get('https://api.pandascore.co/csgo/series?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
   }
 
+  getCSGOTournaments() {
+    return this.http.get('https://api.pandascore.co/csgo/tournaments?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+  }
+
   getCSGOMatches() {
     return this.http.get('https://api.pandascore.co/csgo/matches?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
   }
@@ -64,6 +72,10 @@ export class DataService {
 
   getDota2Series() {
     return this.http.get('https://api.pandascore.co/dota2/series?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+  }
+
+  getDota2Tournaments() {
+    return this.http.get('https://api.pandascore.co/dota2/tournaments?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
   }
 
   getDota2Matches() {
