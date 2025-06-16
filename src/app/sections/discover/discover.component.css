@@ -1,4 +1,9 @@
 /* ===== ESTILOS PRINCIPALES ===== */
+.section-wiki {
+  background-color: #000; 
+  min-height: 100vh; 
+}
+
 .esports-home {
   padding-top: 3rem;
   background-color: #1a1a1a;
