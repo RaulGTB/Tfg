@@ -6,15 +6,17 @@ import { CategoriesComponent } from './sections/categories/categories.component'
 import { DiscoverComponent } from './sections/discover/discover.component';
 import { FavsComponent } from './sections/favs/favs.component';
 import { AboutUSComponent } from './about-us/about-us.component';
+import { AccountComponent } from './sections/account/account.component';
 
 export const routes: Routes = [
-    {path: "", redirectTo: 'home', pathMatch: 'full'},
-    {path: "home", component: HomeComponent},
-    {path: "categories", component: CategoriesComponent},
-    {path: "discover", component: DiscoverComponent},
-    {path: "favs", component: FavsComponent},
-    {path: "login", component: LoginComponent},
-    {path: "register", component: RegisterComponent},
-    {path: "aboutus", component: AboutUSComponent},
-    {path: "**", component: HomeComponent}
+  { path: "", redirectTo: 'home', pathMatch: 'full' },
+  { path: "home", component: HomeComponent },
+  { path: "categories", component: CategoriesComponent },
+  { path: "discover", component: DiscoverComponent },
+  { path: "favs", component: FavsComponent },
+  { path: "login", component: LoginComponent },
+  { path: "register", component: RegisterComponent },
+  { path: "aboutus", component: AboutUSComponent },
+  {path: 'account',component: AccountComponent},
+  { path: "**", component: HomeComponent }
 ];

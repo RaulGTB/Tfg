@@ -11,7 +11,7 @@ export class AuthService {
 
   private baseUrl = 'https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/auth';
 
-  private userSubject = new BehaviorSubject<any>(this.getUser());
+  public userSubject = new BehaviorSubject<any>(this.getUser());
   user$ = this.userSubject.asObservable();
 
   constructor(private http: HttpClient, private router: Router) {}

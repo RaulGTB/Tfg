@@ -1,0 +1,32 @@
+.section-account {
+  min-height: 80vh;
+  padding-bottom: 120px; /* espacio para que no tape el footer */
+  position: relative;
+}
+
+.btn-lime-outline {
+  color: #cddc39;
+  border: 2px solid #cddc39;
+  background-color: transparent;
+  border-radius: 30px;
+  padding: 0.5rem 1.5rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-lime-outline:hover {
+  background-color: #cddc39;
+  color: #000;
+  text-decoration: none;
+}
+
+.coin-icon {
+  color: #cddc39;
+  font-size: 1.3rem;
+  vertical-align: middle;
+  margin-right: 0.3rem;
+}
+.section-account .row.fade-up:last-child {
+  position: relative;
+  z-index: 1050;
+}
