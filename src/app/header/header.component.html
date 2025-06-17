@@ -20,7 +20,7 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/favs" routerLinkActive="active">FAVS</a>
         </li>
-         <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" routerLink="/aboutus" routerLinkActive="active">ABOUT US</a>
         </li>
       </ul>
@@ -29,17 +29,24 @@
     <!-- Zona derecha -->
     <div class="d-flex align-items-center gap-3">
 
-
       <!-- Monedas -->
       <div class="virtual-coins d-flex align-items-center">
         <i class="bi bi-coin coin-icon"></i>
         <span class="coin-amount">1,250</span>
       </div>
 
-      <!-- Botones -->
-<a class="btn btn-register nav-link" routerLink="/register" routerLinkActive="active">REGISTER</a>
+      <!-- Botones / Links dinámicos según login -->
+      <ng-container *ngIf="!authService.isLoggedIn()">
+        <a class="btn btn-register nav-link" routerLink="/register" routerLinkActive="active">REGISTER</a>
+        <a class="btn btn-login nav-link" routerLink="/login" routerLinkActive="active">LOG IN</a>
+      </ng-container>
 
-<a class="btn btn-login nav-link" routerLink="/login" routerLinkActive="active">LOG IN</a>
+      <ng-container *ngIf="authService.isLoggedIn()">
+        <a class="btn btn-account nav-link" routerLink="/account" routerLinkActive="active">TU CUENTA</a>
+        <button (click)="logout()" class="btn btn-logout nav-link btn-link" style="border:none; background:none; cursor:pointer; padding:0; color:white;">
+          LOG OUT
+        </button>
+      </ng-container>
 
 
     </div>
