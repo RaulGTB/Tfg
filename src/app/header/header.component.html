@@ -30,10 +30,11 @@
     <div class="d-flex align-items-center gap-3">
 
       <!-- Monedas -->
-      <div class="virtual-coins d-flex align-items-center">
-        <i class="bi bi-coin coin-icon"></i>
-        <span class="coin-amount">1,250</span>
-      </div>
+      <div *ngIf="authService.isLoggedIn()" class="virtual-coins d-flex align-items-center">
+  <i class="bi bi-coin coin-icon"></i>
+  <span class="coin-amount">{{ coins }}</span>
+</div>
+
 
       <!-- Botones / Links dinámicos según login -->
    <ng-container *ngIf="!authService.isLoggedIn()">

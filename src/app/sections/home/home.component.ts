@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { DataService } from './../../data.service';
 import { Component } from '@angular/core';
+import { AuthService } from '../../auth.service'; // Ajusta la ruta si es necesario
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  constructor(private data: DataService) {
+  constructor(private data: DataService, private authService: AuthService) {
     this.getDpts();
     this.getTeams();
     this.getPlayers();
@@ -72,8 +73,12 @@ export class HomeComponent {
   filtrarCsgo() {
     this.filteredGames = this.games.filter((g) => g.class_name === 'CS:GO');
   }
-  
+
   FiltrarOtros() {
     this.filteredGames = this.games.filter((g) => g.class_name === 'Other');
   }
+   ngOnInit(): void {
+    this.authService.refreshUser(); // 🔁 Refresca monedas al entrar
+  }
+
 }
