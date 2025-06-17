@@ -36,17 +36,20 @@
       </div>
 
       <!-- Botones / Links dinámicos según login -->
-      <ng-container *ngIf="!authService.isLoggedIn()">
-        <a class="btn btn-register nav-link" routerLink="/register" routerLinkActive="active">REGISTER</a>
-        <a class="btn btn-login nav-link" routerLink="/login" routerLinkActive="active">LOG IN</a>
-      </ng-container>
+   <ng-container *ngIf="!authService.isLoggedIn()">
+  <a class="btn btn-register nav-link" routerLink="/register" routerLinkActive="active">REGISTER</a>
+  <a class="btn btn-register nav-link" routerLink="/login" routerLinkActive="active">LOG IN</a>
+</ng-container>
 
-      <ng-container *ngIf="authService.isLoggedIn()">
-        <a class="btn btn-account nav-link" routerLink="/account" routerLinkActive="active">TU CUENTA</a>
-        <button (click)="logout()" class="btn btn-logout nav-link btn-link" style="border:none; background:none; cursor:pointer; padding:0; color:white;">
-          LOG OUT
-        </button>
-      </ng-container>
+<ng-container *ngIf="authService.isLoggedIn()">
+  <a class="btn btn-register nav-link" routerLink="/account" routerLinkActive="active">ACCOUNT</a>
+
+  <button (click)="logout()" class="btn btn-register nav-link" >
+    LOG OUT
+  </button>
+</ng-container>
+
+
 
 
     </div>

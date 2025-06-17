@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../auth.service'; // ajusta la ruta si es necesario
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   errorMsg = '';
   successMsg = '';
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -45,6 +46,7 @@ export class LoginComponent implements OnInit {
         this.successMsg = 'Has iniciado sesión correctamente.';
         this.loginForm.reset();
         this.submitted = false;
+         this.router.navigate(['/home']);
         // Aquí puedes redirigir, guardar token, etc.
       },
       error: (err) => {
