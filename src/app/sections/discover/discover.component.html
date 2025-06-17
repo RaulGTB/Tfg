@@ -1,21 +1,73 @@
-<section class="section-wiki py-5 bg-black">
+<section class="section-wiki py-5 bg-black text-white">
   <div class="container text-center">
     <h2 class="section-title mb-5">WIKI</h2>
 
     <!-- Filtros circulares -->
     <div class="wiki-filters d-flex justify-content-center gap-4 mb-4">
-      <button class="btn btn-circle" type="button" aria-label="Dota 2">
+      <button class="btn btn-circle" type="button" (click)="selectedGame = 'dota2'"
+        [ngClass]="{ 'active': selectedGame === 'dota2' }">
         <img src="assets/images/dota2-logo.jpg" alt="Dota 2" />
       </button>
 
-      <button class="btn btn-circle" type="button" aria-label="CS:GO">
+      <button class="btn btn-circle" type="button" (click)="selectedGame = 'csgo'"
+        [ngClass]="{ 'active': selectedGame === 'csgo' }">
         <img src="/assets/images/csgo-logo.png" alt="CS:GO" />
       </button>
 
-      <button class="btn btn-circle" type="button" aria-label="League of Legends">
+      <button class="btn btn-circle" type="button" (click)="selectedGame = 'lol'"
+        [ngClass]="{ 'active': selectedGame === 'lol' }">
         <img src="assets/images/lol-logo.jpg" alt="League of Legends" />
       </button>
     </div>
+
+    <!-- Contenido dinámico -->
+    <div class="wiki-result mt-4">
+      @switch (selectedGame) {
+      @case ('dota2') {
+      <div class="wiki-content">
+        <h3 class="text-warning">Dota 2</h3>
+        <p>Conoce a fondo a los héroes, sus habilidades únicas y los objetos más decisivos del juego. Una guía esencial
+          para entender el complejo y estratégico mundo de Dota 2.</p>
+      </div>
+      }
+      @case ('csgo') {
+      <div class="wiki-content">
+        <h3 class="text-warning">CS:GO</h3>
+        <p>Explora los mapas, armas y versiones que han definido a Counter-Strike como el shooter táctico por
+          excelencia. Aquí descubrirás lo que necesitas para convertirte en un experto del <i>gameplay</i> base.</p>
+      </div>
+      }
+      @case ('lol') {
+      <div class="wiki-content">
+        <h3 class="text-warning">League of Legends</h3>
+        <p>Sumérgete en el universo de League of Legends: descubre a sus campeones, objetos, runas y hechizos. Una guía
+          completa para entender sus mecánicas, su mundo y su estilo de juego único.</p>
+      </div>
+      <div class="wiki-subsections d-flex flex-wrap gap-3 justify-content-center mt-4">
+        <button class="btn btn-circle-sm" title="Champions">
+          <img src="assets/icons/champions.png" alt="Champions">
+        </button>
+
+        <button class="btn btn-circle-sm" title="Items">
+          <img src="assets/icons/items.png" alt="Items">
+        </button>
+
+        <button class="btn btn-circle-sm" title="Runes">
+          <img src="assets/icons/runes.png" alt="Runes">
+        </button>
+
+        <button class="btn btn-circle-sm" title="Spells">
+          <img src="assets/icons/spells.png" alt="Spells">
+        </button>
+      </div>
+      }
+      @default {
+      <div class="wiki-content">
+        <p class="text-muted">Selecciona un juego para ver su información.</p>
+      </div>
+      }
+      }
+    </div>
+
   </div>
 </section>
-

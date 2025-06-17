@@ -5,7 +5,7 @@ import { RegisterComponent } from './sections/register/register.component';
 import { CategoriesComponent } from './sections/categories/categories.component';
 import { DiscoverComponent } from './sections/discover/discover.component';
 import { FavsComponent } from './sections/favs/favs.component';
-import { AboutUSComponent } from './about-us/about-us.component';
+import { AboutUSComponent } from './sections/about-us/about-us.component';
 import { AccountComponent } from './sections/account/account.component';
 
 export const routes: Routes = [

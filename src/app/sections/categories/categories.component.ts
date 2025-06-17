@@ -145,7 +145,7 @@ export class CategoriesComponent {
     });
   }
 
-   formatSlug(slug: string): string {
+  formatSlug(slug: string): string {
     return slug ? slug.replace(/-/g, ' ').toUpperCase() : 'N/A';
   }
 }
