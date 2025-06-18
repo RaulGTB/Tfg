@@ -44,7 +44,27 @@ export class DataService {
 
   getLolMatches() {
     return this.http.get('https://api.pandascore.co/lol/matches?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+}
+
+  getLolChampions() {
+    return this.http.get('https://api.pandascore.co/lol/champions?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+
   }
+  getLolItemns() {
+    return this.http.get('https://api.pandascore.co/lol/items?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+
+  }
+  getLolrunes() {
+    return this.http.get('https://api.pandascore.co/lol/runes?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+
+  }
+  getLolspells() {
+    return this.http.get('https://api.pandascore.co/lol/spells?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+
+  }
+
+
+
 
   // Counter-Strike: Global Offensive
 

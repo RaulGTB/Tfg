@@ -18,6 +18,10 @@ export class DiscoverComponent {
   dotaAbilities: any[] = [];
   dotaheores: any[] = [];
   dotaItems: any[] = [];
+  lolitems: any[] = [];
+  lolspells: any[] = [];
+  lolrunes: any[] = [];
+  lolchamps: any[] = [];
 
   constructor(private data: DataService) {
     this.getCSGOmaps();
@@ -55,6 +59,32 @@ export class DiscoverComponent {
       this.currentView = 'items';
     });
   }
+  getLolChampions(){
+    this.data.getLolChampions().subscribe((res: any) => {
+      this.lolchamps = res;
+      this.currentView = 'lolchamps';
+    });
+  }
+  getLolItemns(){
+    this.data.getLolItemns().subscribe((res: any) => {
+      this.lolitems = res;
+      this.currentView = 'lolitems';
+    });
+  }
+  getLolrunes(){
+    this.data.getLolrunes().subscribe((res: any) => {
+      this.lolrunes = res;
+      this.currentView = 'lolrunes';
+    });
+  }
+  getLolspells(){
+    this.data.getLolspells().subscribe((res: any) => {
+      this.lolspells = res;
+      this.currentView = 'lolspells';
+    });
+  }
+
+
 
 
 }

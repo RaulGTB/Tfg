@@ -26,6 +26,11 @@
         [ngClass]="{ 'active': selectedGame === 'lol' }">
         <img src="assets/images/lol-logo.jpg" alt="League of Legends" />
       </button>
+
+      <button class="btn btn-circle" type="button" (click)="selectedGame = 'lol'"
+        [ngClass]="{ 'active': selectedGame === 'lol' }">
+        <img src="assets/images/valorant-home.jpg" alt="League of Legends" />
+      </button>
     </div>
 
     <!-- Contenido dinámico -->
@@ -38,21 +43,21 @@
           para entender el complejo y estratégico mundo de Dota 2.</p>
       </div>
       <div class="wiki-subsections d-flex flex-wrap gap-3 justify-content-center mt-4">
-        <button  (click)="getDota2Abilities()" class="btn btn-circle-sm" title="abilities">
+        <button (click)="getDota2Abilities()" class="btn btn-circle-sm" title="abilities">
           <img src="assets/icons/abilities.png" alt="abilities">
         </button>
 
-        <button  (click)="getDota2heroes()" class="btn btn-circle-sm" title="heores">
+        <button (click)="getDota2heroes()" class="btn btn-circle-sm" title="heores">
           <img src="assets/icons/heores.png" alt="heores">
         </button>
 
-        <button  (click)="getDota2items()" class="btn btn-circle-sm" title="items">
+        <button (click)="getDota2items()" class="btn btn-circle-sm" title="items">
           <img src="assets/icons/items.png" alt="items">
         </button>
 
       </div>
 
- @if (currentView === 'heroes') {
+      @if (currentView === 'heroes') {
       <div class="row g-4 justify-content-center mt-4">
         @for (p of dotaheores; track $index) {
         <div class="col-12 col-md-6 col-lg-4 d-flex">
@@ -114,7 +119,7 @@
           <img src="assets/icons/maps.png" alt="maps">
         </button>
 
-        <button (click)="getCSGOweapons()"  class="btn btn-circle-sm" title="weapons">
+        <button (click)="getCSGOweapons()" class="btn btn-circle-sm" title="weapons">
           <img src="assets/icons/weapons.png" alt="weapons">
         </button>
       </div>
@@ -136,7 +141,7 @@
       </div>
       }
 
- @if (currentView === 'weapons') {
+      @if (currentView === 'weapons') {
       <div class="row g-4 justify-content-center mt-4">
         @for (w of weapons; track $index) {
         <div class="col-12 col-md-6 col-lg-4 d-flex">
@@ -151,8 +156,8 @@
         </div>
         }
       </div>
-    }
-  }
+      }
+      }
 
       @case ('lol') {
       <div class="wiki-content">
@@ -161,23 +166,91 @@
           completa para entender sus mecánicas, su mundo y su estilo de juego único.</p>
       </div>
       <div class="wiki-subsections d-flex flex-wrap gap-3 justify-content-center mt-4">
-        <button class="btn btn-circle-sm" title="Champions">
+        <button (click)="getLolChampions()" class="btn btn-circle-sm" title="Champions">
           <img src="assets/icons/champions.png" alt="Champions">
         </button>
 
-        <button class="btn btn-circle-sm" title="Items">
+        <button (click)="getLolItemns()" class="btn btn-circle-sm" title="Items">
           <img src="assets/icons/items.png" alt="Items">
         </button>
 
-        <button class="btn btn-circle-sm" title="Runes">
+        <button (click)="getLolrunes()" class="btn btn-circle-sm" title="Runes">
           <img src="assets/icons/runes.png" alt="Runes">
         </button>
 
-        <button class="btn btn-circle-sm" title="Spells">
+        <button (click)="getLolspells()" class="btn btn-circle-sm" title="Spells">
           <img src="assets/icons/spells.png" alt="Spells">
         </button>
       </div>
+      @if (currentView === 'lolchamps') {
+      <div class="row g-4 justify-content-center mt-4">
+        @for (w of lolchamps; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <div
+            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
+            <h5 class="mb-3 text-info">
+              <i class="bi bi-crosshair me-2"></i>{{ w.name }}
+            </h5>
+            <img [src]="w.big_image_url" alt="Campeón: {{ w.name }}"
+              class="img-fluid rounded mb-2 shadow-sm mx-auto d-block" style="max-width: 180px; height: auto;">
+
+          </div>
+        </div>
+        }
+      </div>
       }
+       @if (currentView === 'lolitems') {
+      <div class="row g-4 justify-content-center mt-4">
+        @for (w of lolitems; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <div
+            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
+            <h5 class="mb-3 text-info">
+              <i class="bi bi-crosshair me-2"></i>{{ w.name }}
+            </h5>
+            <img [src]="w.image_url" alt="Campeón: {{ w.name }}"
+              class="img-fluid rounded mb-2 shadow-sm mx-auto d-block" style="max-width: 180px; height: auto;">
+
+          </div>
+        </div>
+        }
+      </div>
+      }
+       @if (currentView === 'lolspells') {
+      <div class="row g-4 justify-content-center mt-4">
+        @for (w of lolspells; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <div
+            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
+            <h5 class="mb-3 text-info">
+              <i class="bi bi-crosshair me-2"></i>{{ w.name }}
+            </h5>
+            <img [src]="w.image_url" alt="Campeón: {{ w.name }}"
+              class="img-fluid rounded mb-2 shadow-sm mx-auto d-block" style="max-width: 180px; height: auto;">
+
+          </div>
+        </div>
+        }
+      </div>
+      }
+       @if (currentView === 'lolrunes') {
+      <div class="row g-4 justify-content-center mt-4">
+        @for (w of lolrunes; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <div
+            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
+            <h5 class="mb-3 text-info">
+              <i class="bi bi-crosshair me-2"></i>{{ w.name }}
+            </h5>
+
+
+          </div>
+        </div>
+        }
+      </div>
+      }
+      }
+
       @default {
       <div class="wiki-content">
         <p class="text-muted">Selecciona un juego para ver su información.</p>
