@@ -10,7 +10,7 @@
     <!-- Contenido encima de la imagen -->
     <div class="container position-relative z-2 text-center py-5 hero-content">
       <h1 class="display-4 fw-bold text-white text-shadow">RJK SCORE</h1>
-      <p class="lead text-light">Tu plataforma de eSports en vivo, resultados y recompensas</p>
+      <p class="lead text-light">Your live eSports platform for scores and rewards</p>
     </div>
   </section>
 
@@ -52,11 +52,11 @@
     <div class="container">
       <div class="d-flex flex-wrap gap-3 align-items-center">
         <span class="me-3">Filtrar por:</span>
-        <button (click)="filteredGames = games" class="btn btn-outline-light btn-sm">Mostrar Todos</button>
+        <button (click)="filteredGames = games" class="btn btn-outline-light btn-sm">Show All</button>
         <button (click)="filtrarLol()" class="btn btn-outline-light btn-sm">League of Legends</button>
         <button (click)="filtrarDota2()" class="btn btn-outline-light btn-sm">Dota 2</button>
         <button (click)="filtrarCsgo()" class="btn btn-outline-light btn-sm">CS:GO</button>
-        <button (click)="FiltrarOtros()" class="btn btn-outline-light btn-sm">Otros</button>
+        <button (click)="FiltrarOtros()" class="btn btn-outline-light btn-sm">Others</button>
       </div>
     </div>
   </section>
@@ -64,7 +64,7 @@
   <!-- EN VIVO HOY -->
   <section class="section-filters py-4 bg-black">
     <div class="container">
-      <h2 class="section-title mb-4">EN VIVO HOY</h2>
+      <h2 class="section-title mb-4">LIVE TODAY</h2>
 
       <div class="row g-4">
         @for (f of filteredGames.slice(0, 10); track $index) {
@@ -74,13 +74,13 @@
               <i class="bi bi-trophy-fill me-2"></i>{{ f.name }}
             </h5>
             <p class="mb-1">
-              <i class="bi bi-controller me-2"></i><strong>Juego:</strong> {{ f.class_name }}
+              <i class="bi bi-controller me-2"></i><strong>Videogame:</strong> {{ f.class_name }}
             </p>
 
 
 
             <small class="text-success d-block mt-3">
-              <i class="bi bi-broadcast-pin me-1"></i>Transmisión en curso
+              <i class="bi bi-broadcast-pin me-1"></i>Live broadcast in progress
             </small>
           </div>
         </div>
@@ -95,7 +95,7 @@
   <section class="section-filters py-4 bg-black">
     <div class="container">
       <div class="d-flex flex-wrap gap-3 align-items-center">
-        <span class="me-3">Filtrar por:</span>
+        <span class="me-3">Filter by:</span>
 
 
         <button (click)="getPlayers()" class="btn btn-outline-light btn-sm">PLAYERS</button>
@@ -106,7 +106,7 @@
 
         <section class="section-recommended py-5">
           <div class="container">
-            <h2 class="section-title mb-4">UN POCO DE TO </h2>
+            <h2 class="section-title mb-4">A BIT OF EVERYTHING</h2>
             <div class="d-flex flex-wrap gap-4">
 
               <!-- PLAYERS -->
@@ -119,19 +119,19 @@
                       <i class="bi bi-person-fill me-2"></i>{{ p.name }}
                     </h5>
                     <p class="mb-1">
-                      <strong>Nombre real:</strong> {{ p.first_name || 'Desconocido'}}
+                      <strong>Real name:</strong> {{ p.first_name || 'Desconocido'}}
                     </p>
                     <p class="mb-1">
-                      <strong>Juego:</strong> {{ p.current_videogame.name }}
+                      <strong>Videojuego:</strong> {{ p.current_videogame.name }}
                     </p>
                     <small class="text-muted">
-                      <i class="bi bi-star-fill text-warning me-1"></i>Jugador destacado
+                      <i class="bi bi-star-fill text-warning me-1"></i>Featured player
                     </small>
                     <button
                       class="btn btn-sm btn-warning mt-3 w-100 d-flex align-items-center justify-content-center gap-2"
                       (click)="addToFavorites('players', p.id)">
                       <i class="bi bi-star-fill"></i>
-                      Guardar Favorito
+                      Save Favorite
                     </button>
 
                   </div>
@@ -151,19 +151,19 @@
                       <i class="bi bi-people-fill me-2"></i>{{ p.name }}
                     </h5>
                     <p class="mb-1">
-                      <strong>Ubicación:</strong> {{ p.location || 'Desconocida' }}
+                      <strong>Location:</strong> {{ p.location || 'Desconocida' }}
                     </p>
                     <p class="mb-1">
-                      <strong>Juego:</strong> {{ p.current_videogame.name }}
+                      <strong>Videogame</strong> {{ p.current_videogame.name }}
                     </p>
                     <small class="text-muted">
-                      <i class="bi bi-trophy-fill text-info me-1"></i>Equipo competitivo
+                      <i class="bi bi-trophy-fill text-info me-1"></i>Competitive team
                     </small>
                     <button
                       class="btn btn-sm btn-warning mt-3 w-100 d-flex align-items-center justify-content-center gap-2"
                       (click)="addToFavorites('teams', p.id)">
                       <i class="bi bi-star-fill"></i>
-                      Guardar Favorito
+                      Save Favorite
                     </button>
                   </div>
                 </div>
@@ -189,11 +189,11 @@
                   <div class="text-center w-50">
                     <p class="fw-bold mb-1">VS</p>
                     <p class="mb-1">
-                      <i class="bi bi-controller me-1"></i><strong>Juego:</strong> {{ p.videogame?.name || 'Desconocido'
+                      <i class="bi bi-controller me-1"></i><strong>Videogame:</strong> {{ p.videogame?.name || 'Desconocido'
                       }}
                     </p>
                     <p class="mb-0">
-                      <i class="bi bi-clock-fill me-1"></i><strong>Fecha:</strong> {{ p.scheduled_at | date: 'medium' }}
+                      <i class="bi bi-clock-fill me-1"></i><strong>Date:</strong> {{ p.scheduled_at | date: 'medium' }}
                     </p>
                   </div>
 
@@ -210,7 +210,7 @@
                 <button class="btn btn-sm btn-warning mt-3 w-100 d-flex align-items-center justify-content-center gap-2"
                   (click)="addToFavorites('matches', p.id)">
                   <i class="bi bi-star-fill"></i>
-                  Guardar Favorito
+                  Save Favorite
                 </button>
               </div>
               }
@@ -226,12 +226,12 @@
   </section>
   <section class="section-rewards py-5 bg-black mb-5">
     <div class="container">
-      <h2 class="section-title mb-4">RECOMPENSAS</h2>
+      <h2 class="section-title mb-4">REWARDS</h2>
       <div class="row g-4 justify-content-center">
         <div class="col-12 col-md-4">
           <div
             class="reward-card bg-secondary p-4 rounded text-center shadow-sm border border-info h-100 d-flex flex-column justify-content-center">
-            <h4 class="text-warning mb-3">💰 500 Monedas</h4>
+            <h4 class="text-warning mb-3">💰 500 coins</h4>
             <p class="mb-0 text-light fw-semibold">Por ver 3 partidas en vivo</p>
           </div>
         </div>
