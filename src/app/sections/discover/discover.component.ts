@@ -22,6 +22,10 @@ export class DiscoverComponent {
   lolspells: any[] = [];
   lolrunes: any[] = [];
   lolchamps: any[] = [];
+  vabilities : any[] = [];
+  vmaps : any[] = [];
+  vweapons : any[] = [];
+  vagents : any[] = [];
 
   constructor(private data: DataService) {
     this.getCSGOmaps();
@@ -83,6 +87,36 @@ export class DiscoverComponent {
       this.currentView = 'lolspells';
     });
   }
+  getValoranabilities(){
+    this.data.getValoranabilities().subscribe((res: any) => {
+      this.vabilities = res;
+      this.currentView = 'vabilities';
+    });
+
+  }
+   getValorantmaps(){
+    this.data.getValorantmaps().subscribe((res: any) => {
+      this.vmaps = res;
+      this.currentView = 'vmaps';
+    });
+
+  }
+
+   getValorantweapons(){
+    this.data.getValorantweapons().subscribe((res: any) => {
+      this.vweapons = res;
+      this.currentView = 'vweapons';
+    });
+
+  }
+   getValorantagents(){
+    this.data.getValorantagents().subscribe((res: any) => {
+      this.vagents = res;
+      this.currentView = 'vagents';
+    });
+
+  }
+
 
 
 

@@ -139,6 +139,22 @@ export class DataService {
   getValorantMatches() {
     return this.http.get('https://api.pandascore.co/valorant/matches?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
   }
+  getValoranabilities() {
+    return this.http.get('https://api.pandascore.co/valorant/abilities?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+  }
+  getValorantmaps() {
+    return this.http.get('https://api.pandascore.co/valorant/maps?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+  }
+  getValorantweapons() {
+    return this.http.get('https://api.pandascore.co/valorant/weapons?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+  }
+  getValorantagents() {
+    return this.http.get('https://api.pandascore.co/valorant/agents?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+  }
+
+
+
+
 
   // data.service.ts
   addFavorite(favorite: { type: string; referenceId: number }): Observable<any> {
