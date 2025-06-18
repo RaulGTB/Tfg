@@ -68,7 +68,7 @@ export class DataService {
     return this.http.get('https://api.pandascore.co/csgo/maps?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
 
   }
-  getCSGOweapons(){
+  getCSGOweapons() {
     return this.http.get('https://api.pandascore.co/csgo/weapons?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
   }
 
@@ -89,6 +89,18 @@ export class DataService {
   getDota2Matches() {
     return this.http.get('https://api.pandascore.co/dota2/matches?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
   }
+
+  getDota2Abilities() {
+    return this.http.get(' https://api.pandascore.co/dota2/abilities?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+  }
+  getDota2heroes() {
+    return this.http.get(' https://api.pandascore.co/dota2/heroes?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+  }
+  getDota2items() {
+    return this.http.get(' https://api.pandascore.co/dota2/items?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+  }
+
+
 
   // Valorant
 
