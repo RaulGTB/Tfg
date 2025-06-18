@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { Observable, throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -28,7 +28,7 @@ export class DataService {
 
   // Game-specific methods
 
-    // League of Legends
+  // League of Legends
 
   getLolLeagues() {
     return this.http.get('https://api.pandascore.co/lol/leagues?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
@@ -46,7 +46,7 @@ export class DataService {
     return this.http.get('https://api.pandascore.co/lol/matches?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
   }
 
-    // Counter-Strike: Global Offensive
+  // Counter-Strike: Global Offensive
 
   getCSGOLeagues() {
     return this.http.get('https://api.pandascore.co/csgo/leagues?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
@@ -64,7 +64,15 @@ export class DataService {
     return this.http.get('https://api.pandascore.co/csgo/matches?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
   }
 
-    // Dota 2
+  getCSGOmaps() {
+    return this.http.get('https://api.pandascore.co/csgo/maps?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+
+  }
+  getCSGOweapons() {
+    return this.http.get('https://api.pandascore.co/csgo/weapons?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+  }
+
+  // Dota 2
 
   getDota2Leagues() {
     return this.http.get('https://api.pandascore.co/dota2/leagues?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
@@ -81,4 +89,100 @@ export class DataService {
   getDota2Matches() {
     return this.http.get('https://api.pandascore.co/dota2/matches?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
   }
+
+  getDota2Abilities() {
+    return this.http.get(' https://api.pandascore.co/dota2/abilities?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+  }
+  getDota2heroes() {
+    return this.http.get(' https://api.pandascore.co/dota2/heroes?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+  }
+  getDota2items() {
+    return this.http.get(' https://api.pandascore.co/dota2/items?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+  }
+
+
+
+  // Valorant
+
+  getValorantLeagues() {
+    return this.http.get('https://api.pandascore.co/valorant/leagues?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+  }
+
+  getValorantSeries() {
+    return this.http.get('https://api.pandascore.co/valorant/series?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+  }
+
+  getValorantTournaments() {
+    return this.http.get('https://api.pandascore.co/valorant/tournaments?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+  }
+
+  getValorantMatches() {
+    return this.http.get('https://api.pandascore.co/valorant/matches?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+  }
+
+  // data.service.ts
+  addFavorite(favorite: { type: string; referenceId: number }): Observable<any> {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      return throwError(() => new Error('No token found'));
+    }
+
+    const body = {
+      itemType: favorite.type,
+      itemId: favorite.referenceId
+    };
+
+    return this.http.post('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/favorites', body, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+  }
+  getFavorites(): Observable<any> {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      return throwError(() => new Error('No token found'));
+    }
+
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/favorites', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    });
+  }
+
+  removeFavorite(favoriteId: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    if (!token) return throwError(() => new Error('No token found'));
+
+    return this.http.delete(
+      `https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/favorites/${favoriteId}`,
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+  }
+  deleteAllFavorites(): Observable<any> {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      return throwError(() => new Error('No token found'));
+    }
+
+    const headers = { Authorization: `Bearer ${token}` };
+
+    return this.http.delete(
+      'https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/favorites/all',
+      { headers }
+    );
+  }
+
+
+
+
+
+
+  ngOnInit() {
+    const token = localStorage.getItem('token');
+    console.log("TOKEN ACTUAL:", token);
+  }
+
 }

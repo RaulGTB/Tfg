@@ -1,15 +1,50 @@
 <main class="home-page">
   <!-- HERO SECTION -->
-<section class="hero-header position-relative overflow-hidden">
-  <!-- Imagen borrosa de fondo -->
-  <img src="assets/images/hero-bg.jpg" alt="Fondo esports" class="hero-img-blur">
+  <section class="hero-header position-relative overflow-hidden">
+    <!-- Imagen de fondo nítida -->
+    <img src="assets/images/hero-bg.jpg" alt="Fondo esports" class="hero-img">
 
-  <!-- Contenido encima de la imagen -->
-  <div class="container position-relative z-2 text-center py-5">
-    <h1 class="display-4 fw-bold text-white text-shadow">RJK SCORE</h1>
-    <p class="lead text-light">Tu plataforma de eSports en vivo, resultados y recompensas</p>
+    <!-- Capa oscura encima -->
+    <div class="hero-overlay"></div>
+
+    <!-- Contenido encima de la imagen -->
+    <div class="container position-relative z-2 text-center py-5 hero-content">
+      <h1 class="display-4 fw-bold text-white text-shadow">RJK SCORE</h1>
+      <p class="lead text-light">Tu plataforma de eSports en vivo, resultados y recompensas</p>
+    </div>
+  </section>
+
+  <!-- TIRAS LATERALES DECORATIVAS -->
+  <div class="strip-container d-none d-xl-block">
+    <img src="assets/images/vertical-background.jpg" class="side-fill-img side-left d-none d-xl-block"
+      alt="Decoración izquierda" />
+    <img src="assets/images/vertical-background.jpg" class="side-fill-img side-right d-none d-xl-block"
+      alt="Decoración derecha" />
   </div>
-</section>
+
+
+  <!-- === GAME CARDS SECTION === -->
+  <section class="section-game-cards py-4 bg-black">
+    <div class="container">
+      <div class="row g-4 justify-content-center">
+        <div class="col-6 col-md-3" *ngFor="let g of gameCards; let i = index">
+          <div class="game-card-container text-center text-light">
+            <!-- Imagen del juego -->
+            <div class="game-card-img-wrapper rounded overflow-hidden shadow-sm">
+              <img [src]="g.img" [alt]="g.name" class="w-100 h-100 object-fit-cover" />
+            </div>
+
+            <!-- Nombre del juego -->
+            <h5 class="fw-bold mt-3 mb-2 text-white">{{ g.name }}</h5>
+
+            <!-- Descripción -->
+            <p class="small text-muted">{{ g.desc }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
 
   <!-- FILTROS -->
@@ -31,9 +66,9 @@
     <div class="container">
       <h2 class="section-title mb-4">EN VIVO HOY</h2>
 
-      <div class="row g-4"> <!-- g-4 da separación entre columnas -->
+      <div class="row g-4">
         @for (f of filteredGames.slice(0, 10); track $index) {
-        <div class="col-12 col-md-6"> <!-- 100% en móvil, 50% en md+ -->
+        <div class="col-12 col-md-6">
           <div class="live-card bg-dark border border-secondary p-3 rounded text-light shadow-sm h-100">
             <h5 class="mb-2 text-info">
               <i class="bi bi-trophy-fill me-2"></i>{{ f.name }}
@@ -41,16 +76,19 @@
             <p class="mb-1">
               <i class="bi bi-controller me-2"></i><strong>Juego:</strong> {{ f.class_name }}
             </p>
-            <small class="text-success d-block mt-2">
+
+
+
+            <small class="text-success d-block mt-3">
               <i class="bi bi-broadcast-pin me-1"></i>Transmisión en curso
             </small>
           </div>
         </div>
         }
       </div>
-
     </div>
   </section>
+
 
 
   <!-- RECOMENDADOS -->
@@ -89,6 +127,13 @@
                     <small class="text-muted">
                       <i class="bi bi-star-fill text-warning me-1"></i>Jugador destacado
                     </small>
+                    <button
+                      class="btn btn-sm btn-warning mt-3 w-100 d-flex align-items-center justify-content-center gap-2"
+                      (click)="addToFavorites('players', p.id)">
+                      <i class="bi bi-star-fill"></i>
+                      Guardar Favorito
+                    </button>
+
                   </div>
                 </div>
                 }
@@ -114,6 +159,12 @@
                     <small class="text-muted">
                       <i class="bi bi-trophy-fill text-info me-1"></i>Equipo competitivo
                     </small>
+                    <button
+                      class="btn btn-sm btn-warning mt-3 w-100 d-flex align-items-center justify-content-center gap-2"
+                      (click)="addToFavorites('teams', p.id)">
+                      <i class="bi bi-star-fill"></i>
+                      Guardar Favorito
+                    </button>
                   </div>
                 </div>
                 }
@@ -156,6 +207,11 @@
                 <small class="text-muted d-block text-center">
                   <i class="bi bi-broadcast-pin me-1 text-danger"></i>Transmisión en vivo disponible
                 </small>
+                <button class="btn btn-sm btn-warning mt-3 w-100 d-flex align-items-center justify-content-center gap-2"
+                  (click)="addToFavorites('matches', p.id)">
+                  <i class="bi bi-star-fill"></i>
+                  Guardar Favorito
+                </button>
               </div>
               }
               }

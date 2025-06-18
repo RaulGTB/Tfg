@@ -108,6 +108,7 @@
   font-weight: 600;
   font-size: 1rem;
 }
+/* === HERO HEADER MEJORADO === */
 .hero-header {
   height: 300px;
   position: relative;
@@ -115,17 +116,27 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background-color: black;
 }
 
-.hero-img-blur {
+.hero-img {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: blur(1.4px) brightness(0.6);
   z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.85));
 }
 
 .hero-header .container {
@@ -133,6 +144,82 @@
 }
 
 .text-shadow {
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
+}
+
+/* === GAME CARDS ESTILO NUEVO === */
+.game-card-container {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.game-card-container:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+.game-card-img-wrapper {
+  height: 180px;
+  background-color: #000;
+}
+.game-card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.65);
+  transition: filter 0.3s ease;
+}
+.game-card-container:hover img {
+  filter: brightness(0.8);
+}
+
+.text-shadow {
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
 }
 
+/* GAME CARD NUEVO ESTILO */
+.game-card-container {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.game-card-container:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+.game-card-img-wrapper {
+  height: 180px;
+  background-color: #000;
+}
+
+.game-card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.65);
+  transition: filter 0.3s ease;
+}
+
+.game-card-container:hover img {
+  filter: brightness(0.8);
+}
+
+/* TIRAS LATERALES QUE OCUPAN LOS HUECOS NEGROS LATERALES */
+.side-fill-img {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: calc((100vw - 1140px) / 2); /* 1140px = ancho máx. del container */
+  object-fit: cover;
+  opacity: 0.25;
+  z-index: 0;
+  pointer-events: none;
+  mask-image: linear-gradient(to right, transparent, black, transparent);
+}
+
+/* Izquierda alineada al borde */
+.side-left {
+  left: 0;
+}
+
+/* Derecha alineada al borde */
+.side-right {
+  right: 0;
+  transform: scaleX(-1); /* efecto espejo opcional */
+}

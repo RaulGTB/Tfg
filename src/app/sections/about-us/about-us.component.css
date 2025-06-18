@@ -50,3 +50,27 @@
 .section-about-us {
   background-color: #121212 !important;
 }
+
+/* TIRAS LATERALES QUE OCUPAN LOS HUECOS NEGROS LATERALES */
+.side-fill-img {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: calc((100vw - 1140px) / 2); /* 1140px = ancho máx. del container */
+  object-fit: cover;
+  opacity: 0.25;
+  z-index: 0;
+  pointer-events: none;
+  mask-image: linear-gradient(to right, transparent, black, transparent);
+}
+
+/* Izquierda alineada al borde */
+.side-left {
+  left: 0;
+}
+
+/* Derecha alineada al borde */
+.side-right {
+  right: 0;
+  transform: scaleX(-1); /* efecto espejo opcional */
+}

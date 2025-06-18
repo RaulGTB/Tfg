@@ -1,12 +1,49 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { AuthService } from '../auth.service'; // ajusta ruta si hace falta
+import { NgIf } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, RouterLinkActive],
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive, NgIf],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css']
+
+
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit, OnDestroy {
+
+  coins: number = 0;
+  private subscription!: Subscription;
+
+  constructor(public authService: AuthService) {}
+
+ isLoggedIn = false;
+
+
+  ngOnInit() {
+    // Inicializamos con las monedas actuales
+    this.coins = this.authService.getCoins();
+    this.subscription = this.authService.user$.subscribe(user => {
+      this.isLoggedIn = !!user;
+    });
+
+
+    // Nos suscribimos a cambios en el usuario para actualizar monedas
+    this.subscription = this.authService.user$.subscribe(user => {
+      this.coins = user?.coins ?? 0;
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  logout() {
+    this.authService.logout();
+  }
 
 }
+

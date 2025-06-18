@@ -84,7 +84,23 @@
   transition: all 0.3s ease;
 }
 
-.btn-login:hover {
-  background-color: #d4e157;
-  box-shadow: 0 0 10px #cddc39;
+.btn-login {
+  background-color: transparent;
+  color: #cddc39;
+  border: 2px solid #cddc39;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center;
+}
+
+.btn-login:hover,
+.btn-login:focus {
+  background-color: #cddc39;
+  color: #222;
+  text-decoration: none;
+  border-color: #afb42b;
+  outline: none;
 }

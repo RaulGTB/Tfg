@@ -1,21 +1,190 @@
-<section class="section-wiki py-5 bg-black">
+<section class="section-wiki py-5 bg-black text-white">
+
+  <div class="strip-container d-none d-xl-block">
+    <img src="assets/images/vertical-background.jpg" class="side-fill-img side-left d-none d-xl-block"
+      alt="Decoración izquierda" />
+    <img src="assets/images/vertical-background.jpg" class="side-fill-img side-right d-none d-xl-block"
+      alt="Decoración derecha" />
+  </div>
+
   <div class="container text-center">
     <h2 class="section-title mb-5">WIKI</h2>
 
     <!-- Filtros circulares -->
     <div class="wiki-filters d-flex justify-content-center gap-4 mb-4">
-      <button class="btn btn-circle" type="button" aria-label="Dota 2">
+      <button class="btn btn-circle" type="button" (click)="selectedGame = 'dota2'"
+        [ngClass]="{ 'active': selectedGame === 'dota2' }">
         <img src="assets/images/dota2-logo.jpg" alt="Dota 2" />
       </button>
 
-      <button class="btn btn-circle" type="button" aria-label="CS:GO">
+      <button class="btn btn-circle" type="button" (click)="selectedGame = 'csgo'"
+        [ngClass]="{ 'active': selectedGame === 'csgo' }">
         <img src="/assets/images/csgo-logo.png" alt="CS:GO" />
       </button>
 
-      <button class="btn btn-circle" type="button" aria-label="League of Legends">
+      <button class="btn btn-circle" type="button" (click)="selectedGame = 'lol'"
+        [ngClass]="{ 'active': selectedGame === 'lol' }">
         <img src="assets/images/lol-logo.jpg" alt="League of Legends" />
       </button>
     </div>
+
+    <!-- Contenido dinámico -->
+    <div class="wiki-result mt-4">
+      @switch (selectedGame) {
+      @case ('dota2') {
+      <div class="wiki-content">
+        <h3 class="text-warning">Dota 2</h3>
+        <p>Conoce a fondo a los héroes, sus habilidades únicas y los objetos más decisivos del juego. Una guía esencial
+          para entender el complejo y estratégico mundo de Dota 2.</p>
+      </div>
+      <div class="wiki-subsections d-flex flex-wrap gap-3 justify-content-center mt-4">
+        <button  (click)="getDota2Abilities()" class="btn btn-circle-sm" title="abilities">
+          <img src="assets/icons/abilities.png" alt="abilities">
+        </button>
+
+        <button  (click)="getDota2heroes()" class="btn btn-circle-sm" title="heores">
+          <img src="assets/icons/heores.png" alt="heores">
+        </button>
+
+        <button  (click)="getDota2items()" class="btn btn-circle-sm" title="items">
+          <img src="assets/icons/items.png" alt="items">
+        </button>
+
+      </div>
+
+ @if (currentView === 'heroes') {
+      <div class="row g-4 justify-content-center mt-4">
+        @for (p of dotaheores; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <div
+            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
+            <h5 class="mb-3 text-info">
+              <i class="bi bi-geo-alt-fill me-2"></i>{{ p.name }}
+            </h5>
+            <img [src]="p.image_url" alt="Mapa de {{ p.name }}" class="img-fluid rounded mb-2 shadow-sm mx-auto d-block"
+              style="max-width: 180px; height: auto;">
+          </div>
+        </div>
+        }
+      </div>
+      }
+      @if (currentView === 'items') {
+      <div class="row g-4 justify-content-center mt-4">
+        @for (p of dotaItems; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <div
+            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
+            <h5 class="mb-3 text-info">
+              <i class="bi bi-geo-alt-fill me-2"></i>{{ p.name }}
+            </h5>
+            <img [src]="p.image_url" alt="Mapa de {{ p.name }}" class="img-fluid rounded mb-2 shadow-sm mx-auto d-block"
+              style="max-width: 180px; height: auto;">
+          </div>
+        </div>
+        }
+      </div>
+      }
+      @if (currentView === 'abilities') {
+      <div class="row g-4 justify-content-center mt-4">
+        @for (p of dotaAbilities; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <div
+            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
+            <h5 class="mb-3 text-info">
+              <i class="bi bi-geo-alt-fill me-2"></i>{{ p.name }}
+            </h5>
+            <img [src]="p.image_url" alt="Mapa de {{ p.name }}" class="img-fluid rounded mb-2 shadow-sm mx-auto d-block"
+              style="max-width: 180px; height: auto;">
+          </div>
+        </div>
+        }
+      </div>
+      }
+
+      }
+      @case ('csgo') {
+      <div class="wiki-content">
+        <h3 class="text-warning">CS:GO</h3>
+        <p>Explora los mapas, armas y versiones que han definido a Counter-Strike como el shooter táctico por
+          excelencia. Aquí descubrirás lo que necesitas para convertirte en un experto del <i>gameplay</i> base.</p>
+      </div>
+      <div class="wiki-subsections d-flex flex-wrap gap-3 justify-content-center mt-4">
+
+        <button (click)="getCSGOmaps()" class="btn btn-circle-sm" title="maps">
+          <img src="assets/icons/maps.png" alt="maps">
+        </button>
+
+        <button (click)="getCSGOweapons()"  class="btn btn-circle-sm" title="weapons">
+          <img src="assets/icons/weapons.png" alt="weapons">
+        </button>
+      </div>
+
+      @if (currentView === 'maps') {
+      <div class="row g-4 justify-content-center mt-4">
+        @for (p of maps; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <div
+            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
+            <h5 class="mb-3 text-info">
+              <i class="bi bi-geo-alt-fill me-2"></i>{{ p.name }}
+            </h5>
+            <img [src]="p.image_url" alt="Mapa de {{ p.name }}" class="img-fluid rounded mb-2 shadow-sm mx-auto d-block"
+              style="max-width: 180px; height: auto;">
+          </div>
+        </div>
+        }
+      </div>
+      }
+
+ @if (currentView === 'weapons') {
+      <div class="row g-4 justify-content-center mt-4">
+        @for (w of weapons; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <div
+            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
+            <h5 class="mb-3 text-info">
+              <i class="bi bi-crosshair me-2"></i>{{ w.name }}
+            </h5>
+            <img [src]="w.image_url" alt="Arma: {{ w.name }}" class="img-fluid rounded mb-2 shadow-sm mx-auto d-block"
+              style="max-width: 180px; height: auto;">
+          </div>
+        </div>
+        }
+      </div>
+    }
+  }
+
+      @case ('lol') {
+      <div class="wiki-content">
+        <h3 class="text-warning">League of Legends</h3>
+        <p>Sumérgete en el universo de League of Legends: descubre a sus campeones, objetos, runas y hechizos. Una guía
+          completa para entender sus mecánicas, su mundo y su estilo de juego único.</p>
+      </div>
+      <div class="wiki-subsections d-flex flex-wrap gap-3 justify-content-center mt-4">
+        <button class="btn btn-circle-sm" title="Champions">
+          <img src="assets/icons/champions.png" alt="Champions">
+        </button>
+
+        <button class="btn btn-circle-sm" title="Items">
+          <img src="assets/icons/items.png" alt="Items">
+        </button>
+
+        <button class="btn btn-circle-sm" title="Runes">
+          <img src="assets/icons/runes.png" alt="Runes">
+        </button>
+
+        <button class="btn btn-circle-sm" title="Spells">
+          <img src="assets/icons/spells.png" alt="Spells">
+        </button>
+      </div>
+      }
+      @default {
+      <div class="wiki-content">
+        <p class="text-muted">Selecciona un juego para ver su información.</p>
+      </div>
+      }
+      }
+    </div>
+
   </div>
 </section>
-
