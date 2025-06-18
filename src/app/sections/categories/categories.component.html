@@ -9,7 +9,7 @@
 
   <section class="section-categories py-5 bg-black">
     <div class="container">
-      <h2 class="section-title mb-5">CATEGORÍAS</h2>
+      <h2 class="section-title mb-5">CATEGORIES</h2>
 
       <!-- === League of Legends === -->
       <div class="game-block lol-block position-relative">
@@ -19,14 +19,14 @@
         <h3 class="game-title mb-3">League of Legends</h3>
         <div class="game-filters">
           <button (click)="currentViewLoL === 'leagues' ? currentViewLoL = '' : currentViewLoL = 'leagues'"
-            class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewLoL === 'leagues'}">Ligas</button>
+            class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewLoL === 'leagues'}">Leagues</button>
           <button (click)="currentViewLoL === 'series' ? currentViewLoL = '' : currentViewLoL = 'series'"
             class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewLoL === 'series'}">Series</button>
           <button (click)="currentViewLoL === 'tournaments' ? currentViewLoL = '' : currentViewLoL = 'tournaments'"
             class="btn btn-outline-light btn-sm"
-            [ngClass]="{'active': currentViewLoL === 'tournaments'}">Torneos</button>
+            [ngClass]="{'active': currentViewLoL === 'tournaments'}">Tournaments</button>
           <button (click)="currentViewLoL === 'matches' ? currentViewLoL = '' : currentViewLoL = 'matches'"
-            class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewLoL === 'matches'}">Partidos</button>
+            class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewLoL === 'matches'}">Matches</button>
         </div>
 
         @if (currentViewLoL === 'leagues') {
@@ -104,11 +104,11 @@
                 <ul class="list-unstyled text-light small mb-3">
                   <li>
                     <i class="bi bi-globe2 me-2 text-primary"></i>
-                    País: {{ tournament.country || 'N/A' }}
+                    Country: {{ tournament.country || 'N/A' }}
                   </li>
                   <li>
                     <i class="bi bi-controller me-2 text-success"></i>
-                    Tipo: {{ tournament.type | titlecase }}
+                    Type: {{ tournament.type | titlecase }}
                   </li>
                   <li>
                     <i class="bi bi-calendar-event me-2 text-warning"></i>
@@ -154,11 +154,11 @@
                   </li>
                   <li class="mb-1">
                     <i class="bi bi-globe-americas me-2 text-primary"></i>
-                    Región: {{ match.tournament.region || 'N/A' }} | País: {{ match.tournament.country || 'N/A' }}
+                    Region: {{ match.tournament.region || 'N/A' }} | País: {{ match.tournament.country || 'N/A' }}
                   </li>
                   <li class="mb-1">
                     <i class="bi bi-controller me-2 text-success"></i>
-                    Formato: Bo{{ match.number_of_games }}
+                    Format: Bo{{ match.number_of_games }}
                   </li>
                   <li>
                     <i class="bi bi-circle me-2" [ngClass]="{
@@ -166,7 +166,7 @@
                           'text-warning': match.status === 'running',
                           'text-muted': match.status === 'not_started'
                         }"></i>
-                    Estado: {{ match.status | titlecase }}
+                    Status: {{ match.status | titlecase }}
                   </li>
                 </ul>
               </div>
@@ -185,14 +185,14 @@
         <h3 class="game-title mb-3">CS:GO</h3>
         <div class="game-filters">
           <button (click)="currentViewCSGO === 'leagues' ? currentViewCSGO = '' : currentViewCSGO = 'leagues'"
-            class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewCSGO === 'leagues'}">Ligas</button>
+            class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewCSGO === 'leagues'}">Leagues</button>
           <button (click)="currentViewCSGO === 'series' ? currentViewCSGO = '' : currentViewCSGO = 'series'"
             class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewCSGO === 'series'}">Series</button>
           <button (click)="currentViewCSGO === 'tournaments' ? currentViewCSGO = '' : currentViewCSGO = 'tournaments'"
             class="btn btn-outline-light btn-sm"
-            [ngClass]="{'active': currentViewCSGO === 'tournaments'}">Torneos</button>
+            [ngClass]="{'active': currentViewCSGO === 'tournaments'}">Tournaments</button>
           <button (click)="currentViewCSGO === 'matches' ? currentViewCSGO = '' : currentViewCSGO = 'matches'"
-            class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewCSGO === 'matches'}">Partidos</button>
+            class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewCSGO === 'matches'}">Matches</button>
         </div>
 
         @if (currentViewCSGO === 'leagues') {
@@ -259,11 +259,11 @@
                 <ul class="list-unstyled text-light small mb-3">
                   <li>
                     <i class="bi bi-globe2 me-2 text-primary"></i>
-                    País: {{ tournament.country || 'N/A' }}
+                    Country: {{ tournament.country || 'N/A' }}
                   </li>
                   <li>
                     <i class="bi bi-controller me-2 text-success"></i>
-                    Tipo: {{ tournament.type | titlecase }}
+                    Type: {{ tournament.type | titlecase }}
                   </li>
                   <li>
                     <i class="bi bi-calendar-event me-2 text-warning"></i>
@@ -309,11 +309,11 @@
                   </li>
                   <li class="mb-1">
                     <i class="bi bi-globe-americas me-2 text-primary"></i>
-                    Región: {{ match.tournament.region || 'N/A' }} | País: {{ match.tournament.country || 'N/A' }}
+                    Region: {{ match.tournament.region || 'N/A' }} | País: {{ match.tournament.country || 'N/A' }}
                   </li>
                   <li class="mb-1">
                     <i class="bi bi-controller me-2 text-success"></i>
-                    Formato: Bo{{ match.number_of_games }}
+                    Format: Bo{{ match.number_of_games }}
                   </li>
                   <li>
                     <i class="bi bi-circle me-2" [ngClass]="{
@@ -321,7 +321,7 @@
                           'text-warning': match.status === 'running',
                           'text-muted': match.status === 'not_started'
                         }"></i>
-                    Estado: {{ match.status | titlecase }}
+                    Status: {{ match.status | titlecase }}
                   </li>
                 </ul>
               </div>
@@ -340,16 +340,16 @@
         <h3 class="game-title mb-3">Dota 2</h3>
         <div class="game-filters">
           <button (click)="currentViewDota2 === 'leagues' ? currentViewDota2 = '' : currentViewDota2 = 'leagues'"
-            class="btn btn-outline-light btn-sm" [ngClass]="{ 'active': currentViewDota2 === 'leagues' }">Ligas</button>
+            class="btn btn-outline-light btn-sm" [ngClass]="{ 'active': currentViewDota2 === 'leagues' }">Leagues</button>
           <button (click)="currentViewDota2 === 'series' ? currentViewDota2 = '' : currentViewDota2 = 'series'"
             class="btn btn-outline-light btn-sm" [ngClass]="{ 'active': currentViewDota2 === 'series' }">Series</button>
           <button
             (click)="currentViewDota2 === 'tournaments' ? currentViewDota2 = '' : currentViewDota2 = 'tournaments'"
             class="btn btn-outline-light btn-sm"
-            [ngClass]="{ 'active': currentViewDota2 === 'tournaments' }">Torneos</button>
+            [ngClass]="{ 'active': currentViewDota2 === 'tournaments' }">Tournaments</button>
           <button (click)="currentViewDota2 === 'matches' ? currentViewDota2 = '' : currentViewDota2 = 'matches'"
             class="btn btn-outline-light btn-sm"
-            [ngClass]="{ 'active': currentViewDota2 === 'matches' }">Partidos</button>
+            [ngClass]="{ 'active': currentViewDota2 === 'matches' }">Matches</button>
         </div>
 
         @if (currentViewDota2 === 'leagues') {
@@ -416,11 +416,11 @@
                 <ul class="list-unstyled text-light small mb-3">
                   <li>
                     <i class="bi bi-globe2 me-2 text-primary"></i>
-                    País: {{ tournament.country || 'N/A' }}
+                    Country: {{ tournament.country || 'N/A' }}
                   </li>
                   <li>
                     <i class="bi bi-controller me-2 text-success"></i>
-                    Tipo: {{ tournament.type | titlecase }}
+                    Type: {{ tournament.type | titlecase }}
                   </li>
                   <li>
                     <i class="bi bi-calendar-event me-2 text-warning"></i>
@@ -466,11 +466,11 @@
                   </li>
                   <li class="mb-1">
                     <i class="bi bi-globe-americas me-2 text-primary"></i>
-                    Región: {{ match.tournament.region || 'N/A' }} | País: {{ match.tournament.country || 'N/A' }}
+                    Region: {{ match.tournament.region || 'N/A' }} | País: {{ match.tournament.country || 'N/A' }}
                   </li>
                   <li class="mb-1">
                     <i class="bi bi-controller me-2 text-success"></i>
-                    Formato: Bo{{ match.number_of_games }}
+                    Format: Bo{{ match.number_of_games }}
                   </li>
                   <li>
                     <i class="bi bi-circle me-2" [ngClass]="{
@@ -478,7 +478,7 @@
                     'text-warning': match.status === 'running',
                     'text-muted': match.status === 'not_started'
                   }"></i>
-                    Estado: {{ match.status | titlecase }}
+                    Status: {{ match.status | titlecase }}
                   </li>
                 </ul>
               </div>
@@ -497,14 +497,14 @@
         <h3 class="game-title mb-3">Valorant</h3>
         <div class="game-filters">
           <button (click)="currentViewValorant === 'leagues' ? currentViewValorant = '' : currentViewValorant = 'leagues'"
-            class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewValorant === 'leagues'}">Ligas</button>
+            class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewValorant === 'leagues'}">Leagues</button>
           <button (click)="currentViewValorant === 'series' ? currentViewValorant = '' : currentViewValorant = 'series'"
             class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewValorant === 'series'}">Series</button>
           <button (click)="currentViewValorant === 'tournaments' ? currentViewValorant = '' : currentViewValorant = 'tournaments'"
             class="btn btn-outline-light btn-sm"
-            [ngClass]="{'active': currentViewValorant === 'tournaments'}">Torneos</button>
+            [ngClass]="{'active': currentViewValorant === 'tournaments'}">Tournaments</button>
           <button (click)="currentViewValorant === 'matches' ? currentViewValorant = '' : currentViewValorant = 'matches'"
-            class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewValorant === 'matches'}">Partidos</button>
+            class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewValorant === 'matches'}">Matches</button>
         </div>
 
         @if (currentViewValorant === 'leagues') {
@@ -582,11 +582,11 @@
                 <ul class="list-unstyled text-light small mb-3">
                   <li>
                     <i class="bi bi-globe2 me-2 text-primary"></i>
-                    País: {{ tournament.country || 'N/A' }}
+                    Country: {{ tournament.country || 'N/A' }}
                   </li>
                   <li>
                     <i class="bi bi-controller me-2 text-success"></i>
-                    Tipo: {{ tournament.type | titlecase }}
+                    Type: {{ tournament.type | titlecase }}
                   </li>
                   <li>
                     <i class="bi bi-calendar-event me-2 text-warning"></i>
@@ -632,11 +632,11 @@
                   </li>
                   <li class="mb-1">
                     <i class="bi bi-globe-americas me-2 text-primary"></i>
-                    Región: {{ match.tournament.region || 'N/A' }} | País: {{ match.tournament.country || 'N/A' }}
+                    Region: {{ match.tournament.region || 'N/A' }} | País: {{ match.tournament.country || 'N/A' }}
                   </li>
                   <li class="mb-1">
                     <i class="bi bi-controller me-2 text-success"></i>
-                    Formato: Bo{{ match.number_of_games }}
+                    Format: Bo{{ match.number_of_games }}
                   </li>
                   <li>
                     <i class="bi bi-circle me-2" [ngClass]="{
@@ -644,7 +644,7 @@
                           'text-warning': match.status === 'running',
                           'text-muted': match.status === 'not_started'
                         }"></i>
-                    Estado: {{ match.status | titlecase }}
+                    Status: {{ match.status | titlecase }}
                   </li>
                 </ul>
               </div>

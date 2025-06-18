@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';  // Agregué OnInit para usar ngOnInit
+import { Component, OnInit } from '@angular/core'; // Agregué OnInit para usar ngOnInit
 import { CommonModule } from '@angular/common';
 import { DataService } from './../../data.service';
 import { AuthService } from '../../auth.service';
@@ -15,7 +15,7 @@ interface FavoriteResponse {
   standalone: true,
   imports: [CommonModule],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],  // Corregí 'styleUrl' por 'styleUrls'
+  styleUrls: ['./home.component.css'], // Corregí 'styleUrl' por 'styleUrls'
 })
 export class HomeComponent implements OnInit {
   games: any[] = [];
@@ -25,11 +25,10 @@ export class HomeComponent implements OnInit {
   matches: any[] = [];
   currentView: string = 'teams';
   successMsg: string = '';
-errorMsg: string = '';
+  errorMsg: string = '';
 
   // Lista local de favoritos guardados: {itemType, itemId}
   favorites: FavoriteResponse[] = [];
-
 
   // === Tarjetas de videojuegos ===
   gameCards = [
@@ -121,7 +120,6 @@ errorMsg: string = '';
 
   // Añadir favorito sin toggle (por si lo necesitas)
 
-
   ngOnInit(): void {
     this.authService.refreshUser();
     this.loadFavorites();
@@ -131,45 +129,43 @@ errorMsg: string = '';
     this.data.getFavorites().subscribe({
       next: (res) => {
         this.favorites = res.map((f: any) => ({
-          id: f.id,               // <--- Aquí agregamos el id para poder borrar
+          id: f.id, // <--- Aquí agregamos el id para poder borrar
           itemType: f.itemType,
           itemId: f.itemId,
-          itemData: f.itemData,   // opcional, si lo usas en UI
+          itemData: f.itemData, // opcional, si lo usas en UI
         }));
       },
       error: (err) => {
         console.error('Error cargando favoritos', err);
-      }
+      },
     });
   }
 
-addToFavorites(type: string,referenceId: number, ) {
-  const alreadyExists = this.favorites.some(fav => fav.itemId === referenceId && fav.itemType === type);
+  addToFavorites(type: string, referenceId: number) {
+    const alreadyExists = this.favorites.some(
+      (fav) => fav.itemId === referenceId && fav.itemType === type
+    );
 
-  if (alreadyExists) {
-    this.errorMsg = 'Este ítem ya está en favoritos.';
-    return;
-  }
-
-  const payload = { referenceId, type };
-  this.data.addFavorite(payload).subscribe({
-    next: res => {
-      this.successMsg = 'Añadido correctamente.';
-      this.favorites.push({
-        id: res.id,
-        itemId: referenceId,
-        itemType: type,
-        itemData: res.itemData || {}
-      });
-    },
-    error: err => {
-      this.errorMsg = 'Error al añadir a favoritos.';
-      console.error(err);
+    if (alreadyExists) {
+      this.errorMsg = 'Este ítem ya está en favoritos.';
+      return;
     }
-  });
-}
 
-
-
-
+    const payload = { referenceId, type };
+    this.data.addFavorite(payload).subscribe({
+      next: (res) => {
+        this.successMsg = 'Añadido correctamente.';
+        this.favorites.push({
+          id: res.id,
+          itemId: referenceId,
+          itemType: type,
+          itemData: res.itemData || {},
+        });
+      },
+      error: (err) => {
+        this.errorMsg = 'Error al añadir a favoritos.';
+        console.error(err);
+      },
+    });
+  }
 }
