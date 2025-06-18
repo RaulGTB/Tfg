@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { Observable, throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -81,4 +81,43 @@ export class DataService {
   getDota2Matches() {
     return this.http.get('https://api.pandascore.co/dota2/matches?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
   }
+
+  // data.service.ts
+addFavorite(favorite: { type: string; referenceId: number }): Observable<any> {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    return throwError(() => new Error('No token found'));
+  }
+
+  const body = {
+    itemType: favorite.type,
+    itemId: favorite.referenceId
+  };
+
+  return this.http.post('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/favorites', body, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+  });
+}
+getFavorites(): Observable<any> {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    return throwError(() => new Error('No token found'));
+  }
+
+  return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/favorites', {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    }
+  });
+}
+
+
+ngOnInit() {
+  const token = localStorage.getItem('token');
+  console.log("TOKEN ACTUAL:", token);
+}
+
 }

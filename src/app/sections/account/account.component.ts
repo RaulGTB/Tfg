@@ -22,6 +22,8 @@ export class AccountComponent implements OnInit {
   message: string = '';
   error: string = '';
   loading: boolean = false;
+  editPassword: string = '';
+
 
   constructor(public authService: AuthService) {}
 
@@ -31,10 +33,11 @@ export class AccountComponent implements OnInit {
 
   loadUser() {
     this.user = this.authService.getUser();
-    this.editName = this.user?.name || '';
+    this.editName = this.user?.username || '';
     this.editEmail = this.user?.email || '';
     this.editAvatarUrl = this.user?.avatarUrl || 'assets/default-avatar.png';
   }
+passwordVisible: boolean = false;
 
   onAvatarSelected(event: any) {
     const file = event.target.files[0];
@@ -49,31 +52,37 @@ export class AccountComponent implements OnInit {
   }
 
   saveChanges() {
-    this.error = '';
-    this.message = '';
-    if (!this.editName.trim() || !this.editEmail.trim()) {
-      this.error = 'Nombre y correo son obligatorios.';
-      return;
-    }
+  this.error = '';
+  this.message = '';
 
-    this.loading = true;
+  if (!this.editName.trim() || !this.editEmail.trim()) {
+    this.error = 'Nombre y correo son obligatorios.';
+    return;
+  }
 
-    // Simulamos guardado con timeout
-    setTimeout(() => {
-      this.user.name = this.editName;
-      this.user.email = this.editEmail;
-      if (this.avatarFile) {
-        this.user.avatarUrl = this.editAvatarUrl;
-      }
-      localStorage.setItem('user', JSON.stringify(this.user));
+  this.loading = true;
 
-      // Importante: si userSubject es privado, usa un método público para actualizarlo
-      this.authService.userSubject.next(this.user);  // o this.authService.updateUser(this.user);
+  const data: any = {
+    username: this.editName,
+    email: this.editEmail
+  };
 
+  if (this.editPassword.trim()) {
+    data.password = this.editPassword;
+  }
+
+  this.authService.updateProfile(data).subscribe({
+    next: () => {
       this.message = 'Perfil actualizado correctamente.';
       this.loading = false;
-    }, 1500);
-  }
+    },
+    error: (err) => {
+      this.error = 'Error al actualizar el perfil.';
+      this.loading = false;
+    }
+  });
+}
+
 
   logout() {
     this.authService.logout();

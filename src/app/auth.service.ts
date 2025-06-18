@@ -74,4 +74,18 @@ export class AuthService {
   });
 }
 
+updateProfile(data: { name: string; email: string; password?: string }): Observable<any> {
+  const token = this.getToken();
+  if (!token) throw new Error('Token no disponible');
+
+  return this.http.put(`${this.baseUrl.replace('/auth', '')}/users/me`, data, {
+    headers: { Authorization: `Bearer ${token}` }
+  }).pipe(
+    tap((user: any) => {
+      localStorage.setItem('user', JSON.stringify(user));
+      this.userSubject.next(user);
+    })
+  );
+}
+
 }

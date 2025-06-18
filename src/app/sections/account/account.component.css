@@ -2,8 +2,40 @@
   min-height: 80vh;
   padding-bottom: 120px; /* espacio para que no tape el footer */
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* Centra horizontalmente */
+  justify-content: center;  /* Centra verticalmente */
+  text-align: center;
+  gap: 2rem;
+  padding-top: 3rem;        /* Un poco de espacio arriba */
+  box-sizing: border-box;   /* Para que el padding no afecte tamaño */
 }
 
+.section-account .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* centra horizontalmente */
+  justify-content: center;  /* centra verticalmente si quieres */
+  max-width: 500px;         /* ancho máximo para el contenido */
+  margin: 0 auto;           /* centrar el contenedor */
+  gap: 2rem;
+  width: 100%;
+}
+
+
+.section-account form {
+  width: 100%;
+}
+
+.section-account .row.text-center.mt-4 {
+  display: flex;
+  justify-content: center;  /* Centra los botones */
+  gap: 1rem;                /* Espacio entre botones */
+  flex-wrap: wrap;
+}
+
+/* Botones lime */
 .btn-lime-outline {
   color: #cddc39;
   border: 2px solid #cddc39;
@@ -12,6 +44,8 @@
   padding: 0.5rem 1.5rem;
   font-weight: 600;
   transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap;
 }
 
 .btn-lime-outline:hover {
@@ -26,7 +60,32 @@
   vertical-align: middle;
   margin-right: 0.3rem;
 }
+
 .section-account .row.fade-up:last-child {
   position: relative;
   z-index: 1050;
 }
+.position-relative {
+  position: relative;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.top-50 {
+  top: 50%;
+}
+
+.end-0 {
+  right: 0;
+}
+
+.translate-middle-y {
+  transform: translateY(-50%);
+}
+
+.me-2 {
+  margin-right: 0.5rem;
+}
+

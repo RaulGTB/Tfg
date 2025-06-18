@@ -42,13 +42,14 @@ export class LoginComponent implements OnInit {
     const { usernameOrEmail, password } = this.loginForm.value;
 
     this.authService.login({ usernameOrEmail, password }).subscribe({
-      next: (res) => {
-        this.successMsg = 'Has iniciado sesión correctamente.';
-        this.loginForm.reset();
-        this.submitted = false;
-         this.router.navigate(['/home']);
-        // Aquí puedes redirigir, guardar token, etc.
-      },
+     next: (res) => {
+  localStorage.setItem('token', res.token); // ✅ Guarda el token correctamente
+  this.successMsg = 'Has iniciado sesión correctamente.';
+  this.loginForm.reset();
+  this.submitted = false;
+  this.router.navigate(['/home']);
+}
+,
       error: (err) => {
         this.errorMsg = err?.error?.message || 'Error al iniciar sesión.';
       }

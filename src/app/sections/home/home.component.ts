@@ -77,8 +77,20 @@ export class HomeComponent {
   FiltrarOtros() {
     this.filteredGames = this.games.filter((g) => g.class_name === 'Other');
   }
-   ngOnInit(): void {
-    this.authService.refreshUser(); // 🔁 Refresca monedas al entrar
-  }
+
+addToFavorites(type: string, referenceId: number, name?: string) {
+  const dto = { type, referenceId }; // ❌ no enviamos 'name'
+  this.data.addFavorite(dto).subscribe({
+    next: (res) => {
+      console.log('Favorito guardado:', res);
+      alert(`¡${name || 'Elemento'} añadido a favoritos!`);
+    },
+    error: (err) => {
+      console.error('Error al añadir favorito', err);
+      alert('Error al guardar el favorito.');
+    }
+  });
+}
+
 
 }
