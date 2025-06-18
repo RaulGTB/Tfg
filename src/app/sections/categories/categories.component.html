@@ -12,7 +12,10 @@
       <h2 class="section-title mb-5">CATEGORÍAS</h2>
 
       <!-- === League of Legends === -->
-      <div class="game-block">
+      <div class="game-block lol-block position-relative">
+        <ng-container *ngIf="!currentViewLoL">
+          <img src="assets/images/lol-categories.jpg" class="game-bg-img" alt="Fondo League of Legends">
+        </ng-container>
         <h3 class="game-title mb-3">League of Legends</h3>
         <div class="game-filters">
           <button (click)="currentViewLoL === 'leagues' ? currentViewLoL = '' : currentViewLoL = 'leagues'"
@@ -175,7 +178,10 @@
       </div>
 
       <!-- === CS:GO === -->
-      <div class="game-block">
+      <div class="game-block csgo-block position-relative">
+        <ng-container *ngIf="!currentViewCSGO">
+          <img src="assets/images/csgo-categories.jpg" class="game-bg-img" alt="Fondo Counter Strike: Global Offensive">
+        </ng-container>
         <h3 class="game-title mb-3">CS:GO</h3>
         <div class="game-filters">
           <button (click)="currentViewCSGO === 'leagues' ? currentViewCSGO = '' : currentViewCSGO = 'leagues'"
@@ -327,7 +333,10 @@
       </div>
 
       <!-- === Dota 2 === -->
-      <div class="game-block">
+      <div class="game-block dota2-block position-relative">
+        <ng-container *ngIf="!currentViewDota2">
+          <img src="assets/images/dota2-categories.jpg" class="game-bg-img" alt="Fondo League of Legends">
+        </ng-container>
         <h3 class="game-title mb-3">Dota 2</h3>
         <div class="game-filters">
           <button (click)="currentViewDota2 === 'leagues' ? currentViewDota2 = '' : currentViewDota2 = 'leagues'"
