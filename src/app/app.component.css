@@ -1,0 +1,9 @@
+app-header {
+  position: relative;
+  z-index: 1000;
+}
+
+app-footer {
+  position: relative;
+  z-index: 1000;
+}

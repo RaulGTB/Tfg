@@ -1,8 +1,15 @@
-/* FONDO GENERAL */
+.main-content {
+  min-height: 100vh;
+  background-color: #000; /* o #1a1a1a para empatar con .esports-home */
+  position: relative;
+  z-index: 1;
+}
+
 .esports-home {
   padding-top: 3rem;
   background-color: #1a1a1a;
   min-height: 100vh;
+    min-height: 100vh;
 }
 
 /* TÍTULOS GENERALES */
@@ -311,3 +318,28 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+/* TIRAS LATERALES QUE OCUPAN LOS HUECOS NEGROS LATERALES */
+.side-fill-img {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: calc((100vw - 1140px) / 2); /* 1140px = ancho máx. del container */
+  object-fit: cover;
+  opacity: 0.25;
+  z-index: 0;
+  pointer-events: none;
+  mask-image: linear-gradient(to right, transparent, black, transparent);
+}
+
+/* Izquierda alineada al borde */
+.side-left {
+  left: 0;
+}
+
+/* Derecha alineada al borde */
+.side-right {
+  right: 0;
+  transform: scaleX(-1); /* efecto espejo opcional */
+}
+

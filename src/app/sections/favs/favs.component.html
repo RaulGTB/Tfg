@@ -1,12 +1,20 @@
 <section class="section-favorites py-5 bg-black text-white border-top border-secondary fade-up">
+
+  <div class="strip-container d-none d-xl-block">
+    <img src="assets/images/vertical-background.jpg" class="side-fill-img side-left d-none d-xl-block"
+      alt="Decoración izquierda" />
+    <img src="assets/images/vertical-background.jpg" class="side-fill-img side-right d-none d-xl-block"
+      alt="Decoración derecha" />
+  </div>
+
   <div class="container">
 
     <div class="d-flex justify-content-between align-items-center mb-4 fade-up">
-  <h4 class="text-light mb-0">
-    <i class="bi bi-bookmark-check-fill me-2 text-warning"></i>Gestionar favoritos
-  </h4>
+      <h4 class="text-light mb-0">
+        <i class="bi bi-bookmark-check-fill me-2 text-warning"></i>Gestionar favoritos
+      </h4>
 
-</div>
+    </div>
 
     <!-- Título -->
     <h2 class="section-title mb-5 text-center text-lime pop-in">
@@ -24,7 +32,8 @@
 
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         <div *ngFor="let fav of groupedFavorites[type]" class="col">
-          <div class="bg-dark border border-secondary rounded-4 p-4 h-100 shadow-sm position-relative hover-glow fade-up">
+          <div
+            class="bg-dark border border-secondary rounded-4 p-4 h-100 shadow-sm position-relative hover-glow fade-up">
 
             <!-- Header: Imagen + Nombre -->
             <div class="d-flex align-items-center mb-3">
@@ -40,7 +49,8 @@
                 <!-- Jugador -->
                 <ng-container *ngSwitchCase="'player'">
                   <p *ngIf="fav.itemData?.first_name"><strong>Nombre real:</strong> {{ fav.itemData.first_name }}</p>
-                  <p *ngIf="fav.itemData?.current_videogame?.name"><strong>Juego:</strong> {{ fav.itemData.current_videogame.name }}</p>
+                  <p *ngIf="fav.itemData?.current_videogame?.name"><strong>Juego:</strong> {{
+                    fav.itemData.current_videogame.name }}</p>
                 </ng-container>
 
                 <!-- Equipo -->
@@ -72,12 +82,14 @@
 
                 <!-- Partidos -->
                 <ng-container *ngSwitchCase="'match'">
-                  <p><strong>Fecha:</strong> {{ fav.itemData?.begin_at ? (fav.itemData.begin_at | date:'short') : 'Por definir' }}</p>
+                  <p><strong>Fecha:</strong> {{ fav.itemData?.begin_at ? (fav.itemData.begin_at | date:'short') : 'Por
+                    definir' }}</p>
                   <p><strong>Equipos:</strong> {{ getOpponentsNames(fav.itemData?.opponents) }}</p>
                 </ng-container>
 
                 <ng-container *ngSwitchCase="'csgo_match'">
-                  <p><strong>Fecha:</strong> {{ fav.itemData?.begin_at ? (fav.itemData.begin_at | date:'short') : 'Por definir' }}</p>
+                  <p><strong>Fecha:</strong> {{ fav.itemData?.begin_at ? (fav.itemData.begin_at | date:'short') : 'Por
+                    definir' }}</p>
                   <p><strong>Equipos:</strong> {{ getOpponentsNames(fav.itemData?.opponents) }}</p>
                 </ng-container>
 
@@ -90,7 +102,7 @@
                 <i class="bi bi-tag-fill me-1 text-warning"></i>{{ fav.itemType }}
               </span>
 
-                <i class="bi bi-trash-fill me-1"></i>Eliminar
+              <i class="bi bi-trash-fill me-1"></i>Eliminar
 
             </div>
 

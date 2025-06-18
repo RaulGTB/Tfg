@@ -15,7 +15,6 @@
   </section>
 
   <!-- TIRAS LATERALES DECORATIVAS -->
-  <!-- TIRAS LATERALES -->
   <div class="strip-container d-none d-xl-block">
     <img src="assets/images/vertical-background.jpg" class="side-fill-img side-left d-none d-xl-block"
       alt="Decoración izquierda" />
@@ -128,11 +127,12 @@
                     <small class="text-muted">
                       <i class="bi bi-star-fill text-warning me-1"></i>Jugador destacado
                     </small>
-                    <button class="btn btn-sm btn-warning mt-3 w-100 d-flex align-items-center justify-content-center gap-2"
-                  (click)="addToFavorites('players', p.id)">
-                  <i class="bi bi-star-fill"></i>
-                  Guardar Favorito
-                </button>
+                    <button
+                      class="btn btn-sm btn-warning mt-3 w-100 d-flex align-items-center justify-content-center gap-2"
+                      (click)="addToFavorites('players', p.id)">
+                      <i class="bi bi-star-fill"></i>
+                      Guardar Favorito
+                    </button>
 
                   </div>
                 </div>
@@ -159,11 +159,12 @@
                     <small class="text-muted">
                       <i class="bi bi-trophy-fill text-info me-1"></i>Equipo competitivo
                     </small>
-                      <button class="btn btn-sm btn-warning mt-3 w-100 d-flex align-items-center justify-content-center gap-2"
-                  (click)="addToFavorites('teams', p.id)">
-                  <i class="bi bi-star-fill"></i>
-                  Guardar Favorito
-                </button>
+                    <button
+                      class="btn btn-sm btn-warning mt-3 w-100 d-flex align-items-center justify-content-center gap-2"
+                      (click)="addToFavorites('teams', p.id)">
+                      <i class="bi bi-star-fill"></i>
+                      Guardar Favorito
+                    </button>
                   </div>
                 </div>
                 }
