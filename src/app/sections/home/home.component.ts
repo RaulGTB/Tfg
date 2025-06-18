@@ -35,25 +35,25 @@ export class HomeComponent implements OnInit {
     {
       name: 'League of Legends',
       img: 'assets/images/lol-home.jpg',
-      desc: 'MOBA 5 vs 5 de Riot Games. Objetivo: destruir el nexo rival.',
+      desc: '5v5 MOBA by Riot Games. Objective: destroy the enemy nexus.',
       open: false,
     },
     {
       name: 'Dota 2',
       img: 'assets/images/dota2-home.jpg',
-      desc: 'MOBA de Valve basado en el mod original de Warcraft III.',
+      desc: 'MOBA by Valve based on the original Warcraft III mod.',
       open: false,
     },
     {
       name: 'CS:GO',
       img: 'assets/images/csgo-home.jpg',
-      desc: 'Shooter táctico 5 vs 5. Terroristas vs Antiterroristas.',
+      desc: '5v5 tactical shooter. Terrorists vs Counter-Terrorists.',
       open: false,
     },
     {
       name: 'Valorant',
       img: 'assets/images/valorant-home.jpg',
-      desc: 'Shooter táctico de Riot con habilidades únicas por agente.',
+      desc: 'Tactical shooter by Riot with unique abilities per agent.',
       open: false,
     },
   ];
