@@ -1,15 +1,41 @@
 <main class="home-page">
   <!-- HERO SECTION -->
-<section class="hero-header position-relative overflow-hidden">
-  <!-- Imagen borrosa de fondo -->
-  <img src="assets/images/hero-bg.jpg" alt="Fondo esports" class="hero-img-blur">
+  <section class="hero-header position-relative overflow-hidden">
+    <!-- Imagen de fondo nítida -->
+    <img src="assets/images/hero-bg.jpg" alt="Fondo esports" class="hero-img">
 
-  <!-- Contenido encima de la imagen -->
-  <div class="container position-relative z-2 text-center py-5">
-    <h1 class="display-4 fw-bold text-white text-shadow">RJK SCORE</h1>
-    <p class="lead text-light">Tu plataforma de eSports en vivo, resultados y recompensas</p>
-  </div>
-</section>
+    <!-- Capa oscura encima -->
+    <div class="hero-overlay"></div>
+
+    <!-- Contenido encima de la imagen -->
+    <div class="container position-relative z-2 text-center py-5 hero-content">
+      <h1 class="display-4 fw-bold text-white text-shadow">RJK SCORE</h1>
+      <p class="lead text-light">Tu plataforma de eSports en vivo, resultados y recompensas</p>
+    </div>
+  </section>
+
+  <!-- === GAME CARDS SECTION === -->
+  <section class="section-game-cards py-4 bg-black">
+    <div class="container">
+      <div class="row g-4 justify-content-center">
+        <div class="col-6 col-md-3" *ngFor="let g of gameCards; let i = index">
+          <div class="game-card-container text-center text-light">
+            <!-- Imagen del juego -->
+            <div class="game-card-img-wrapper rounded overflow-hidden shadow-sm">
+              <img [src]="g.img" [alt]="g.name" class="w-100 h-100 object-fit-cover" />
+            </div>
+
+            <!-- Nombre del juego -->
+            <h5 class="fw-bold mt-3 mb-2 text-white">{{ g.name }}</h5>
+
+            <!-- Descripción -->
+            <p class="small text-muted">{{ g.desc }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
 
   <!-- FILTROS -->
