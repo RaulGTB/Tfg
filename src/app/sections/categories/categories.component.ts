@@ -22,11 +22,16 @@ export class CategoriesComponent {
     this.getDota2Series();
     this.getDota2Tournaments();
     this.getDota2Matches();
+    this.getValorantLeagues();
+    this.getValorantSeries();
+    this.getValorantTournaments();
+    this.getValorantMatches();
   }
 
   currentViewLoL: string = '';
   currentViewCSGO: string = '';
   currentViewDota2: string = '';
+  currentViewValorant: string = '';
 
   lolLeagues: any[] = [];
   lolMatches: any[] = [];
@@ -42,6 +47,11 @@ export class CategoriesComponent {
   dota2Matches: any[] = [];
   dota2Series: any[] = [];
   dota2Tournaments: any[] = [];
+
+  valorantLeagues: any[] = [];
+  valorantSeries: any[] = [];
+  valorantTournaments: any[] = [];
+  valorantMatches: any[] = [];    
 
   // LoL
 
@@ -142,6 +152,40 @@ export class CategoriesComponent {
       this.dota2Matches = res;
 
       console.log(this.dota2Matches);
+    });
+  }
+
+  // Valorant
+
+  getValorantLeagues() {
+    this.data.getValorantLeagues().subscribe((res: any) => {
+      this.valorantLeagues = res;
+
+      console.log(this.valorantLeagues);
+    });
+  }
+
+  getValorantSeries() {
+    this.data.getValorantSeries().subscribe((res: any) => {
+      this.valorantSeries = res;
+
+      console.log(this.valorantSeries);
+    });
+  }
+
+  getValorantTournaments() {
+    this.data.getValorantTournaments().subscribe((res: any) => {
+      this.valorantTournaments = res;
+
+      console.log(this.valorantTournaments);
+    });
+  }
+
+  getValorantMatches() {
+    this.data.getValorantMatches().subscribe((res: any) => {
+      this.valorantMatches = res;
+
+      console.log(this.valorantMatches);
     });
   }
 

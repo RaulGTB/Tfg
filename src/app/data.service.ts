@@ -82,6 +82,24 @@ export class DataService {
     return this.http.get('https://api.pandascore.co/dota2/matches?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
   }
 
+  // Valorant
+
+  getValorantLeagues() {
+    return this.http.get('https://api.pandascore.co/valorant/leagues?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+  }
+
+  getValorantSeries() {
+    return this.http.get('https://api.pandascore.co/valorant/series?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+  }
+
+  getValorantTournaments() {
+    return this.http.get('https://api.pandascore.co/valorant/tournaments?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+  }
+
+  getValorantMatches() {
+    return this.http.get('https://api.pandascore.co/valorant/matches?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+  }
+
   // data.service.ts
 addFavorite(favorite: { type: string; referenceId: number }): Observable<any> {
   const token = localStorage.getItem('token');
