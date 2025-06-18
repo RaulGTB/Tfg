@@ -114,6 +114,33 @@ getFavorites(): Observable<any> {
   });
 }
 
+removeFavorite(favoriteId: number): Observable<any> {
+  const token = localStorage.getItem('token');
+  if (!token) return throwError(() => new Error('No token found'));
+
+  return this.http.delete(
+    `https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/favorites/${favoriteId}`,
+    { headers: { Authorization: `Bearer ${token}` } }
+  );
+}
+deleteAllFavorites(): Observable<any> {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    return throwError(() => new Error('No token found'));
+  }
+
+  const headers = { Authorization: `Bearer ${token}` };
+
+  return this.http.delete(
+    'https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/favorites/all',
+    { headers }
+  );
+}
+
+
+
+
+
 
 ngOnInit() {
   const token = localStorage.getItem('token');

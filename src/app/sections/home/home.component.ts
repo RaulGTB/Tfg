@@ -3,6 +3,13 @@ import { CommonModule } from '@angular/common';
 import { DataService } from './../../data.service';
 import { AuthService } from '../../auth.service';
 
+interface FavoriteResponse {
+  itemType: string;
+  itemId: number;
+  itemData?: any; // opcional, para info extra
+  id?: number; // el id único en la base de datos para borrar el favorito
+}
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -11,19 +18,18 @@ import { AuthService } from '../../auth.service';
   styleUrls: ['./home.component.css'],  // Corregí 'styleUrl' por 'styleUrls'
 })
 export class HomeComponent implements OnInit {
-  constructor(private data: DataService, private authService: AuthService) {
-    this.getDpts();
-    this.getTeams();
-    this.getPlayers();
-    this.getMatches();
-  }
-
   games: any[] = [];
   filteredGames: any[] = [];
   teams: any[] = [];
   players: any[] = [];
   matches: any[] = [];
   currentView: string = 'teams';
+  successMsg: string = '';
+errorMsg: string = '';
+
+  // Lista local de favoritos guardados: {itemType, itemId}
+  favorites: FavoriteResponse[] = [];
+
 
   // === Tarjetas de videojuegos ===
   gameCards = [
@@ -52,6 +58,15 @@ export class HomeComponent implements OnInit {
       open: false,
     },
   ];
+
+  constructor(private data: DataService, private authService: AuthService) {
+    // No recomiendo llamar aquí porque no está seguro que ngOnInit ya se haya ejecutado,
+    // pero si quieres mantenerlo, está OK.
+    this.getDpts();
+    this.getTeams();
+    this.getPlayers();
+    this.getMatches();
+  }
 
   toggleCard(i: number): void {
     this.gameCards.forEach((c, index) => (c.open = i === index));
@@ -104,21 +119,57 @@ export class HomeComponent implements OnInit {
     this.filteredGames = this.games.filter((g) => g.class_name === 'Other');
   }
 
-  addToFavorites(type: string, referenceId: number, name?: string) {
-    const dto = { type, referenceId }; // ❌ no enviamos 'name'
-    this.data.addFavorite(dto).subscribe({
+  // Añadir favorito sin toggle (por si lo necesitas)
+
+
+  ngOnInit(): void {
+    this.authService.refreshUser();
+    this.loadFavorites();
+  }
+
+  loadFavorites() {
+    this.data.getFavorites().subscribe({
       next: (res) => {
-        console.log('Favorito guardado:', res);
-        alert(`¡${name || 'Elemento'} añadido a favoritos!`);
+        this.favorites = res.map((f: any) => ({
+          id: f.id,               // <--- Aquí agregamos el id para poder borrar
+          itemType: f.itemType,
+          itemId: f.itemId,
+          itemData: f.itemData,   // opcional, si lo usas en UI
+        }));
       },
       error: (err) => {
-        console.error('Error al añadir favorito', err);
-        alert('Error al guardar el favorito.');
+        console.error('Error cargando favoritos', err);
       }
     });
   }
 
-  ngOnInit(): void {
-    this.authService.refreshUser();
+addToFavorites(type: string,referenceId: number, ) {
+  const alreadyExists = this.favorites.some(fav => fav.itemId === referenceId && fav.itemType === type);
+
+  if (alreadyExists) {
+    this.errorMsg = 'Este ítem ya está en favoritos.';
+    return;
   }
+
+  const payload = { referenceId, type };
+  this.data.addFavorite(payload).subscribe({
+    next: res => {
+      this.successMsg = 'Añadido correctamente.';
+      this.favorites.push({
+        id: res.id,
+        itemId: referenceId,
+        itemType: type,
+        itemData: res.itemData || {}
+      });
+    },
+    error: err => {
+      this.errorMsg = 'Error al añadir a favoritos.';
+      console.error(err);
+    }
+  });
+}
+
+
+
+
 }

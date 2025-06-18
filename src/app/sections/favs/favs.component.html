@@ -1,42 +1,103 @@
-<section class="favorites-section p-4 bg-dark text-light rounded">
-  <h2>Favoritos</h2>
+<section class="section-favorites py-5 bg-black text-white border-top border-secondary fade-up">
+  <div class="container">
 
-  <div *ngIf="favorites.length === 0" class="alert alert-info">
-    No tienes favoritos aún.
+    <div class="d-flex justify-content-between align-items-center mb-4 fade-up">
+  <h4 class="text-light mb-0">
+    <i class="bi bi-bookmark-check-fill me-2 text-warning"></i>Gestionar favoritos
+  </h4>
+
+</div>
+
+    <!-- Título -->
+    <h2 class="section-title mb-5 text-center text-lime pop-in">
+      <i class="bi bi-star-fill me-2 text-warning"></i>Mis favoritos
+    </h2>
+
+    <div *ngIf="successMsg" class="alert alert-success fade-up">{{ successMsg }}</div>
+    <div *ngIf="errorMsg" class="alert alert-danger fade-up">{{ errorMsg }}</div>
+
+    <!-- Grupo por tipo -->
+    <div *ngFor="let type of objectKeys(groupedFavorites)" class="mb-5 fade-up">
+      <h4 class="text-capitalize text-lime mb-4 border-bottom border-lime pb-2">
+        <i class="bi bi-bookmark-fill me-2 text-warning"></i>{{ type }}
+      </h4>
+
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <div *ngFor="let fav of groupedFavorites[type]" class="col">
+          <div class="bg-dark border border-secondary rounded-4 p-4 h-100 shadow-sm position-relative hover-glow fade-up">
+
+            <!-- Header: Imagen + Nombre -->
+            <div class="d-flex align-items-center mb-3">
+              <img *ngIf="fav.itemData?.image_url" [src]="fav.itemData.image_url" alt="imagen"
+                class="me-3 rounded-circle border border-light" width="50" height="50" />
+              <h5 class="mb-0 text-light">{{ fav.itemData?.name || ('ID ' + fav.itemId) }}</h5>
+            </div>
+
+            <!-- Contenido dinámico según tipo -->
+            <div class="mb-3">
+              <ng-container [ngSwitch]="fav.itemType">
+
+                <!-- Jugador -->
+                <ng-container *ngSwitchCase="'player'">
+                  <p *ngIf="fav.itemData?.first_name"><strong>Nombre real:</strong> {{ fav.itemData.first_name }}</p>
+                  <p *ngIf="fav.itemData?.current_videogame?.name"><strong>Juego:</strong> {{ fav.itemData.current_videogame.name }}</p>
+                </ng-container>
+
+                <!-- Equipo -->
+                <ng-container *ngSwitchCase="'team'">
+                  <p><strong>Acrónimo:</strong> {{ fav.itemData?.acronym || 'N/A' }}</p>
+                  <p><strong>Juego:</strong> {{ fav.itemData?.current_videogame?.name || 'N/A' }}</p>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'csgo_team'">
+                  <p><strong>Acrónimo:</strong> {{ fav.itemData?.acronym || 'N/A' }}</p>
+                  <p><strong>Juego:</strong> {{ fav.itemData?.current_videogame?.name || 'N/A' }}</p>
+                </ng-container>
+
+                <!-- Liga / Torneo -->
+                <ng-container *ngSwitchCase="'league'">
+                  <p><strong>Serie:</strong> {{ fav.itemData?.serie?.full_name || 'Sin serie' }}</p>
+                  <p><strong>Juego:</strong> {{ fav.itemData?.videogame?.name || 'N/A' }}</p>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'tournament'">
+                  <p><strong>Serie:</strong> {{ fav.itemData?.serie?.full_name || 'Sin serie' }}</p>
+                  <p><strong>Juego:</strong> {{ fav.itemData?.videogame?.name || 'N/A' }}</p>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'csgo_tournament'">
+                  <p><strong>Serie:</strong> {{ fav.itemData?.serie?.full_name || 'Sin serie' }}</p>
+                  <p><strong>Juego:</strong> {{ fav.itemData?.videogame?.name || 'N/A' }}</p>
+                </ng-container>
+
+                <!-- Partidos -->
+                <ng-container *ngSwitchCase="'match'">
+                  <p><strong>Fecha:</strong> {{ fav.itemData?.begin_at ? (fav.itemData.begin_at | date:'short') : 'Por definir' }}</p>
+                  <p><strong>Equipos:</strong> {{ getOpponentsNames(fav.itemData?.opponents) }}</p>
+                </ng-container>
+
+                <ng-container *ngSwitchCase="'csgo_match'">
+                  <p><strong>Fecha:</strong> {{ fav.itemData?.begin_at ? (fav.itemData.begin_at | date:'short') : 'Por definir' }}</p>
+                  <p><strong>Equipos:</strong> {{ getOpponentsNames(fav.itemData?.opponents) }}</p>
+                </ng-container>
+
+              </ng-container>
+            </div>
+
+            <!-- Tipo + Botón -->
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="text-muted small">
+                <i class="bi bi-tag-fill me-1 text-warning"></i>{{ fav.itemType }}
+              </span>
+
+                <i class="bi bi-trash-fill me-1"></i>Eliminar
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
-
-  <ul class="list-group mb-3">
-    <li *ngFor="let fav of favorites" class="list-group-item bg-secondary text-light d-flex justify-content-between align-items-center rounded mb-2">
-      {{ fav.name }} ({{ fav.type }})
-
-    </li>
-  </ul>
-
-  <div class="add-favorite-form">
-    <h4>Añadir favorito</h4>
-    <form (submit)="addFavorite()">
-      <div class="mb-2">
-        <label for="favType" class="form-label">Tipo</label>
-        <select id="favType" [(ngModel)]="newFavorite.type" name="type" class="form-select" required>
-          <option value="">Selecciona...</option>
-          <option value="liga">Liga</option>
-          <option value="equipo">Equipo</option>
-          <option value="jugador">Jugador</option>
-          <option value="partido">Partido</option>
-        </select>
-      </div>
-      <div class="mb-2">
-        <label for="favRefId" class="form-label">ID Referencia</label>
-        <input id="favRefId" [(ngModel)]="newFavorite.referenceId" name="referenceId" type="text" class="form-control" required />
-      </div>
-      <div class="mb-2">
-        <label for="favName" class="form-label">Nombre</label>
-        <input id="favName" [(ngModel)]="newFavorite.name" name="name" type="text" class="form-control" required />
-      </div>
-      <button type="submit" class="btn btn-success">Añadir favorito</button>
-    </form>
-  </div>
-
-  <div *ngIf="successMsg" class="alert alert-success mt-3">{{ successMsg }}</div>
-  <div *ngIf="errorMsg" class="alert alert-danger mt-3">{{ errorMsg }}</div>
 </section>

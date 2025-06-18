@@ -18,10 +18,10 @@
           <a class="nav-link" routerLink="/discover" routerLinkActive="active">WIKI</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/favs" routerLinkActive="active">FAVS</a>
+          <a   class="nav-link" routerLink="/favs" routerLinkActive="active" *ngIf="isLoggedIn">FAVS</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/aboutus" routerLinkActive="active">ABOUT US</a>
+          <a   class="nav-link" routerLink="/aboutus" routerLinkActive="active">ABOUT US</a>
         </li>
       </ul>
     </div>

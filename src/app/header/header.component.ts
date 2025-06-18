@@ -10,6 +10,8 @@ import { Subscription } from 'rxjs';
   imports: [RouterLink, RouterLinkActive, NgIf],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
+
+
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
@@ -18,9 +20,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(public authService: AuthService) {}
 
+ isLoggedIn = false;
+
+
   ngOnInit() {
     // Inicializamos con las monedas actuales
     this.coins = this.authService.getCoins();
+    this.subscription = this.authService.user$.subscribe(user => {
+      this.isLoggedIn = !!user;
+    });
+
 
     // Nos suscribimos a cambios en el usuario para actualizar monedas
     this.subscription = this.authService.user$.subscribe(user => {
@@ -35,5 +44,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   logout() {
     this.authService.logout();
   }
+
 }
 

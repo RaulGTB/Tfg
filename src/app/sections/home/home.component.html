@@ -63,36 +63,32 @@
   </section>
 
   <!-- EN VIVO HOY -->
- <section class="section-filters py-4 bg-black">
-  <div class="container">
-    <h2 class="section-title mb-4">EN VIVO HOY</h2>
+  <section class="section-filters py-4 bg-black">
+    <div class="container">
+      <h2 class="section-title mb-4">EN VIVO HOY</h2>
 
-    <div class="row g-4">
-      @for (f of filteredGames.slice(0, 10); track $index) {
-      <div class="col-12 col-md-6">
-        <div class="live-card bg-dark border border-secondary p-3 rounded text-light shadow-sm h-100">
-          <h5 class="mb-2 text-info">
-            <i class="bi bi-trophy-fill me-2"></i>{{ f.name }}
-          </h5>
-          <p class="mb-1">
-            <i class="bi bi-controller me-2"></i><strong>Juego:</strong> {{ f.class_name }}
-          </p>
+      <div class="row g-4">
+        @for (f of filteredGames.slice(0, 10); track $index) {
+        <div class="col-12 col-md-6">
+          <div class="live-card bg-dark border border-secondary p-3 rounded text-light shadow-sm h-100">
+            <h5 class="mb-2 text-info">
+              <i class="bi bi-trophy-fill me-2"></i>{{ f.name }}
+            </h5>
+            <p class="mb-1">
+              <i class="bi bi-controller me-2"></i><strong>Juego:</strong> {{ f.class_name }}
+            </p>
 
-          <!-- 🔽 Botón de añadir a favoritos -->
-          <button class="btn btn-sm btn-outline-warning mt-2"
-                  (click)="addToFavorites('league', f.id, f.name)">
-            <i class="bi bi-star"></i> Guardar Favorito
-          </button>
 
-          <small class="text-success d-block mt-3">
-            <i class="bi bi-broadcast-pin me-1"></i>Transmisión en curso
-          </small>
+
+            <small class="text-success d-block mt-3">
+              <i class="bi bi-broadcast-pin me-1"></i>Transmisión en curso
+            </small>
+          </div>
         </div>
+        }
       </div>
-      }
     </div>
-  </div>
-</section>
+  </section>
 
 
 
@@ -132,6 +128,12 @@
                     <small class="text-muted">
                       <i class="bi bi-star-fill text-warning me-1"></i>Jugador destacado
                     </small>
+                    <button class="btn btn-sm btn-warning mt-3 w-100 d-flex align-items-center justify-content-center gap-2"
+                  (click)="addToFavorites('players', p.id)">
+                  <i class="bi bi-star-fill"></i>
+                  Guardar Favorito
+                </button>
+
                   </div>
                 </div>
                 }
@@ -157,6 +159,11 @@
                     <small class="text-muted">
                       <i class="bi bi-trophy-fill text-info me-1"></i>Equipo competitivo
                     </small>
+                      <button class="btn btn-sm btn-warning mt-3 w-100 d-flex align-items-center justify-content-center gap-2"
+                  (click)="addToFavorites('teams', p.id)">
+                  <i class="bi bi-star-fill"></i>
+                  Guardar Favorito
+                </button>
                   </div>
                 </div>
                 }
@@ -199,6 +206,11 @@
                 <small class="text-muted d-block text-center">
                   <i class="bi bi-broadcast-pin me-1 text-danger"></i>Transmisión en vivo disponible
                 </small>
+                <button class="btn btn-sm btn-warning mt-3 w-100 d-flex align-items-center justify-content-center gap-2"
+                  (click)="addToFavorites('matches', p.id)">
+                  <i class="bi bi-star-fill"></i>
+                  Guardar Favorito
+                </button>
               </div>
               }
               }
