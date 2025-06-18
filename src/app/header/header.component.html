@@ -15,29 +15,44 @@
           <a class="nav-link" routerLink="/categories" routerLinkActive="active">CATEGORIES</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/discover" routerLinkActive="active">DISCOVER</a>
+          <a class="nav-link" routerLink="/discover" routerLinkActive="active">WIKI</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/favs" routerLinkActive="active">FAVS</a>
+          <a   class="nav-link" routerLink="/favs" routerLinkActive="active" *ngIf="isLoggedIn">FAVS</a>
+        </li>
+        <li class="nav-item">
+          <a   class="nav-link" routerLink="/aboutus" routerLinkActive="active">ABOUT US</a>
         </li>
       </ul>
     </div>
 
     <!-- Zona derecha -->
     <div class="d-flex align-items-center gap-3">
-      <!-- Buscar -->
-      <i class="bi bi-search search-icon"></i>
 
       <!-- Monedas -->
-      <div class="virtual-coins d-flex align-items-center">
-        <i class="bi bi-coin coin-icon"></i>
-        <span class="coin-amount">1,250</span>
-      </div>
+      <div *ngIf="authService.isLoggedIn()" class="virtual-coins d-flex align-items-center">
+  <i class="bi bi-coin coin-icon"></i>
+  <span class="coin-amount">{{ coins }}</span>
+</div>
 
-      <!-- Botones -->
-<a class="btn btn-register nav-link" routerLink="register" routerLinkActive="active">REGISTER</a>
 
-<a class="btn btn-login nav-link" routerLink="/login" routerLinkActive="active">LOG IN</a>
+      <!-- Botones / Links dinámicos según login -->
+   <ng-container *ngIf="!authService.isLoggedIn()">
+  <a class="btn btn-register nav-link" routerLink="/register" routerLinkActive="active">REGISTER</a>
+  <a class="btn btn-register nav-link" routerLink="/login" routerLinkActive="active">LOG IN</a>
+</ng-container>
+
+<ng-container *ngIf="authService.isLoggedIn()">
+  <a class="btn btn-register nav-link" routerLink="/account" routerLinkActive="active">ACCOUNT</a>
+
+  <button (click)="logout()" class="btn btn-register nav-link">
+    LOG OUT
+  </button>
+</ng-container>
+
+
+
+
 
     </div>
   </div>

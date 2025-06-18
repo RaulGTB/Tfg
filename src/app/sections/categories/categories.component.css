@@ -1,8 +1,15 @@
-/* FONDO GENERAL */
+.main-content {
+  min-height: 100vh;
+  background-color: #000; /* o #1a1a1a para empatar con .esports-home */
+  position: relative;
+  z-index: 1;
+}
+
 .esports-home {
   padding-top: 3rem;
   background-color: #1a1a1a;
   min-height: 100vh;
+    min-height: 100vh;
 }
 
 /* TÍTULOS GENERALES */
@@ -39,6 +46,13 @@
   box-shadow: 0 0 8px #e5fe00aa;
 }
 
+.game-filters .btn.active {
+  background-color: #cddc39;
+  color: #1a1a1a;
+  transform: scale(1.05);
+  box-shadow: 0 0 8px #e5fe00aa;
+}
+
 /* TARJETAS DE CATEGORÍA MÁS CLARAS PARA CONTRASTE */
 .category-card {
   background-color: #2a2a2a !important;
@@ -69,6 +83,279 @@
   margin-bottom: 4rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  border-top: 1px solid #333;
   border-bottom: 1px solid #333;
+}
+
+.card-match {
+  background-color: #141414;
+  border: 2px solid #2d2d2d;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  transition: all 0.25s ease;
+  color: #f2f2f2;
+}
+
+.card-match:hover {
+  box-shadow: 0 0 16px #cddc39aa;
+  transform: scale(1.015);
+}
+
+/* Título torneo */
+.card-match .card-header {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 0.5rem;
+}
+
+/* BADGE personalizado */
+.badge-custom {
+  background-color: transparent;
+  border: 1px solid #cddc39;
+  color: #cddc39;
+  font-size: 0.65rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Nombre del partido */
+.card-match .match-title {
+  color: #5df0d9;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* Lista de info */
+.card-match .match-info {
+  font-size: 0.88rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.card-match .match-info i {
+  width: 1.2rem;
+  color: #cddc39;
+}
+
+/* Estado visual como badge */
+.badge-custom {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  background-color: transparent;
+  border: 1px solid #cddc39;
+  color: #cddc39;
+  font-size: 0.7rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 1rem;
+  font-weight: 500;
+}
+
+.status-not_started {
+  background-color: #555;
+  color: #ccc;
+}
+
+.status-running {
+  background-color: #ff9800;
+  color: #fff;
+}
+
+.status-finished {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.card-league {
+  background-color: #1b1b1b;
+  border-radius: 1rem;
+  border: 1px solid #2a2a2a;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-league:hover {
+  box-shadow: 0 0 16px #cddc39aa;
+  transform: scale(1.015);
+}
+
+/* Imagen de la liga */
+.card-league img {
+  width: 100%;
+  height: 160px; /* Aumentado para que se vea mejor */
+  object-fit: contain;
+  background-color: #111;
+  padding: 1.25rem;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+/* Cuerpo de la tarjeta */
+.card-league .card-body {
+  padding: 1.5rem;
+  text-align: center;
+  color: #f8f8f2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Nombre de la liga */
+.card-league .card-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #00ffc8; 
+}
+
+/* Región */
+.card-league p {
+  font-size: 0.9rem;
+  color: #bbb;
+  margin: 0;
+}
+
+/* Badge del slug estilo outline */
+.card-league .badge {
+  display: inline-block;
+  border: 1px solid #cddc39;
+  color: #cddc39;
+  background-color: transparent !important;  /* ← fuerza eliminar el fondo gris */
+  font-size: 0.75rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-series {
+  background-color: #1c1c1c;
+  border-radius: 1.5rem;
+  border: 1px solid #2e2e2e;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(205, 220, 57, 0.08);
+  color: #eaeaea;
+}
+
+.card-series:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 16px #cddc39aa;
+}
+
+.series-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #5df0d9;
+  display: flex;
+  align-items: center;
+}
+
+.text-gold {
+  color: #fbc02d;
+}
+
+.series-header {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #cddc39;
+  border: 1px solid #cddc39;
+  border-radius: 1.25rem;
+  padding: 0.25rem 0.75rem;
+  letter-spacing: 0.5px;
+  background-color: transparent;
+}
+
+.card-series p,
+.card-series .text-muted,
+.card-series .small {
+  color: #fff !important;
+}
+
+
+.card-tournament-rich {
+  background-color: #1b1b1b;
+  border-radius: 1.25rem;
+  border: 1px solid #2b2b2b;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  color: #f1f1f1;
+  box-shadow: 0 0 12px rgba(205, 220, 57, 0.08);
+}
+
+.card-tournament-rich:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 16px #cddc39aa;
+}
+
+.tournament-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #5df0d9;
+}
+
+.team-pill {
+  background-color: #2c2c2c;
+  border: 1px solid #444;
+  border-radius: 2rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  color: #ddd;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* TIRAS LATERALES QUE OCUPAN LOS HUECOS NEGROS LATERALES */
+.side-fill-img {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: calc((100vw - 1140px) / 2); /* 1140px = ancho máx. del container */
+  object-fit: cover;
+  opacity: 0.25;
+  z-index: 0;
+  pointer-events: none;
+  mask-image: linear-gradient(to right, transparent, black, transparent);
+}
+
+/* Izquierda alineada al borde */
+.side-left {
+  left: 0;
+}
+
+/* Derecha alineada al borde */
+.side-right {
+  right: 0;
+  transform: scaleX(-1); /* efecto espejo opcional */
+}
+
+.game-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.25;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.game-block > *:not(img) {
+  position: relative;
+  z-index: 1;
 }

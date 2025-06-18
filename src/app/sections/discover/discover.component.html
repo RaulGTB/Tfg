@@ -1,86 +1,190 @@
-<section class="section-discover py-5 bg-black text-white">
-  <div class="container">
-    <h2 class="section-title mb-5">DISCOVER</h2>
+<section class="section-wiki py-5 bg-black text-white">
 
-    <!-- === Top Juegos === -->
-    <div class="discover-block">
-      <h3 class="game-title mb-3">Top Juegos del Momento</h3>
-      <div class="row g-4">
-        <div class="col-md-2"><div class="category-card p-3 rounded">Valorant</div></div>
-        <div class="col-md-2"><div class="category-card p-3 rounded">League of Legends</div></div>
-        <div class="col-md-2"><div class="category-card p-3 rounded">CS:GO</div></div>
-        <div class="col-md-2"><div class="category-card p-3 rounded">Fortnite</div></div>
-        <div class="col-md-2"><div class="category-card p-3 rounded">Apex Legends</div></div>
-        <div class="col-md-2"><div class="category-card p-3 rounded">Dota 2</div></div>
-      </div>
+  <div class="strip-container d-none d-xl-block">
+    <img src="assets/images/vertical-background.jpg" class="side-fill-img side-left d-none d-xl-block"
+      alt="Decoración izquierda" />
+    <img src="assets/images/vertical-background.jpg" class="side-fill-img side-right d-none d-xl-block"
+      alt="Decoración derecha" />
+  </div>
+
+  <div class="container text-center">
+    <h2 class="section-title mb-5">WIKI</h2>
+
+    <!-- Filtros circulares -->
+    <div class="wiki-filters d-flex justify-content-center gap-4 mb-4">
+      <button class="btn btn-circle" type="button" (click)="selectedGame = 'dota2'"
+        [ngClass]="{ 'active': selectedGame === 'dota2' }">
+        <img src="assets/images/dota2-logo.jpg" alt="Dota 2" />
+      </button>
+
+      <button class="btn btn-circle" type="button" (click)="selectedGame = 'csgo'"
+        [ngClass]="{ 'active': selectedGame === 'csgo' }">
+        <img src="/assets/images/csgo-logo.png" alt="CS:GO" />
+      </button>
+
+      <button class="btn btn-circle" type="button" (click)="selectedGame = 'lol'"
+        [ngClass]="{ 'active': selectedGame === 'lol' }">
+        <img src="assets/images/lol-logo.jpg" alt="League of Legends" />
+      </button>
     </div>
 
-    <!-- === Streamers Destacados === -->
-    <div class="discover-block">
-      <h3 class="game-title mb-3">Streamers Destacados</h3>
-      <div class="row g-4">
-        <div class="col-md-2"><div class="category-card p-3 rounded">xXDragonXx<br><small>Jugando Fortnite</small></div></div>
-        <div class="col-md-2"><div class="category-card p-3 rounded">LuKeTTV<br><small>Valorant Ranked</small></div></div>
-        <div class="col-md-2"><div class="category-card p-3 rounded">NaniGirl<br><small>League of Legends</small></div></div>
-        <div class="col-md-2"><div class="category-card p-3 rounded">ProShooter<br><small>CS:GO</small></div></div>
-        <div class="col-md-2"><div class="category-card p-3 rounded">MagaCrack<br><small>Apex Legends</small></div></div>
-        <div class="col-md-2"><div class="category-card p-3 rounded">RaiNn<br><small>Dota 2</small></div></div>
+    <!-- Contenido dinámico -->
+    <div class="wiki-result mt-4">
+      @switch (selectedGame) {
+      @case ('dota2') {
+      <div class="wiki-content">
+        <h3 class="text-warning">Dota 2</h3>
+        <p>Conoce a fondo a los héroes, sus habilidades únicas y los objetos más decisivos del juego. Una guía esencial
+          para entender el complejo y estratégico mundo de Dota 2.</p>
       </div>
-    </div>
+      <div class="wiki-subsections d-flex flex-wrap gap-3 justify-content-center mt-4">
+        <button  (click)="getDota2Abilities()" class="btn btn-circle-sm" title="abilities">
+          <img src="assets/icons/abilities.png" alt="abilities">
+        </button>
 
-    <!-- === Noticias Rápidas === -->
-    <div class="discover-block">
-      <h3 class="game-title mb-3">Noticias Rápidas</h3>
-      <div class="row g-4">
-        <div class="col-md-4"><div class="category-card p-3 rounded">💥 Riot anuncia nuevo modo de Valorant</div></div>
-        <div class="col-md-4"><div class="category-card p-3 rounded">🎮 Dota 2 lanza parche 7.35</div></div>
-        <div class="col-md-4"><div class="category-card p-3 rounded">🔥 Final Mundial de LoL será en Seúl</div></div>
-      </div>
-    </div>
+        <button  (click)="getDota2heroes()" class="btn btn-circle-sm" title="heores">
+          <img src="assets/icons/heores.png" alt="heores">
+        </button>
 
-    <!-- === Apuestas Populares === -->
-    <div class="discover-block">
-      <h3 class="game-title mb-3">Apuestas Más Populares</h3>
-      <div class="row g-4">
-        <div class="col-md-3"><div class="category-card p-3 rounded">Final CS:GO 🔥<br><small>Major Brasil</small></div></div>
-        <div class="col-md-3"><div class="category-card p-3 rounded">LOL: T1 vs G2<br><small>Apuesta abierta</small></div></div>
-        <div class="col-md-3"><div class="category-card p-3 rounded">Valorant LATAM<br><small>Semifinales</small></div></div>
-        <div class="col-md-3"><div class="category-card p-3 rounded">Fortnite: Copa Solo<br><small>Registra tu predicción</small></div></div>
-      </div>
-    </div>
+        <button  (click)="getDota2items()" class="btn btn-circle-sm" title="items">
+          <img src="assets/icons/items.png" alt="items">
+        </button>
 
-    <!-- === Torneos Activos === -->
-    <div class="discover-block">
-      <h3 class="game-title mb-3">Torneos Activos</h3>
-      <div class="row g-4">
-        <div class="col-md-3"><div class="category-card p-3 rounded">LCS América</div></div>
-        <div class="col-md-3"><div class="category-card p-3 rounded">Copa España CS</div></div>
-        <div class="col-md-3"><div class="category-card p-3 rounded">Open Valorant</div></div>
-        <div class="col-md-3"><div class="category-card p-3 rounded">Dota PRO EU</div></div>
       </div>
-    </div>
 
-    <!-- === Recompensas y Drops === -->
-    <div class="discover-block">
-      <h3 class="game-title mb-3">Recompensas y Drops</h3>
-      <div class="row g-4">
-        <div class="col-md-4"><div class="category-card p-3 rounded">💰 Drop activo en LoL y Fortnite</div></div>
-        <div class="col-md-4"><div class="category-card p-3 rounded">🎁 Gana monedas viendo Valorant</div></div>
-        <div class="col-md-4"><div class="category-card p-3 rounded">📦 Participa y desbloquea skins</div></div>
+ @if (currentView === 'heroes') {
+      <div class="row g-4 justify-content-center mt-4">
+        @for (p of dotaheores; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <div
+            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
+            <h5 class="mb-3 text-info">
+              <i class="bi bi-geo-alt-fill me-2"></i>{{ p.name }}
+            </h5>
+            <img [src]="p.image_url" alt="Mapa de {{ p.name }}" class="img-fluid rounded mb-2 shadow-sm mx-auto d-block"
+              style="max-width: 180px; height: auto;">
+          </div>
+        </div>
+        }
       </div>
-    </div>
+      }
+      @if (currentView === 'items') {
+      <div class="row g-4 justify-content-center mt-4">
+        @for (p of dotaItems; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <div
+            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
+            <h5 class="mb-3 text-info">
+              <i class="bi bi-geo-alt-fill me-2"></i>{{ p.name }}
+            </h5>
+            <img [src]="p.image_url" alt="Mapa de {{ p.name }}" class="img-fluid rounded mb-2 shadow-sm mx-auto d-block"
+              style="max-width: 180px; height: auto;">
+          </div>
+        </div>
+        }
+      </div>
+      }
+      @if (currentView === 'abilities') {
+      <div class="row g-4 justify-content-center mt-4">
+        @for (p of dotaAbilities; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <div
+            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
+            <h5 class="mb-3 text-info">
+              <i class="bi bi-geo-alt-fill me-2"></i>{{ p.name }}
+            </h5>
+            <img [src]="p.image_url" alt="Mapa de {{ p.name }}" class="img-fluid rounded mb-2 shadow-sm mx-auto d-block"
+              style="max-width: 180px; height: auto;">
+          </div>
+        </div>
+        }
+      </div>
+      }
 
-    <!-- === Clips Virales === -->
-    <div class="discover-block">
-      <h3 class="game-title mb-3">Clips Virales</h3>
-      <div class="row g-4">
-        <div class="col-md-3"><div class="category-card p-3 rounded">😱 Ace en 5 segundos</div></div>
-        <div class="col-md-3"><div class="category-card p-3 rounded">🤣 El fail del año en Fortnite</div></div>
-        <div class="col-md-3"><div class="category-card p-3 rounded">💡 Jugada maestra en Dota</div></div>
-        <div class="col-md-3"><div class="category-card p-3 rounded">🔥 1v4 clutch CS:GO</div></div>
+      }
+      @case ('csgo') {
+      <div class="wiki-content">
+        <h3 class="text-warning">CS:GO</h3>
+        <p>Explora los mapas, armas y versiones que han definido a Counter-Strike como el shooter táctico por
+          excelencia. Aquí descubrirás lo que necesitas para convertirte en un experto del <i>gameplay</i> base.</p>
       </div>
+      <div class="wiki-subsections d-flex flex-wrap gap-3 justify-content-center mt-4">
+
+        <button (click)="getCSGOmaps()" class="btn btn-circle-sm" title="maps">
+          <img src="assets/icons/maps.png" alt="maps">
+        </button>
+
+        <button (click)="getCSGOweapons()"  class="btn btn-circle-sm" title="weapons">
+          <img src="assets/icons/weapons.png" alt="weapons">
+        </button>
+      </div>
+
+      @if (currentView === 'maps') {
+      <div class="row g-4 justify-content-center mt-4">
+        @for (p of maps; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <div
+            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
+            <h5 class="mb-3 text-info">
+              <i class="bi bi-geo-alt-fill me-2"></i>{{ p.name }}
+            </h5>
+            <img [src]="p.image_url" alt="Mapa de {{ p.name }}" class="img-fluid rounded mb-2 shadow-sm mx-auto d-block"
+              style="max-width: 180px; height: auto;">
+          </div>
+        </div>
+        }
+      </div>
+      }
+
+ @if (currentView === 'weapons') {
+      <div class="row g-4 justify-content-center mt-4">
+        @for (w of weapons; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <div
+            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
+            <h5 class="mb-3 text-info">
+              <i class="bi bi-crosshair me-2"></i>{{ w.name }}
+            </h5>
+            <img [src]="w.image_url" alt="Arma: {{ w.name }}" class="img-fluid rounded mb-2 shadow-sm mx-auto d-block"
+              style="max-width: 180px; height: auto;">
+          </div>
+        </div>
+        }
+      </div>
+    }
+  }
+
+      @case ('lol') {
+      <div class="wiki-content">
+        <h3 class="text-warning">League of Legends</h3>
+        <p>Sumérgete en el universo de League of Legends: descubre a sus campeones, objetos, runas y hechizos. Una guía
+          completa para entender sus mecánicas, su mundo y su estilo de juego único.</p>
+      </div>
+      <div class="wiki-subsections d-flex flex-wrap gap-3 justify-content-center mt-4">
+        <button class="btn btn-circle-sm" title="Champions">
+          <img src="assets/icons/champions.png" alt="Champions">
+        </button>
+
+        <button class="btn btn-circle-sm" title="Items">
+          <img src="assets/icons/items.png" alt="Items">
+        </button>
+
+        <button class="btn btn-circle-sm" title="Runes">
+          <img src="assets/icons/runes.png" alt="Runes">
+        </button>
+
+        <button class="btn btn-circle-sm" title="Spells">
+          <img src="assets/icons/spells.png" alt="Spells">
+        </button>
+      </div>
+      }
+      @default {
+      <div class="wiki-content">
+        <p class="text-muted">Selecciona un juego para ver su información.</p>
+      </div>
+      }
+      }
     </div>
 
   </div>
 </section>
-
