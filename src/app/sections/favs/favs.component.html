@@ -65,23 +65,23 @@
                 </ng-container>
 
                 <!-- Liga / Torneo -->
-                <ng-container *ngSwitchCase="'league'">
+                <ng-container *ngSwitchCase="'leagues'">
                   <p><strong>Serie:</strong> {{ fav.itemData?.serie?.full_name || 'Sin serie' }}</p>
                   <p><strong>Juego:</strong> {{ fav.itemData?.videogame?.name || 'N/A' }}</p>
                 </ng-container>
 
-                <ng-container *ngSwitchCase="'tournament'">
+                <ng-container *ngSwitchCase="'tournaments'">
                   <p><strong>Serie:</strong> {{ fav.itemData?.serie?.full_name || 'Sin serie' }}</p>
                   <p><strong>Juego:</strong> {{ fav.itemData?.videogame?.name || 'N/A' }}</p>
                 </ng-container>
 
-                <ng-container *ngSwitchCase="'csgo_tournament'">
+                <ng-container *ngSwitchCase="'csgo_tournaments'">
                   <p><strong>Serie:</strong> {{ fav.itemData?.serie?.full_name || 'Sin serie' }}</p>
                   <p><strong>Juego:</strong> {{ fav.itemData?.videogame?.name || 'N/A' }}</p>
                 </ng-container>
 
                 <!-- Partidos -->
-                <ng-container *ngSwitchCase="'match'">
+                <ng-container *ngSwitchCase="'matches'">
                   <p><strong>Fecha:</strong> {{ fav.itemData?.begin_at ? (fav.itemData.begin_at | date:'short') : 'Por
                     definir' }}</p>
                   <p><strong>Equipos:</strong> {{ getOpponentsNames(fav.itemData?.opponents) }}</p>
