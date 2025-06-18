@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 interface FavoriteResponse {
+  id: number; // identificador único en la BD
   itemType: string;
   itemId: number;
   itemData?: any; // JSON completo desde PandaScore
@@ -34,16 +35,22 @@ export class FavsComponent implements OnInit {
 
   loadFavorites() {
     this.data.getFavorites().subscribe({
-      next: (res: FavoriteResponse[]) => {
+      next: (res: any[]) => {
         console.log('Favoritos desde el backend:', res);
         this.groupedFavorites = {};
 
         res.forEach(fav => {
-          const group = fav.itemType.toLowerCase();
+          const mapped: FavoriteResponse = {
+            id: fav.id,
+            itemType: fav.itemType,
+            itemId: fav.itemId,
+            itemData: fav.itemData,
+          };
+          const group = mapped.itemType.toLowerCase();
           if (!this.groupedFavorites[group]) {
             this.groupedFavorites[group] = [];
           }
-          this.groupedFavorites[group].push(fav);
+          this.groupedFavorites[group].push(mapped);
         });
 
         this.successMsg = '';
@@ -57,13 +64,41 @@ export class FavsComponent implements OnInit {
   }
 
   getOpponentsNames(opponents: any[]): string {
-  if (!opponents || opponents.length === 0) return 'TBD';
-  return opponents.map(o => o.opponent?.name).filter(Boolean).join(' vs ');
-}
+    if (!opponents || opponents.length === 0) return 'TBD';
+    return opponents.map(o => o.opponent?.name).filter(Boolean).join(' vs ');
+  }
 
+  removeFavorite(favId: number, type: string) {
+    this.data.removeFavorite(favId).subscribe({
+      next: () => {
+        this.groupedFavorites[type] = this.groupedFavorites[type].filter(f => f.id !== favId);
+        if (this.groupedFavorites[type].length === 0) {
+          delete this.groupedFavorites[type];
+        }
+        this.successMsg = 'Favorito eliminado correctamente.';
+        this.errorMsg = '';
+      },
+      error: err => {
+        console.error('Error al eliminar favorito', err);
+        this.errorMsg = 'Error al eliminar el favorito.';
+        this.successMsg = '';
+      }
+    });
+  }
 
-
-
-//nuevo
+  clearFavorites() {
+    this.data.deleteAllFavorites().subscribe({
+      next: () => {
+        this.groupedFavorites = {};
+        this.successMsg = 'Todos los favoritos fueron eliminados.';
+        this.errorMsg = '';
+      },
+      error: err => {
+        console.error('Error al eliminar todos los favoritos', err);
+        this.errorMsg = 'Error al eliminar todos los favoritos.';
+        this.successMsg = '';
+      }
+    });
+  }
 
 }
