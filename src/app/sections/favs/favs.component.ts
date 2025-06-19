@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 interface FavoriteResponse {
-  id: number;            // nuevo campo
+  favoriteId: number;            // nuevo campo
   itemType: string;
   itemId: number;
   itemData?: any; // JSON completo desde PandaScore
@@ -39,7 +39,7 @@ export class FavsComponent implements OnInit {
         this.groupedFavorites = {};
         res.forEach(f => {
           const fav: FavoriteResponse = {
-            id: f.id,
+            favoriteId: f.favoriteId,
             itemType: f.itemType,
             itemId: f.itemId,
             itemData: f.itemData
