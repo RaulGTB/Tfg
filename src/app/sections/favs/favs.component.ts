@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 interface FavoriteResponse {
+  id: number;            // nuevo campo
   itemType: string;
   itemId: number;
   itemData?: any; // JSON completo desde PandaScore
@@ -34,18 +35,19 @@ export class FavsComponent implements OnInit {
 
   loadFavorites() {
     this.data.getFavorites().subscribe({
-      next: (res: FavoriteResponse[]) => {
-        console.log('Favoritos desde el backend:', res);
+      next: (res: any[]) => {
         this.groupedFavorites = {};
-
-        res.forEach(fav => {
+        res.forEach(f => {
+          const fav: FavoriteResponse = {
+            id: f.id,
+            itemType: f.itemType,
+            itemId: f.itemId,
+            itemData: f.itemData
+          };
           const group = fav.itemType.toLowerCase();
-          if (!this.groupedFavorites[group]) {
-            this.groupedFavorites[group] = [];
-          }
+          if (!this.groupedFavorites[group]) this.groupedFavorites[group] = [];
           this.groupedFavorites[group].push(fav);
         });
-
         this.successMsg = '';
         this.errorMsg = '';
       },
