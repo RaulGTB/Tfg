@@ -47,6 +47,12 @@
                 <span class="badge bg-secondary text-uppercase small">
                   {{ formatSlug(league.slug) }}
                 </span>
+                <button
+                  class="btn btn-sm btn-warning mt-2 w-100 d-flex align-items-center justify-content-center gap-2"
+                  (click)="addToFavorites('league', league.id)">
+                  <i class="bi bi-star-fill"></i>
+                  Save Favorite
+                </button>
               </div>
             </div>
           </div>
@@ -78,13 +84,19 @@
                 </p>
 
                 <!-- Fechas -->
-                <p class="small text-muted mb-0">
-                  <i class="bi bi-calendar-event me-2 text-warning"></i>
-                  {{ serie.begin_at | date:'MMM d, y' }} - {{ serie.end_at | date:'MMM d, y' }}
-                </p>
+                  <p class="small text-muted mb-0">
+                    <i class="bi bi-calendar-event me-2 text-warning"></i>
+                    {{ serie.begin_at | date:'MMM d, y' }} - {{ serie.end_at | date:'MMM d, y' }}
+                  </p>
+                  <button
+                    class="btn btn-sm btn-warning mt-2 w-100 d-flex align-items-center justify-content-center gap-2"
+                    (click)="addToFavorites('serie', serie.id)">
+                    <i class="bi bi-star-fill"></i>
+                    Save Favorite
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
           }
         </div>
         }
@@ -117,17 +129,23 @@
                 </ul>
 
                 <!-- Equipos -->
-                <div *ngIf="tournament.teams?.length" class="d-flex flex-wrap gap-2 mt-auto">
-                  <div *ngFor="let team of tournament.teams"
-                    class="team-pill d-flex align-items-center gap-2 px-2 py-1 rounded">
-                    <img [src]="team.image_url" [alt]="team.name" width="24" height="24"
-                      class="rounded-circle bg-dark border">
-                    <span class="small text-light">{{ team.acronym }}</span>
+                  <div *ngIf="tournament.teams?.length" class="d-flex flex-wrap gap-2 mt-auto">
+                    <div *ngFor="let team of tournament.teams"
+                      class="team-pill d-flex align-items-center gap-2 px-2 py-1 rounded">
+                      <img [src]="team.image_url" [alt]="team.name" width="24" height="24"
+                        class="rounded-circle bg-dark border">
+                      <span class="small text-light">{{ team.acronym }}</span>
+                    </div>
                   </div>
+                  <button
+                    class="btn btn-sm btn-warning mt-2 w-100 d-flex align-items-center justify-content-center gap-2"
+                    (click)="addToFavorites('tournament', tournament.id)">
+                    <i class="bi bi-star-fill"></i>
+                    Save Favorite
+                  </button>
                 </div>
               </div>
             </div>
-          </div>
           }
         </div>
         }
@@ -169,6 +187,12 @@
                     Status: {{ match.status | titlecase }}
                   </li>
                 </ul>
+                <button
+                  class="btn btn-sm btn-warning mt-2 w-100 d-flex align-items-center justify-content-center gap-2"
+                  (click)="addToFavorites('match', match.id)">
+                  <i class="bi bi-star-fill"></i>
+                  Save Favorite
+                </button>
               </div>
             </div>
           </div>
@@ -210,12 +234,18 @@
                   <i class="bi bi-globe2 me-1 text-primary"></i>
                   {{ league.region || 'Global' }}
                 </p>
-                <span class="badge bg-secondary text-uppercase small">
-                  {{ formatSlug(league.slug) }}
-                </span>
+                  <span class="badge bg-secondary text-uppercase small">
+                    {{ formatSlug(league.slug) }}
+                  </span>
+                  <button
+                    class="btn btn-sm btn-warning mt-2 w-100 d-flex align-items-center justify-content-center gap-2"
+                    (click)="addToFavorites('league', league.id)">
+                    <i class="bi bi-star-fill"></i>
+                    Save Favorite
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
           }
         </div>
         }
@@ -234,12 +264,18 @@
                   <i class="bi bi-calendar me-2 text-warning"></i>
                   {{ serie.begin_at | date:'MMM d, y' }} - {{ serie.end_at | date:'MMM d, y' }}
                 </p>
-                <span class="badge badge-custom mt-auto align-self-start">
-                  {{ serie.season ? (serie.season + ' ' + serie.year) : serie.year }}
-                </span>
+                  <span class="badge badge-custom mt-auto align-self-start">
+                    {{ serie.season ? (serie.season + ' ' + serie.year) : serie.year }}
+                  </span>
+                  <button
+                    class="btn btn-sm btn-warning mt-2 w-100 d-flex align-items-center justify-content-center gap-2"
+                    (click)="addToFavorites('serie', serie.id)">
+                    <i class="bi bi-star-fill"></i>
+                    Save Favorite
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
           }
         </div>
         }
@@ -272,17 +308,23 @@
                 </ul>
 
                 <!-- Equipos -->
-                <div *ngIf="tournament.teams?.length" class="d-flex flex-wrap gap-2 mt-auto">
-                  <div *ngFor="let team of tournament.teams"
-                    class="team-pill d-flex align-items-center gap-2 px-2 py-1 rounded">
-                    <img [src]="team.image_url" [alt]="team.name" width="24" height="24"
-                      class="rounded-circle bg-dark border">
-                    <span class="small text-light">{{ team.acronym }}</span>
+                  <div *ngIf="tournament.teams?.length" class="d-flex flex-wrap gap-2 mt-auto">
+                    <div *ngFor="let team of tournament.teams"
+                      class="team-pill d-flex align-items-center gap-2 px-2 py-1 rounded">
+                      <img [src]="team.image_url" [alt]="team.name" width="24" height="24"
+                        class="rounded-circle bg-dark border">
+                      <span class="small text-light">{{ team.acronym }}</span>
+                    </div>
                   </div>
+                  <button
+                    class="btn btn-sm btn-warning mt-2 w-100 d-flex align-items-center justify-content-center gap-2"
+                    (click)="addToFavorites('csgo_tournament', tournament.id)">
+                    <i class="bi bi-star-fill"></i>
+                    Save Favorite
+                  </button>
                 </div>
               </div>
             </div>
-          </div>
           }
         </div>
         }
@@ -324,6 +366,12 @@
                     Status: {{ match.status | titlecase }}
                   </li>
                 </ul>
+                <button
+                  class="btn btn-sm btn-warning mt-2 w-100 d-flex align-items-center justify-content-center gap-2"
+                  (click)="addToFavorites('csgo_match', match.id)">
+                  <i class="bi bi-star-fill"></i>
+                  Save Favorite
+                </button>
               </div>
             </div>
           </div>
@@ -367,12 +415,18 @@
                   <i class="bi bi-globe2 me-1 text-primary"></i>
                   {{ league.region || 'Global' }}
                 </p>
-                <span class="badge bg-secondary text-uppercase small">
-                  {{ formatSlug(league.slug) }}
-                </span>
+                  <span class="badge bg-secondary text-uppercase small">
+                    {{ formatSlug(league.slug) }}
+                  </span>
+                  <button
+                    class="btn btn-sm btn-warning mt-2 w-100 d-flex align-items-center justify-content-center gap-2"
+                    (click)="addToFavorites('league', league.id)">
+                    <i class="bi bi-star-fill"></i>
+                    Save Favorite
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
           }
         </div>
         }
@@ -391,12 +445,18 @@
                   <i class="bi bi-calendar me-2 text-warning"></i>
                   {{ serie.begin_at | date:'MMM d, y' }} - {{ serie.end_at | date:'MMM d, y' }}
                 </p>
-                <span class="badge badge-custom mt-auto align-self-start">
-                  {{ serie.season ? (serie.season + ' ' + serie.year) : serie.year }}
-                </span>
+                  <span class="badge badge-custom mt-auto align-self-start">
+                    {{ serie.season ? (serie.season + ' ' + serie.year) : serie.year }}
+                  </span>
+                  <button
+                    class="btn btn-sm btn-warning mt-2 w-100 d-flex align-items-center justify-content-center gap-2"
+                    (click)="addToFavorites('serie', serie.id)">
+                    <i class="bi bi-star-fill"></i>
+                    Save Favorite
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
           }
         </div>
         }
@@ -436,10 +496,16 @@
                       class="rounded-circle bg-dark border">
                     <span class="small text-light">{{ team.acronym }}</span>
                   </div>
+                  </div>
+                  <button
+                    class="btn btn-sm btn-warning mt-2 w-100 d-flex align-items-center justify-content-center gap-2"
+                    (click)="addToFavorites('tournament', tournament.id)">
+                    <i class="bi bi-star-fill"></i>
+                    Save Favorite
+                  </button>
                 </div>
               </div>
             </div>
-          </div>
           }
         </div>
         }
@@ -472,18 +538,24 @@
                     <i class="bi bi-controller me-2 text-success"></i>
                     Format: Bo{{ match.number_of_games }}
                   </li>
-                  <li>
-                    <i class="bi bi-circle me-2" [ngClass]="{
-                    'text-success': match.status === 'finished',
-                    'text-warning': match.status === 'running',
-                    'text-muted': match.status === 'not_started'
-                  }"></i>
-                    Status: {{ match.status | titlecase }}
-                  </li>
-                </ul>
+                    <li>
+                      <i class="bi bi-circle me-2" [ngClass]="{
+                      'text-success': match.status === 'finished',
+                      'text-warning': match.status === 'running',
+                      'text-muted': match.status === 'not_started'
+                    }"></i>
+                      Status: {{ match.status | titlecase }}
+                    </li>
+                  </ul>
+                  <button
+                    class="btn btn-sm btn-warning mt-2 w-100 d-flex align-items-center justify-content-center gap-2"
+                    (click)="addToFavorites('match', match.id)">
+                    <i class="bi bi-star-fill"></i>
+                    Save Favorite
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
           }
         </div>
         }
@@ -525,6 +597,12 @@
                 <span class="badge bg-secondary text-uppercase small">
                   {{ formatSlug(league.slug) }}
                 </span>
+                <button
+                  class="btn btn-sm btn-warning mt-2 w-100 d-flex align-items-center justify-content-center gap-2"
+                  (click)="addToFavorites('league', league.id)">
+                  <i class="bi bi-star-fill"></i>
+                  Save Favorite
+                </button>
               </div>
             </div>
           </div>
@@ -556,13 +634,19 @@
                 </p>
 
                 <!-- Fechas -->
-                <p class="small text-muted mb-0">
-                  <i class="bi bi-calendar-event me-2 text-warning"></i>
-                  {{ serie.begin_at | date:'MMM d, y' }} - {{ serie.end_at | date:'MMM d, y' }}
-                </p>
+                  <p class="small text-muted mb-0">
+                    <i class="bi bi-calendar-event me-2 text-warning"></i>
+                    {{ serie.begin_at | date:'MMM d, y' }} - {{ serie.end_at | date:'MMM d, y' }}
+                  </p>
+                  <button
+                    class="btn btn-sm btn-warning mt-2 w-100 d-flex align-items-center justify-content-center gap-2"
+                    (click)="addToFavorites('serie', serie.id)">
+                    <i class="bi bi-star-fill"></i>
+                    Save Favorite
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
           }
         </div>
         }
@@ -595,17 +679,23 @@
                 </ul>
 
                 <!-- Equipos -->
-                <div *ngIf="tournament.teams?.length" class="d-flex flex-wrap gap-2 mt-auto">
-                  <div *ngFor="let team of tournament.teams"
-                    class="team-pill d-flex align-items-center gap-2 px-2 py-1 rounded">
-                    <img [src]="team.image_url" [alt]="team.name" width="24" height="24"
-                      class="rounded-circle bg-dark border">
-                    <span class="small text-light">{{ team.acronym }}</span>
+                  <div *ngIf="tournament.teams?.length" class="d-flex flex-wrap gap-2 mt-auto">
+                    <div *ngFor="let team of tournament.teams"
+                      class="team-pill d-flex align-items-center gap-2 px-2 py-1 rounded">
+                      <img [src]="team.image_url" [alt]="team.name" width="24" height="24"
+                        class="rounded-circle bg-dark border">
+                      <span class="small text-light">{{ team.acronym }}</span>
+                    </div>
                   </div>
+                  <button
+                    class="btn btn-sm btn-warning mt-2 w-100 d-flex align-items-center justify-content-center gap-2"
+                    (click)="addToFavorites('tournament', tournament.id)">
+                    <i class="bi bi-star-fill"></i>
+                    Save Favorite
+                  </button>
                 </div>
               </div>
             </div>
-          </div>
           }
         </div>
         }
@@ -638,18 +728,24 @@
                     <i class="bi bi-controller me-2 text-success"></i>
                     Format: Bo{{ match.number_of_games }}
                   </li>
-                  <li>
-                    <i class="bi bi-circle me-2" [ngClass]="{
-                          'text-success': match.status === 'finished',
-                          'text-warning': match.status === 'running',
-                          'text-muted': match.status === 'not_started'
-                        }"></i>
-                    Status: {{ match.status | titlecase }}
-                  </li>
-                </ul>
+                    <li>
+                      <i class="bi bi-circle me-2" [ngClass]="{
+                            'text-success': match.status === 'finished',
+                            'text-warning': match.status === 'running',
+                            'text-muted': match.status === 'not_started'
+                          }"></i>
+                      Status: {{ match.status | titlecase }}
+                    </li>
+                  </ul>
+                  <button
+                    class="btn btn-sm btn-warning mt-2 w-100 d-flex align-items-center justify-content-center gap-2"
+                    (click)="addToFavorites('match', match.id)">
+                    <i class="bi bi-star-fill"></i>
+                    Save Favorite
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
           }
         </div>
         }
