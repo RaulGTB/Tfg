@@ -206,7 +206,7 @@ export class DataService {
     const headers = { Authorization: `Bearer ${token}` };
 
     return this.http.delete(
-      'https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/favorites/all',
+      'https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/favorites',
       { headers }
     );
   }
