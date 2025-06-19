@@ -15,15 +15,15 @@ export class DataService {
   }
 
   getTeams() {
-    return this.http.get('https://api.pandascore.co/teams?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/teams')
   }
 
   getPlayers() {
-    return this.http.get('https://api.pandascore.co/players?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/players')
   }
 
   getmatches() {
-    return this.http.get('https://api.pandascore.co/matches?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/matches')
   }
 
   // Game-specific methods
@@ -31,73 +31,93 @@ export class DataService {
   // League of Legends
 
   getLolLeagues() {
-    return this.http.get('https://api.pandascore.co/lol/leagues?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/lol/leagues')
   }
 
   getLolSeries() {
-    return this.http.get('https://api.pandascore.co/lol/series?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/lol/series')
   }
 
   getLolTournaments() {
-    return this.http.get('https://api.pandascore.co/lol/tournaments?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/lol/tournaments')
   }
 
   getLolMatches() {
-    return this.http.get('https://api.pandascore.co/lol/matches?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/lol/matches')
+}
+
+  getLolChampions() {
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/lol/champions')
+
   }
+  getLolItemns() {
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/lol/items')
+
+  }
+  getLolrunes() {
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/lol/runes-reforged')
+
+  }
+  getLolspells() {
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/lol/spells')
+
+  }
+
+
+
 
   // Counter-Strike: Global Offensive
 
   getCSGOLeagues() {
-    return this.http.get('https://api.pandascore.co/csgo/leagues?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/csgo/leagues')
   }
 
   getCSGOSeries() {
-    return this.http.get('https://api.pandascore.co/csgo/series?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/csgo/series')
   }
 
   getCSGOTournaments() {
-    return this.http.get('https://api.pandascore.co/csgo/tournaments?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/csgo/tournaments')
   }
 
   getCSGOMatches() {
-    return this.http.get('https://api.pandascore.co/csgo/matches?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/csgo/matches')
   }
 
   getCSGOmaps() {
-    return this.http.get('https://api.pandascore.co/csgo/maps?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/csgo/maps')
 
   }
   getCSGOweapons() {
-    return this.http.get('https://api.pandascore.co/csgo/weapons?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/csgo/weapons')
   }
 
   // Dota 2
 
   getDota2Leagues() {
-    return this.http.get('https://api.pandascore.co/dota2/leagues?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/dota2/leagues')
   }
 
   getDota2Series() {
-    return this.http.get('https://api.pandascore.co/dota2/series?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/dota2/series')
   }
 
   getDota2Tournaments() {
-    return this.http.get('https://api.pandascore.co/dota2/tournaments?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/dota2/tournaments')
   }
 
   getDota2Matches() {
-    return this.http.get('https://api.pandascore.co/dota2/matches?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/dota2/matches')
   }
 
   getDota2Abilities() {
-    return this.http.get(' https://api.pandascore.co/dota2/abilities?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/dota2/abilities')
   }
   getDota2heroes() {
-    return this.http.get(' https://api.pandascore.co/dota2/heroes?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/dota2/heroes')
   }
   getDota2items() {
-    return this.http.get(' https://api.pandascore.co/dota2/items?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/dota2/items')
   }
 
 
@@ -105,20 +125,36 @@ export class DataService {
   // Valorant
 
   getValorantLeagues() {
-    return this.http.get('https://api.pandascore.co/valorant/leagues?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/valorant/leagues')
   }
 
   getValorantSeries() {
-    return this.http.get('https://api.pandascore.co/valorant/series?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/valorant/series')
   }
 
   getValorantTournaments() {
-    return this.http.get('https://api.pandascore.co/valorant/tournaments?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/valorant/tournaments')
   }
 
   getValorantMatches() {
-    return this.http.get('https://api.pandascore.co/valorant/matches?token=rmhig-Fuz23S9tfDT14uoycApeyVynxJLv2Ljazjz3nYGTT7S4s')
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/valorant/matches')
   }
+  getValoranabilities() {
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/valorant/abilities')
+  }
+  getValorantmaps() {
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/valorant/maps')
+  }
+  getValorantweapons() {
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/valorant/weapons')
+  }
+  getValorantagents() {
+    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/valorant/agents')
+  }
+
+
+
+
 
   // data.service.ts
   addFavorite(favorite: { type: string; referenceId: number }): Observable<any> {

@@ -18,6 +18,14 @@ export class DiscoverComponent {
   dotaAbilities: any[] = [];
   dotaheores: any[] = [];
   dotaItems: any[] = [];
+  lolitems: any[] = [];
+  lolspells: any[] = [];
+  lolrunes: any[] = [];
+  lolchamps: any[] = [];
+  vabilities : any[] = [];
+  vmaps : any[] = [];
+  vweapons : any[] = [];
+  vagents : any[] = [];
 
   constructor(private data: DataService) {
     this.getCSGOmaps();
@@ -55,6 +63,62 @@ export class DiscoverComponent {
       this.currentView = 'items';
     });
   }
+  getLolChampions(){
+    this.data.getLolChampions().subscribe((res: any) => {
+      this.lolchamps = res;
+      this.currentView = 'lolchamps';
+    });
+  }
+  getLolItemns(){
+    this.data.getLolItemns().subscribe((res: any) => {
+      this.lolitems = res;
+      this.currentView = 'lolitems';
+    });
+  }
+  getLolrunes(){
+    this.data.getLolrunes().subscribe((res: any) => {
+      this.lolrunes = res;
+      this.currentView = 'lolrunes';
+    });
+  }
+  getLolspells(){
+    this.data.getLolspells().subscribe((res: any) => {
+      this.lolspells = res;
+      this.currentView = 'lolspells';
+    });
+  }
+  getValoranabilities(){
+    this.data.getValoranabilities().subscribe((res: any) => {
+      this.vabilities = res;
+      this.currentView = 'vabilities';
+    });
+
+  }
+   getValorantmaps(){
+    this.data.getValorantmaps().subscribe((res: any) => {
+      this.vmaps = res;
+      this.currentView = 'vmaps';
+    });
+
+  }
+
+   getValorantweapons(){
+    this.data.getValorantweapons().subscribe((res: any) => {
+      this.vweapons = res;
+      this.currentView = 'vweapons';
+    });
+
+  }
+   getValorantagents(){
+    this.data.getValorantagents().subscribe((res: any) => {
+      this.vagents = res;
+      this.currentView = 'vagents';
+    });
+
+  }
+
+
+
 
 
 }

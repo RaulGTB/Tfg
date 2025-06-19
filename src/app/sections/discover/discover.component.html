@@ -26,6 +26,11 @@
         [ngClass]="{ 'active': selectedGame === 'lol' }">
         <img src="assets/images/lol-logo.jpg" alt="League of Legends" />
       </button>
+
+      <button class="btn btn-circle" type="button" (click)="selectedGame = 'valorant'"
+        [ngClass]="{ 'active': selectedGame === 'valorant' }">
+        <img src="assets/images/valorant-home.jpg" alt="valorant" />
+      </button>
     </div>
 
     <!-- Contenido dinámico -->
@@ -38,21 +43,21 @@
           para entender el complejo y estratégico mundo de Dota 2.</p>
       </div>
       <div class="wiki-subsections d-flex flex-wrap gap-3 justify-content-center mt-4">
-        <button  (click)="getDota2Abilities()" class="btn btn-circle-sm" title="abilities">
+        <button (click)="getDota2Abilities()" class="btn btn-circle-sm" title="abilities">
           <img src="assets/icons/abilities.png" alt="abilities">
         </button>
 
-        <button  (click)="getDota2heroes()" class="btn btn-circle-sm" title="heores">
+        <button (click)="getDota2heroes()" class="btn btn-circle-sm" title="heores">
           <img src="assets/icons/heores.png" alt="heores">
         </button>
 
-        <button  (click)="getDota2items()" class="btn btn-circle-sm" title="items">
+        <button (click)="getDota2items()" class="btn btn-circle-sm" title="items">
           <img src="assets/icons/items.png" alt="items">
         </button>
 
       </div>
 
- @if (currentView === 'heroes') {
+      @if (currentView === 'heroes') {
       <div class="row g-4 justify-content-center mt-4">
         @for (p of dotaheores; track $index) {
         <div class="col-12 col-md-6 col-lg-4 d-flex">
@@ -114,7 +119,7 @@
           <img src="assets/icons/maps.png" alt="maps">
         </button>
 
-        <button (click)="getCSGOweapons()"  class="btn btn-circle-sm" title="weapons">
+        <button (click)="getCSGOweapons()" class="btn btn-circle-sm" title="weapons">
           <img src="assets/icons/weapons.png" alt="weapons">
         </button>
       </div>
@@ -136,7 +141,7 @@
       </div>
       }
 
- @if (currentView === 'weapons') {
+      @if (currentView === 'weapons') {
       <div class="row g-4 justify-content-center mt-4">
         @for (w of weapons; track $index) {
         <div class="col-12 col-md-6 col-lg-4 d-flex">
@@ -151,8 +156,8 @@
         </div>
         }
       </div>
-    }
-  }
+      }
+      }
 
       @case ('lol') {
       <div class="wiki-content">
@@ -161,22 +166,230 @@
           completa para entender sus mecánicas, su mundo y su estilo de juego único.</p>
       </div>
       <div class="wiki-subsections d-flex flex-wrap gap-3 justify-content-center mt-4">
-        <button class="btn btn-circle-sm" title="Champions">
+        <button (click)="getLolChampions()" class="btn btn-circle-sm" title="Champions">
           <img src="assets/icons/champions.png" alt="Champions">
         </button>
 
-        <button class="btn btn-circle-sm" title="Items">
+        <button (click)="getLolItemns()" class="btn btn-circle-sm" title="Items">
           <img src="assets/icons/items.png" alt="Items">
         </button>
 
-        <button class="btn btn-circle-sm" title="Runes">
+        <button (click)="getLolrunes()" class="btn btn-circle-sm" title="Runes">
           <img src="assets/icons/runes.png" alt="Runes">
         </button>
 
-        <button class="btn btn-circle-sm" title="Spells">
+        <button (click)="getLolspells()" class="btn btn-circle-sm" title="Spells">
           <img src="assets/icons/spells.png" alt="Spells">
         </button>
       </div>
+      @if (currentView === 'lolchamps') {
+      <div class="row g-4 justify-content-center mt-4">
+        @for (w of lolchamps; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <div
+            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
+            <h5 class="mb-3 text-info">
+              <i class="bi bi-crosshair me-2"></i>{{ w.name }}
+            </h5>
+            <img [src]="w.big_image_url" alt="Campeón: {{ w.name }}"
+              class="img-fluid rounded mb-2 shadow-sm mx-auto d-block" style="max-width: 180px; height: auto;">
+
+          </div>
+        </div>
+        }
+      </div>
+      }
+       @if (currentView === 'lolitems') {
+      <div class="row g-4 justify-content-center mt-4">
+        @for (w of lolitems; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <div
+            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
+            <h5 class="mb-3 text-info">
+              <i class="bi bi-crosshair me-2"></i>{{ w.name }}
+            </h5>
+            <img [src]="w.image_url" alt="Campeón: {{ w.name }}"
+              class="img-fluid rounded mb-2 shadow-sm mx-auto d-block" style="max-width: 180px; height: auto;">
+
+          </div>
+        </div>
+        }
+      </div>
+      }
+       @if (currentView === 'lolspells') {
+      <div class="row g-4 justify-content-center mt-4">
+        @for (w of lolspells; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <div
+            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
+            <h5 class="mb-3 text-info">
+              <i class="bi bi-crosshair me-2"></i>{{ w.name }}
+            </h5>
+            <img [src]="w.image_url" alt="Campeón: {{ w.name }}"
+              class="img-fluid rounded mb-2 shadow-sm mx-auto d-block" style="max-width: 180px; height: auto;">
+
+          </div>
+        </div>
+        }
+      </div>
+      }
+       @if (currentView === 'lolrunes') {
+      <div class="row g-4 justify-content-center mt-4">
+        @for (w of lolrunes; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <div
+            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
+            <h5 class="mb-3 text-info">
+              <i class="bi bi-crosshair me-2"></i>{{ w.name }}
+            </h5>
+
+
+          </div>
+        </div>
+        }
+      </div>
+      }
+      }
+ @case ('valorant') {
+      <div class="wiki-content">
+        <h3 class="text-warning">Valorant</h3>
+        <p>Descubre a fondo a los agentes, sus habilidades tácticas y los armamentos más usados en cada situación. Una guía esencial para dominar el ritmo vertiginoso y estratégico del mundo de Valorant.</p>
+      </div>
+      <div class="wiki-subsections d-flex flex-wrap gap-3 justify-content-center mt-4">
+        <button (click)="getValoranabilities()" class="btn btn-circle-sm" title="abilities">
+          <img src="assets/icons/abilities.png" alt="abilities">
+        </button>
+
+        <button (click)="getValorantagents()" class="btn btn-circle-sm" title="heores">
+          <img src="assets/icons/heores.png" alt="agents">
+        </button>
+
+        <button (click)="getValorantmaps()" class="btn btn-circle-sm" title="items">
+          <img src="assets/icons/items.png" alt="maps">
+        </button>
+
+         <button (click)="getValorantweapons()" class="btn btn-circle-sm" title="items">
+          <img src="assets/icons/items.png" alt="weapons">
+        </button>
+
+      </div>
+
+      @if (currentView === 'vagents') {
+      <div class="row g-4 justify-content-center mt-4">
+        @for (p of vagents; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <div
+            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
+            <h5 class="mb-3 text-info">
+              <i class="bi bi-geo-alt-fill me-2"></i>{{ p.name }}
+            </h5>
+            <img [src]="p.portrait_url" alt="Mapa de {{ p.name }}" class="img-fluid rounded mb-2 shadow-sm mx-auto d-block"
+              style="max-width: 180px; height: auto;">
+          </div>
+        </div>
+        }
+      </div>
+      }
+      @if (currentView === 'vweapons') {
+      <div class="row g-4 justify-content-center mt-4">
+        @for (p of vweapons; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <div
+            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
+            <h5 class="mb-3 text-info">
+              <i class="bi bi-geo-alt-fill me-2"></i>{{ p.name }}
+            </h5>
+            <img [src]="p.image_url" alt="Mapa de {{ p.name }}" class="img-fluid rounded mb-2 shadow-sm mx-auto d-block"
+              style="max-width: 180px; height: auto;">
+          </div>
+        </div>
+        }
+      </div>
+      }
+      @if (currentView === 'vabilities') {
+      <div class="row g-4 justify-content-center mt-4">
+        @for (p of vabilities; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <div
+            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
+            <h5 class="mb-3 text-info">
+              <i class="bi bi-geo-alt-fill me-2"></i>{{ p.name }}
+            </h5>
+            <img [src]="p.image_url" alt="Mapa de {{ p.name }}" class="img-fluid rounded mb-2 shadow-sm mx-auto d-block"
+              style="max-width: 180px; height: auto;">
+          </div>
+        </div>
+        }
+      </div>
+      }
+       @if (currentView === 'vmaps') {
+      <div class="row g-4 justify-content-center mt-4">
+        @for (p of vmaps; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <div
+            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
+            <h5 class="mb-3 text-info">
+              <i class="bi bi-geo-alt-fill me-2"></i>{{ p.name }}
+            </h5>
+            <img [src]="p.image_url" alt="Mapa de {{ p.name }}" class="img-fluid rounded mb-2 shadow-sm mx-auto d-block"
+              style="max-width: 180px; height: auto;">
+          </div>
+        </div>
+        }
+      </div>
+      }
+
+      }
+      @case ('csgo') {
+      <div class="wiki-content">
+        <h3 class="text-warning">CS:GO</h3>
+        <p>Explora los mapas, armas y versiones que han definido a Counter-Strike como el shooter táctico por
+          excelencia. Aquí descubrirás lo que necesitas para convertirte en un experto del <i>gameplay</i> base.</p>
+      </div>
+      <div class="wiki-subsections d-flex flex-wrap gap-3 justify-content-center mt-4">
+
+        <button (click)="getCSGOmaps()" class="btn btn-circle-sm" title="maps">
+          <img src="assets/icons/maps.png" alt="maps">
+        </button>
+
+        <button (click)="getCSGOweapons()" class="btn btn-circle-sm" title="weapons">
+          <img src="assets/icons/weapons.png" alt="weapons">
+        </button>
+      </div>
+
+      @if (currentView === 'maps') {
+      <div class="row g-4 justify-content-center mt-4">
+        @for (p of maps; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <div
+            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
+            <h5 class="mb-3 text-info">
+              <i class="bi bi-geo-alt-fill me-2"></i>{{ p.name }}
+            </h5>
+            <img [src]="p.image_url" alt="Mapa de {{ p.name }}" class="img-fluid rounded mb-2 shadow-sm mx-auto d-block"
+              style="max-width: 180px; height: auto;">
+          </div>
+        </div>
+        }
+      </div>
+      }
+
+      @if (currentView === 'weapons') {
+      <div class="row g-4 justify-content-center mt-4">
+        @for (w of weapons; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex">
+          <div
+            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
+            <h5 class="mb-3 text-info">
+              <i class="bi bi-crosshair me-2"></i>{{ w.name }}
+            </h5>
+            <img [src]="w.image_url" alt="Arma: {{ w.name }}" class="img-fluid rounded mb-2 shadow-sm mx-auto d-block"
+              style="max-width: 180px; height: auto;">
+          </div>
+        </div>
+        }
+      </div>
+      }
       }
       @default {
       <div class="wiki-content">
