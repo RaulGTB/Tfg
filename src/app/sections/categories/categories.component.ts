@@ -2,12 +2,6 @@ import { Component } from '@angular/core';
 import { DataService } from './../../data.service';
 import { CommonModule } from '@angular/common';
 
-interface FavoriteResponse {
-  itemType: string;
-  itemId: number;
-  itemData?: any; // opcional, para info extra
-  id?: number; // el id único en la base de datos para borrar el favorito
-}
 @Component({
   selector: 'app-categories',
   imports: [CommonModule],
@@ -57,12 +51,7 @@ export class CategoriesComponent {
   valorantLeagues: any[] = [];
   valorantSeries: any[] = [];
   valorantTournaments: any[] = [];
-  valorantMatches: any[] = [];
-
-
-  favorites: FavoriteResponse[] = [];
-  successMsg: string = '';
-  errorMsg: string = '';
+  valorantMatches: any[] = [];    
 
   // LoL
 
@@ -202,50 +191,5 @@ export class CategoriesComponent {
 
   formatSlug(slug: string): string {
     return slug ? slug.replace(/-/g, ' ').toUpperCase() : 'N/A';
-  }
-
-
-  loadFavorites() {
-    this.data.getFavorites().subscribe({
-      next: (res) => {
-        this.favorites = res.map((f: any) => ({
-          id: f.id, // <--- Aquí agregamos el id para poder borrar
-          itemType: f.itemType,
-          itemId: f.itemId,
-          itemData: f.itemData, // opcional, si lo usas en UI
-        }));
-      },
-      error: (err) => {
-        console.error('Error cargando favoritos', err);
-      },
-    });
-  }
-
-  addToFavorites(type: string, referenceId: number) {
-    const alreadyExists = this.favorites.some(
-      (fav) => fav.itemId === referenceId && fav.itemType === type
-    );
-
-    if (alreadyExists) {
-      this.errorMsg = 'Este ítem ya está en favoritos.';
-      return;
-    }
-
-    const payload = { referenceId, type };
-    this.data.addFavorite(payload).subscribe({
-      next: (res) => {
-        this.successMsg = 'Añadido correctamente.';
-        this.favorites.push({
-          id: res.id,
-          itemId: referenceId,
-          itemType: type,
-          itemData: res.itemData || {},
-        });
-      },
-      error: (err) => {
-        this.errorMsg = 'Error al añadir a favoritos.';
-        console.error(err);
-      },
-    });
   }
 }
