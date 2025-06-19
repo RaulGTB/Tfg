@@ -62,8 +62,21 @@ export class FavsComponent implements OnInit {
 }
 
 
+  removeFavorite(id: number) {
+    this.data.removeFavorite(id).subscribe({
+      next: () => { this.successMsg = 'Favorito eliminado'; this.loadFavorites(); },
+      error: () => { this.errorMsg = 'No se pudo eliminar el favorito'; }
+    });
+  }
+
+  deleteAllFavorites() {
+    this.data.deleteAllFavorites().subscribe({
+      next: () => { this.successMsg = 'Favoritos eliminados'; this.loadFavorites(); },
+      error: () => { this.errorMsg = 'No se pudieron eliminar los favoritos'; }
+    });
+  }
 
 
-//nuevo
+
 
 }

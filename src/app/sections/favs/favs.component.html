@@ -24,6 +24,10 @@
     <div *ngIf="successMsg" class="alert alert-success fade-up">{{ successMsg }}</div>
     <div *ngIf="errorMsg" class="alert alert-danger fade-up">{{ errorMsg }}</div>
 
+    <button class="btn btn-danger mb-4" (click)="deleteAllFavorites()">
+      <i class="bi bi-trash-fill me-1"></i>Eliminar todos
+    </button>
+
     <!-- Grupo por tipo -->
     <div *ngFor="let type of objectKeys(groupedFavorites)" class="mb-5 fade-up">
       <h4 class="text-capitalize text-lime mb-4 border-bottom border-lime pb-2">
@@ -102,7 +106,9 @@
                 <i class="bi bi-tag-fill me-1 text-warning"></i>{{ fav.itemType }}
               </span>
 
-              <i class="bi bi-trash-fill me-1"></i>Eliminar
+              <button class="btn btn-sm btn-danger" (click)="removeFavorite(fav.itemId)">
+                <i class="bi bi-trash-fill me-1"></i>Eliminar
+              </button>
 
             </div>
 
