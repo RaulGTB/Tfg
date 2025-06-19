@@ -23,11 +23,13 @@
 /* === Tarjetas === */
 .recommended-card {
   width: 100%;
-  max-width: 220px;
-  height: 220px;
-  padding: 0 !important;
-  overflow: hidden;
+  aspect-ratio: 1 / 1;
   border-radius: 0.75rem;
+  overflow: hidden;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .recommended-card img {
@@ -46,7 +48,13 @@
   text-align: center;
 }
 
-.hero-icon {
+.weapon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain !important;
+}
+
+.abilitie-icon {
   color: #ff4400; 
 }
 
@@ -56,6 +64,22 @@
 
 .heroe-icon {
   color: #ffffff; 
+}
+
+.map-icon {
+  color: #ff8400; 
+}
+
+.weapon-icon {
+  color: #fa0000; 
+}
+
+.spell-icon {
+  color: #00ff00; 
+}
+
+.rune-icon {
+  color: #8e8c8e; 
 }
 
 /* ===== UTILIDADES ===== */
@@ -308,4 +332,3 @@
   right: 0;
   transform: scaleX(-1); /* efecto espejo opcional */
 }
-

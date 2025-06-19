@@ -37,12 +37,12 @@
     <div class="wiki-result mt-4">
       @switch (selectedGame) {
       @case ('dota2') {
-      <div class="wiki-content">
+      <div class="wiki-content mb-5">
         <h3 class="text-warning">Dota 2</h3>
         <p>Get to know the heroes in depth, their unique abilities, and the most decisive items in the game. An
           essential guide to understanding the complex and strategic world of Dota 2.</p>
       </div>
-      <div class="wiki-subsections d-flex flex-wrap gap-3 justify-content-center mt-4">
+      <div class="wiki-subsections d-flex flex-wrap gap-3 justify-content-center mt-4 mb-5">
         <button (click)="getDota2Abilities()" class="btn btn-circle-sm"
           [ngClass]="{ 'active': currentView === 'abilities' }" title="abilities">
           <img src="assets/images/dota2-skills.jpg" alt="Dota 2 abilities">
@@ -64,7 +64,7 @@
       </div>
 
       @if (currentView === 'heroes') {
-      <div class="row g-4 justify-content-center mt-4">
+      <div class="row g-4 justify-content-center mt-5">
         @for (p of dotaheores; track $index) {
         <div class="col-12 col-md-6 col-lg-4 d-flex flex-column align-items-center">
           <div class="recommended-card bg-dark border border-secondary shadow">
@@ -99,7 +99,7 @@
             <img [src]="p.image_url" alt="{{ p.name }}" />
           </div>
           <h5 class="card-title-outside">
-            <i class="bi bi-fire hero-icon me-2"></i>{{ p.name }}
+            <i class="bi bi-fire abilitie-icon me-2"></i>{{ p.name }}
           </h5>
         </div>
         }
@@ -131,15 +131,13 @@
       @if (currentView === 'maps') {
       <div class="row g-4 justify-content-center mt-4">
         @for (p of maps; track $index) {
-        <div class="col-12 col-md-6 col-lg-4 d-flex">
-          <div
-            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
-            <h5 class="mb-3 text-info">
-              <i class="bi bi-geo-alt-fill me-2"></i>{{ p.name }}
-            </h5>
-            <img [src]="p.image_url" alt="Mapa de {{ p.name }}" class="img-fluid rounded mb-2 shadow-sm mx-auto d-block"
-              style="max-width: 180px; height: auto;">
+        <div class="col-12 col-md-6 col-lg-4 d-flex flex-column align-items-center">
+          <div class="recommended-card bg-dark border border-secondary shadow">
+            <img [src]="p.image_url" alt="{{ p.name }}" />
           </div>
+          <h5 class="card-title-outside">
+            <i class="bi bi-map map-icon me-2"></i>{{ p.name }}
+          </h5>
         </div>
         }
       </div>
@@ -147,16 +145,14 @@
 
       @if (currentView === 'weapons') {
       <div class="row g-4 justify-content-center mt-4">
-        @for (w of weapons; track $index) {
-        <div class="col-12 col-md-6 col-lg-4 d-flex">
-          <div
-            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
-            <h5 class="mb-3 text-info">
-              <i class="bi bi-crosshair me-2"></i>{{ w.name }}
-            </h5>
-            <img [src]="w.image_url" alt="Arma: {{ w.name }}" class="img-fluid rounded mb-2 shadow-sm mx-auto d-block"
-              style="max-width: 180px; height: auto;">
+        @for (p of weapons; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex flex-column align-items-center">
+          <div class="recommended-card bg-dark border border-secondary shadow">
+            <img [src]="p.image_url" alt="{{ p.name }}" />
           </div>
+          <h5 class="card-title-outside">
+            <i class="bi bi-crosshair weapon-icon me-2"></i>{{ p.name }}
+          </h5>
         </div>
         }
       </div>
@@ -164,12 +160,12 @@
       }
 
       @case ('lol') {
-      <div class="wiki-content">
+      <div class="wiki-content mb-5">
         <h3 class="text-warning">League of Legends</h3>
         <p>Dive into the universe of League of Legends: discover its champions, items, runes, and summoner spells. A
           complete guide to understanding its mechanics, its world, and its unique playstyle.</p>
       </div>
-      <div class="wiki-subsections d-flex flex-wrap gap-3 justify-content-center mt-4">
+      <div class="wiki-subsections d-flex flex-wrap gap-3 justify-content-center mt-4 mb-5">
         <button (click)="getLolChampions()" class="btn btn-circle-sm"
           [ngClass]="{ 'active': currentView === 'lolchamps' }" title="Champions">
           <img src="assets/images/lol-champions.jpg" alt="Lol Champions">
@@ -196,79 +192,68 @@
       </div>
       @if (currentView === 'lolchamps') {
       <div class="row g-4 justify-content-center mt-4">
-        @for (w of lolchamps; track $index) {
-        <div class="col-12 col-md-6 col-lg-4 d-flex">
-          <div
-            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
-            <h5 class="mb-3 text-info">
-              <i class="bi bi-crosshair me-2"></i>{{ w.name }}
-            </h5>
-            <img [src]="w.big_image_url" alt="Campeón: {{ w.name }}"
-              class="img-fluid rounded mb-2 shadow-sm mx-auto d-block" style="max-width: 180px; height: auto;">
-
+        @for (p of lolchamps; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex flex-column align-items-center">
+          <div class="recommended-card bg-dark border border-secondary shadow">
+            <img [src]="p.image_url" alt="{{ p.name }}" />
           </div>
+          <h5 class="card-title-outside">
+            <i class="bi bi-emoji-sunglasses-fill heroe-icon me-2"></i>{{ p.name }}
+          </h5>
         </div>
         }
       </div>
       }
       @if (currentView === 'lolitems') {
       <div class="row g-4 justify-content-center mt-4">
-        @for (w of lolitems; track $index) {
-        <div class="col-12 col-md-6 col-lg-4 d-flex">
-          <div
-            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
-            <h5 class="mb-3 text-info">
-              <i class="bi bi-crosshair me-2"></i>{{ w.name }}
-            </h5>
-            <img [src]="w.image_url" alt="Campeón: {{ w.name }}"
-              class="img-fluid rounded mb-2 shadow-sm mx-auto d-block" style="max-width: 180px; height: auto;">
-
+        @for (p of lolitems; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex flex-column align-items-center">
+          <div class="recommended-card bg-dark border border-secondary shadow">
+            <img [src]="p.image_url" alt="{{ p.name }}" />
           </div>
+          <h5 class="card-title-outside">
+            <i class="bi bi-shield-shaded item-icon me-2"></i>{{ p.name }}
+          </h5>
         </div>
         }
       </div>
       }
       @if (currentView === 'lolspells') {
       <div class="row g-4 justify-content-center mt-4">
-        @for (w of lolspells; track $index) {
-        <div class="col-12 col-md-6 col-lg-4 d-flex">
-          <div
-            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
-            <h5 class="mb-3 text-info">
-              <i class="bi bi-crosshair me-2"></i>{{ w.name }}
-            </h5>
-            <img [src]="w.image_url" alt="Campeón: {{ w.name }}"
-              class="img-fluid rounded mb-2 shadow-sm mx-auto d-block" style="max-width: 180px; height: auto;">
-
+        @for (p of lolspells; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex flex-column align-items-center">
+          <div class="recommended-card bg-dark border border-secondary shadow">
+            <img [src]="p.image_url" alt="{{ p.name }}" />
           </div>
+          <h5 class="card-title-outside">
+            <i class="bi bi-droplet spell-icon me-2"></i>{{ p.name }}
+          </h5>
         </div>
         }
       </div>
       }
       @if (currentView === 'lolrunes') {
       <div class="row g-4 justify-content-center mt-4">
-        @for (w of lolrunes; track $index) {
-        <div class="col-12 col-md-6 col-lg-4 d-flex">
-          <div
-            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
-            <h5 class="mb-3 text-info">
-              <i class="bi bi-crosshair me-2"></i>{{ w.name }}
-            </h5>
-
-
+        @for (p of lolrunes; track $index) {
+        <div class="col-12 col-md-6 col-lg-4 d-flex flex-column align-items-center">
+          <div class="recommended-card bg-dark border border-secondary shadow">
+            <img [src]="p.image_url" alt="{{ p.name }}" />
           </div>
+          <h5 class="card-title-outside">
+            <i class="bi bi-link-45deg rune-icon me-2"></i>{{ p.name }}
+          </h5>
         </div>
         }
       </div>
       }
       }
       @case ('valorant') {
-      <div class="wiki-content">
+      <div class="wiki-content mb-5">
         <h3 class="text-warning">Valorant</h3>
         <p>Discover the agents in depth, their tactical abilities, and the most commonly used weapons in every
           situation. An essential guide to mastering the fast-paced and strategic world of Valorant.</p>
       </div>
-      <div class="wiki-subsections d-flex flex-wrap gap-3 justify-content-center mt-4">
+      <div class="wiki-subsections d-flex flex-wrap gap-3 justify-content-center mt-4 mb-5">
         <button (click)="getValoranabilities()" class="btn btn-circle-sm"
           [ngClass]="{'active': currentView === 'vabilities' }" title="abilities">
           <img src="assets/images/valorant-abilities.jpg" alt="Valorant abilities">
@@ -298,15 +283,13 @@
       @if (currentView === 'vagents') {
       <div class="row g-4 justify-content-center mt-4">
         @for (p of vagents; track $index) {
-        <div class="col-12 col-md-6 col-lg-4 d-flex">
-          <div
-            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
-            <h5 class="mb-3 text-info">
-              <i class="bi bi-geo-alt-fill me-2"></i>{{ p.name }}
-            </h5>
-            <img [src]="p.portrait_url" alt="Mapa de {{ p.name }}"
-              class="img-fluid rounded mb-2 shadow-sm mx-auto d-block" style="max-width: 180px; height: auto;">
+        <div class="col-12 col-md-6 col-lg-4 d-flex flex-column align-items-center">
+          <div class="recommended-card bg-dark border border-secondary shadow">
+            <img [src]="p.portrait_url" alt="{{ p.name }}" />
           </div>
+          <h5 class="card-title-outside">
+            <i class="bi bi-emoji-sunglasses-fill heroe-icon me-2"></i>{{ p.name }}
+          </h5>
         </div>
         }
       </div>
@@ -314,15 +297,13 @@
       @if (currentView === 'vweapons') {
       <div class="row g-4 justify-content-center mt-4">
         @for (p of vweapons; track $index) {
-        <div class="col-12 col-md-6 col-lg-4 d-flex">
-          <div
-            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
-            <h5 class="mb-3 text-info">
-              <i class="bi bi-geo-alt-fill me-2"></i>{{ p.name }}
-            </h5>
-            <img [src]="p.image_url" alt="Mapa de {{ p.name }}" class="img-fluid rounded mb-2 shadow-sm mx-auto d-block"
-              style="max-width: 180px; height: auto;">
+        <div class="col-12 col-md-6 col-lg-4 d-flex flex-column align-items-center">
+          <div class="recommended-card bg-dark border border-secondary shadow">
+            <img [src]="p.image_url" alt="{{ p.name }}" class="weapon-img" />
           </div>
+          <h5 class="card-title-outside">
+            <i class="bi bi-crosshair weapon-icon me-2"></i>{{ p.name }}
+          </h5>
         </div>
         }
       </div>
@@ -330,15 +311,13 @@
       @if (currentView === 'vabilities') {
       <div class="row g-4 justify-content-center mt-4">
         @for (p of vabilities; track $index) {
-        <div class="col-12 col-md-6 col-lg-4 d-flex">
-          <div
-            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
-            <h5 class="mb-3 text-info">
-              <i class="bi bi-geo-alt-fill me-2"></i>{{ p.name }}
-            </h5>
-            <img [src]="p.image_url" alt="Mapa de {{ p.name }}" class="img-fluid rounded mb-2 shadow-sm mx-auto d-block"
-              style="max-width: 180px; height: auto;">
+        <div class="col-12 col-md-6 col-lg-4 d-flex flex-column align-items-center">
+          <div class="recommended-card bg-dark border border-secondary shadow">
+            <img [src]="p.image_url" alt="{{ p.name }}" />
           </div>
+          <h5 class="card-title-outside">
+            <i class="bi bi-fire abilitie-icon me-2"></i>{{ p.name }}
+          </h5>
         </div>
         }
       </div>
@@ -346,15 +325,13 @@
       @if (currentView === 'vmaps') {
       <div class="row g-4 justify-content-center mt-4">
         @for (p of vmaps; track $index) {
-        <div class="col-12 col-md-6 col-lg-4 d-flex">
-          <div
-            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
-            <h5 class="mb-3 text-info">
-              <i class="bi bi-geo-alt-fill me-2"></i>{{ p.name }}
-            </h5>
-            <img [src]="p.image_url" alt="Mapa de {{ p.name }}" class="img-fluid rounded mb-2 shadow-sm mx-auto d-block"
-              style="max-width: 180px; height: auto;">
+        <div class="col-12 col-md-6 col-lg-4 d-flex flex-column align-items-center">
+          <div class="recommended-card bg-dark border border-secondary shadow">
+            <img [src]="p.image_url" alt="{{ p.name }}" />
           </div>
+          <h5 class="card-title-outside">
+            <i class="bi bi-map map-icon me-2"></i>{{ p.name }}
+          </h5>
         </div>
         }
       </div>

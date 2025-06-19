@@ -11,6 +11,13 @@
   margin: 0;
 }
 
+.brand-logo {
+  height: 50px;         
+  width:  auto;          
+  object-fit: contain;   
+  display: block;        
+}
+
 .nav-link {
   color: #888;
   font-weight: bold;

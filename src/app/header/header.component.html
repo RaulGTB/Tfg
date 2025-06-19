@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg full-width-navbar px-3">
   <div class="container-fluid">
     <!-- Logo -->
-    <a class="navbar-brand text-white" routerLink="/">
-      <i class="bi bi-arrows-fullscreen"></i>
+    <a class="navbar-brand d-flex align-items-center me-3" routerLink="/">
+      <img src="assets/images/RJK-logo.png" alt="Logo RJK SCORE" class="brand-logo" />
     </a>
 
     <!-- Zona derecha visible solo en móvil -->
@@ -20,7 +20,9 @@
 
     <!-- Botón hamburguesa -->
     <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
-      <span class="navbar-toggler-icon"><div></div></span>
+      <span class="navbar-toggler-icon">
+        <div></div>
+      </span>
     </button>
 
     <!-- Menú colapsable -->
@@ -29,7 +31,8 @@
         <li class="nav-item"><a class="nav-link" routerLink="/home" routerLinkActive="active">HOME</a></li>
         <li class="nav-item"><a class="nav-link" routerLink="/categories" routerLinkActive="active">CATEGORIES</a></li>
         <li class="nav-item"><a class="nav-link" routerLink="/discover" routerLinkActive="active">WIKI</a></li>
-        <li class="nav-item" *ngIf="isLoggedIn"><a class="nav-link" routerLink="/favs" routerLinkActive="active">FAVS</a></li>
+        <li class="nav-item" *ngIf="isLoggedIn"><a class="nav-link" routerLink="/favs"
+            routerLinkActive="active">FAVS</a></li>
         <li class="nav-item"><a class="nav-link" routerLink="/aboutus" routerLinkActive="active">ABOUT US</a></li>
       </ul>
 
