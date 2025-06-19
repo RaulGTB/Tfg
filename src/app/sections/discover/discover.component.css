@@ -46,6 +46,18 @@
   text-align: center;
 }
 
+.hero-icon {
+  color: #ff4400; 
+}
+
+.item-icon {
+  color: #0008ff; 
+}
+
+.heroe-icon {
+  color: #ffffff; 
+}
+
 /* ===== UTILIDADES ===== */
 .bg-secondary {
   background-color: #2a2a2a !important;
