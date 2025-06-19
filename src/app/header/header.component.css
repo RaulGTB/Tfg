@@ -22,20 +22,40 @@
 }
 
 .btn-login {
-  background-color: #cddc39;
-  color: black;
+  background-color: transparent;
+  color: #cddc39;
+  border: 2px solid #cddc39;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
   font-weight: bold;
-  border-radius: 10px;
-  padding: 6px 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center;
+}
+
+.btn-login:hover,
+.btn-login:focus {
+  background-color: #cddc39;
+  color: #222;
+  text-decoration: none;
+  border-color: #afb42b;
+  outline: none;
 }
 
 .btn-register {
   background-color: transparent;
   border: 2px solid #cddc39;
   color: #cddc39;
-  font-weight: bold;
-  border-radius: 10px;
-  padding: 6px 14px;
+  border-radius: 50px;
+  padding: 6px 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-register:hover {
+  background-color: #cddc39;
+  color: #000;
+  box-shadow: 0 0 10px #cddc39;
 }
 
 .search-icon {
@@ -58,50 +78,96 @@
 .coin-amount {
   font-size: 0.95rem;
 }
-.btn-register {
-  background-color: transparent;
-  border: 2px solid #cddc39;
-  color: #cddc39;
-  border-radius: 50px;
-  padding: 6px 16px;
-  font-weight: 600;
-  transition: all 0.3s ease;
+
+/* MEDIA QUERIES */
+@media (max-width: 991px) {
+  .navbar-collapse {
+    background-color: #121212;
+    padding: 1.5rem 0;
+    text-align: center;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .navbar-nav .nav-link {
+    color: #cddc39;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+  }
+
+  .btn-register {
+    width: 100%;
+    max-width: 240px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .virtual-coins {
+    justify-content: center;
+    margin: 1rem 0 0.5rem;
+  }
+
+  .navbar-toggler {
+    border: 2px solid #cddc39;
+    border-radius: 8px;
+  }
+
+  .navbar-toggler-icon::before,
+  .navbar-toggler-icon::after,
+  .navbar-toggler-icon div {
+    content: "";
+    display: block;
+    background-color: #cddc39;
+    height: 3px;
+    width: 1.5rem;
+    margin: 4px 0;
+  }
+
+  /* ✅ MOBILE ACCOUNT BUTTONS EN FILA */
+  .mobile-account-buttons {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem !important;
+    margin-top: 0.5rem;
+    flex-wrap: nowrap;
+  }
+
+  .mobile-account-buttons .virtual-coins {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #ffd700;
+    white-space: nowrap;
+  }
+
+  .mobile-account-buttons .coin-icon {
+    font-size: 1rem;
+    margin-right: 4px;
+    color: #ffd700;
+  }
+
+  .mobile-account-buttons .coin-amount {
+    font-size: 0.85rem;
+  }
+
+  .mobile-account-buttons .btn {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    line-height: 1;
+    white-space: nowrap;
+  }
 }
 
-.btn-register:hover {
-  background-color: #cddc39;
-  color: #000;
-  box-shadow: 0 0 10px #cddc39;
+@media (min-width: 992px) {
+  .navbar-nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
-
-.btn-login {
-  background-color: #cddc39;
-  color: #000;
-  border: none;
-  border-radius: 50px;
-  padding: 6px 16px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.btn-login {
-  background-color: transparent;
-  color: #cddc39;
-  border: 2px solid #cddc39;
-  border-radius: 0.25rem;
-  padding: 0.5rem 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  text-align: center;
-}
-
-.btn-login:hover,
-.btn-login:focus {
-  background-color: #cddc39;
-  color: #222;
-  text-decoration: none;
-  border-color: #afb42b;
-  outline: none;
-}
-
