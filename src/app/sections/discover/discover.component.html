@@ -43,16 +43,19 @@
           essential guide to understanding the complex and strategic world of Dota 2.</p>
       </div>
       <div class="wiki-subsections d-flex flex-wrap gap-3 justify-content-center mt-4">
-        <button (click)="getDota2Abilities()" class="btn btn-circle-sm" title="abilities">
+        <button (click)="getDota2Abilities()" class="btn btn-circle-sm" [ngClass]="{ 'active': currentView === 'abilities' }" title="abilities">
           <img src="assets/images/dota2-skills.jpg" alt="Dota 2 abilities">
+          <span class="btn-label">Abilities</span>
         </button>
 
-        <button (click)="getDota2heroes()" class="btn btn-circle-sm" title="heores">
-          <img src="assets/images/dota2-heroes.jpg" alt="Dota 2 heores">
+        <button (click)="getDota2heroes()" class="btn btn-circle-sm" [ngClass]="{ 'active': currentView === 'heroes' }" title="heroes">
+          <img src="assets/images/dota2-heroes.jpg" alt="Dota 2 heroes">
+          <span class="btn-label">Heroes</span>
         </button>
 
-        <button (click)="getDota2items()" class="btn btn-circle-sm" title="items">
+        <button (click)="getDota2items()" class="btn btn-circle-sm" [ngClass]="{ 'active': currentView === 'items' }" title="items">
           <img src="assets/images/dota2-items.jpg" alt="Dota 2 items">
+          <span class="btn-label">Items</span>
         </button>
 
       </div>
@@ -89,21 +92,19 @@
         }
       </div>
       }
-      @if (currentView === 'abilities') {
-      <div class="row g-4 justify-content-center mt-4">
-        @for (p of dotaAbilities; track $index) {
-        <div class="col-12 col-md-6 col-lg-4 d-flex">
-          <div
-            class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow h-100 w-100 mx-auto text-center">
-            <h5 class="mb-3 text-info">
+      @if(currentView === 'abilities') {
+        <div class="row g-4 justify-content-center mt-5">
+          @for(p of dotaAbilities; track $index) {
+          <div class="col-12 col-md-6 col-lg-4 d-flex flex-column align-items-center">
+            <div class="recommended-card bg-dark border border-secondary shadow">
+              <img [src]="p.image_url" alt="{{ p.name }}" />
+            </div>
+            <h5 class="card-title-outside">
               <i class="bi bi-geo-alt-fill me-2"></i>{{ p.name }}
             </h5>
-            <img [src]="p.image_url" alt="Mapa de {{ p.name }}" class="img-fluid rounded mb-2 shadow-sm mx-auto d-block"
-              style="max-width: 180px; height: auto;">
           </div>
+          }
         </div>
-        }
-      </div>
       }
 
       }
@@ -115,12 +116,14 @@
       </div>
       <div class="wiki-subsections d-flex flex-wrap gap-3 justify-content-center mt-4">
 
-        <button (click)="getCSGOmaps()" class="btn btn-circle-sm" title="maps">
+        <button (click)="getCSGOmaps()" class="btn btn-circle-sm" [ngClass]="{ 'active': currentView === 'maps' } "title="maps">
           <img src="assets/images/csgo-maps.png" alt="CSGO maps">
+          <span class="btn-label">Maps</span>
         </button>
 
-        <button (click)="getCSGOweapons()" class="btn btn-circle-sm" title="weapons">
+        <button (click)="getCSGOweapons()" class="btn btn-circle-sm" [ngClass]="{ 'active': currentView === 'weapons' }" title="weapons">
           <img src="assets/images/csgo-weapons.jpg" alt="CSGO weapons">
+          <span class="btn-label">Weapons</span>
         </button>
       </div>
 
@@ -166,20 +169,24 @@
           complete guide to understanding its mechanics, its world, and its unique playstyle.</p>
       </div>
       <div class="wiki-subsections d-flex flex-wrap gap-3 justify-content-center mt-4">
-        <button (click)="getLolChampions()" class="btn btn-circle-sm" title="Champions">
+        <button (click)="getLolChampions()" class="btn btn-circle-sm" [ngClass]="{ 'active': currentView === 'lolchamps' }" title="Champions">
           <img src="assets/images/lol-champions.jpg" alt="Lol Champions">
+          <span class="btn-label">Champions</span>
         </button>
 
-        <button (click)="getLolItemns()" class="btn btn-circle-sm" title="Items">
+        <button (click)="getLolItemns()" class="btn btn-circle-sm" [ngClass]="{ 'active': currentView === 'lolitems' }" title="Items">
           <img src="assets/images/lol-items.jpg" alt="Lol Items">
+          <span class="btn-label">Items</span>
         </button>
 
-        <button (click)="getLolrunes()" class="btn btn-circle-sm" title="Runes">
+        <button (click)="getLolrunes()" class="btn btn-circle-sm" [ngClass]="{ 'active': currentView === 'lolrunes' }" title="Runes">
           <img src="assets/images/lol-runes.jpg" alt="Lol Runes">
+          <span class="btn-label">Runes</span>
         </button>
 
-        <button (click)="getLolspells()" class="btn btn-circle-sm" title="Spells">
+        <button (click)="getLolspells()" class="btn btn-circle-sm" [ngClass]="{ 'active': currentView === 'lolspells' }" title="Spells">
           <img src="assets/images/lol-spells.jpg" alt="Lol Spells">
+          <span class="btn-label">Spells</span>
         </button>
       </div>
       @if (currentView === 'lolchamps') {
@@ -257,20 +264,24 @@
           situation. An essential guide to mastering the fast-paced and strategic world of Valorant.</p>
       </div>
       <div class="wiki-subsections d-flex flex-wrap gap-3 justify-content-center mt-4">
-        <button (click)="getValoranabilities()" class="btn btn-circle-sm" title="abilities">
+        <button (click)="getValoranabilities()" class="btn btn-circle-sm" [ngClass]="{'active': currentView === 'vabilities' }" title="abilities">
           <img src="assets/images/valorant-abilities.jpg" alt="Valorant abilities">
+          <span class="btn-label">Abilities</span>
         </button>
 
-        <button (click)="getValorantagents()" class="btn btn-circle-sm" title="heroes">
+        <button (click)="getValorantagents()" class="btn btn-circle-sm" [ngClass]="{ 'active': currentView === 'vagents' }" title="heroes">
           <img src="assets/images/valorant-heroes.jpg" alt="Valorant agents">
+          <span class="btn-label">Agents</span>
         </button>
 
-        <button (click)="getValorantmaps()" class="btn btn-circle-sm" title="maps">
+        <button (click)="getValorantmaps()" class="btn btn-circle-sm" [ngClass]="{ 'active': currentView === 'vmaps' }"  title="maps">
           <img src="assets/images/valorant-maps.jpg" alt="Valorant maps">
+          <span class="btn-label">Maps</span>
         </button>
 
-        <button (click)="getValorantweapons()" class="btn btn-circle-sm" title="items">
+        <button (click)="getValorantweapons()" class="btn btn-circle-sm" [ngClass]="{ 'active': currentView === 'vweapons' }" title="items">
           <img src="assets/images/valorant-items.jpg" alt="Valorant weapons">
+          <span class="btn-label">Weapons</span>
         </button>
 
       </div>

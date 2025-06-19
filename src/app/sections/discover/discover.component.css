@@ -20,28 +20,30 @@
 }
 
 /* ===== ESTILO PARA TARJETAS ===== */
-.live-card,
-.category-card,
-.recommended-card,
-.reward-card {
-  background-color: #2e2e2e !important;
-  color: #fff;
-  transition: all 0.3s ease-in-out;
-  min-height: 140px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+/* === Tarjetas === */
+.recommended-card {
+  width: 100%;
+  max-width: 220px;
+  height: 220px;
+  padding: 0 !important;
+  overflow: hidden;
+  border-radius: 0.75rem;
 }
 
-.live-card:hover,
-.category-card:hover,
-.recommended-card:hover,
-.reward-card:hover {
-  transform: scale(1.03);
-  background-color: #3a3a3a !important;
-  box-shadow: 0 0 15px rgba(205, 220, 57, 0.3);
+.recommended-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  display: block;
+}
+
+.card-title-outside {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
   color: #cddc39;
+  font-weight: 600;
+  text-align: center;
 }
 
 /* ===== UTILIDADES ===== */
@@ -219,12 +221,10 @@
 }
 
 .btn-circle-sm {
-  width: 100px;
-  height: 100px;
+  width: 85px;
+  height: 85px;
   border-radius: 50%;
-  padding: 0;
-  margin-top: 40px;
-  overflow: hidden;
+  overflow: visible; /* ✅ cambio importante */
   border: 2px solid transparent;
   background-color: #222;
   cursor: pointer;
@@ -233,20 +233,31 @@
   justify-content: center;
   position: relative;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  flex-direction: column;
 }
 
 .btn-circle-sm img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 50%;
   filter: blur(0px);
   user-select: none;
   pointer-events: none;
-  transition: filter 0.3s ease;
   position: absolute;
-  top: 20;
+  top: 0;
   left: 0;
   z-index: 0;
+}
+
+.btn-circle-sm .btn-label {
+  position: absolute;
+  bottom: -2rem;
+  font-size: 1rem;
+  color: #cddc39;
+  white-space: nowrap;
+  text-shadow: 0 0 4px #000;
+  z-index: 1;
 }
 
 .btn-circle-sm:hover,
