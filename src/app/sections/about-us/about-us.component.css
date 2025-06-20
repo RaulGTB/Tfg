@@ -49,6 +49,57 @@
 /* Fondo general negro corregido si hay problemas */
 .section-about-us {
   background-color: #121212 !important;
+  position: relative;
+}
+
+/* Hero del apartado */
+.about-hero {
+  height: 260px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-hero .hero-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.about-hero .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.85));
+  z-index: 1;
+}
+
+.about-hero .hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Tarjetas del equipo */
+.team-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.team-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 0 12px rgba(205, 220, 57, 0.3);
+}
+
+/* Tarjetas de contacto */
+.contact-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.contact-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 0 12px rgba(205, 220, 57, 0.3);
 }
 
 /* TIRAS LATERALES QUE OCUPAN LOS HUECOS NEGROS LATERALES */
