@@ -30,10 +30,10 @@
 
 /* Colores */
 .text-lime {
-  color: #cddc39 !important;
+  color: var(--primary-color) !important;
 }
 .border-lime {
-  border-color: #cddc39 !important;
+  border-color: var(--primary-color) !important;
 }
 .bg-black {
   background-color: #121212 !important;
@@ -44,7 +44,7 @@
   box-shadow: 0 0 12px rgba(205, 220, 57, 0.3);
   transform: scale(1.03);
   transition: 0.3s ease;
-  border-color: #cddc39 !important;
+  border-color: var(--primary-color) !important;
 }
 
 /* TIRAS LATERALES QUE OCUPAN LOS HUECOS NEGROS LATERALES */
@@ -72,5 +72,6 @@
 }
 .section-favorites {
   min-height: calc(100vh - 100px); /* Ajusta 100px al alto real del footer */
+  font-family: var(--font-family-base);
 
 }
