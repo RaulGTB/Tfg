@@ -4,6 +4,10 @@ app-header {
   left: 0;
   width: 100%;
   z-index: 1000;
+  height: 100px; 
+}
+.content-wrapper {
+  padding-top: 50px; 
 }
 
 app-footer {
