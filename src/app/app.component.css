@@ -1,13 +1,28 @@
+/* Que el html y el body ocupen todo el alto de la pantalla */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 50px; /* para que no se solape con el header fijo */
+}
+
+.content-wrapper {
+  flex: 1;
+  padding: 0px;
+}
+
 app-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  height: 100px; 
-}
-.content-wrapper {
-  padding-top: 50px; 
+  height: 100px;
 }
 
 app-footer {
