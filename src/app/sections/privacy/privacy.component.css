@@ -1,1 +1,23 @@
-/* Privacy component styles */
+/* /* Reutiliza estilos previos */
+.section-privacy {
+  min-height: calc(100vh - 100px);
+  position: relative;
+}
+
+.privacy-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.privacy-card ul li::before {
+  content: "✔";
+  color: #cddc39;
+  margin-right: 0.5rem;
+}
+
+.privacy-card p, .privacy-card li {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Ya tienes estas clases: .bg-black, .text-lime, .fade-up, .pop-in, .side-fill-img, etc. */

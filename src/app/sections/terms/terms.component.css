@@ -1,1 +1,21 @@
-/* Terms component styles */
+.section-terms {
+  min-height: calc(100vh - 100px);
+  position: relative;
+}
+
+.terms-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.terms-card ul li::before {
+  content: "✔";
+  color: #cddc39;
+  margin-right: 0.5rem;
+}
+
+.terms-card p, .terms-card li {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
