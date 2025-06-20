@@ -27,14 +27,15 @@
   background-color: #1a1a1a;
   min-height: 100vh;
   animation: fadeUp 0.6s ease-in-out;
+  font-family: var(--font-family-base);
 }
 
 .section-title {
   font-size: 2.2rem;
   font-weight: bold;
-  border-left: 5px solid #cddc39;
+  border-left: 5px solid var(--primary-color);
   padding-left: 1rem;
-  color: #cddc39;
+  color: var(--primary-color);
   margin-bottom: 2rem;
   animation: fadeUp 0.5s ease forwards;
 }
@@ -80,8 +81,8 @@
 
 .section-filters .btn {
   background-color: transparent;
-  border: 1px solid #cddc39;
-  color: #cddc39;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
   border-radius: 8px;
   padding: 0.5rem 1rem;
@@ -89,11 +90,11 @@
 
 .section-filters .btn:hover,
 .section-filters .btn:focus {
-  background-color: #cddc39;
+  background-color: var(--primary-color);
   color: #1a1a1a;
   transform: scale(1.08);
-  box-shadow: 0 0 10px #cddc39aa;
-  border-color: #cddc39;
+  box-shadow: 0 0 10px var(--primary-color)aa;
+  border-color: var(--primary-color);
 }
 
 .section-filters .btn:active {
@@ -104,7 +105,7 @@
 }
 
 .section-filters span {
-  color: #cddc39;
+  color: var(--primary-color);
   font-weight: 600;
   font-size: 1rem;
 }

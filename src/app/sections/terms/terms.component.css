@@ -1,6 +1,7 @@
 .section-terms {
   min-height: calc(100vh - 100px);
   position: relative;
+  font-family: var(--font-family-base);
 }
 
 .terms-card ul {
@@ -10,12 +11,13 @@
 
 .terms-card ul li::before {
   content: "✔";
-  color: #cddc39;
+  color: var(--primary-color);
   margin-right: 0.5rem;
 }
 
 .terms-card p, .terms-card li {
   font-size: 1rem;
   line-height: 1.6;
+  font-family: var(--font-family-base);
 }
 

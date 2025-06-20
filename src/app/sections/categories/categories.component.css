@@ -3,13 +3,15 @@
   background-color: #000; /* o #1a1a1a para empatar con .esports-home */
   position: relative;
   z-index: 1;
+  font-family: var(--font-family-base);
 }
 
 .esports-home {
   padding-top: 3rem;
   background-color: #1a1a1a;
   min-height: 100vh;
-    min-height: 100vh;
+  min-height: 100vh;
+  font-family: var(--font-family-base);
 }
 
 /* TÍTULOS GENERALES */
@@ -17,8 +19,8 @@
 .game-title {
   font-size: 2rem;
   font-weight: bold;
-  color: #cddc39;
-  border-left: 5px solid #cddc39;
+  color: var(--primary-color);
+  border-left: 5px solid var(--primary-color);
   padding-left: 1rem;
 }
 
@@ -34,20 +36,20 @@
 /* ESTILO BOTONES FILTRO */
 .game-filters .btn {
   background-color: transparent;
-  border: 1px solid #cddc39;
-  color: #cddc39;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
   transition: all 0.3s ease;
 }
 
 .game-filters .btn:hover {
-  background-color: #cddc39;
+  background-color: var(--primary-color);
   color: #1a1a1a;
   transform: scale(1.05);
   box-shadow: 0 0 8px #e5fe00aa;
 }
 
 .game-filters .btn.active {
-  background-color: #cddc39;
+  background-color: var(--primary-color);
   color: #1a1a1a;
   transform: scale(1.05);
   box-shadow: 0 0 8px #e5fe00aa;
@@ -66,7 +68,7 @@
 .category-card:hover {
   transform: scale(1.03);
   background-color: #3a3a3a !important;
-  box-shadow: 0 0 10px #cddc39aa;
+  box-shadow: 0 0 10px var(--primary-color)aa;
 }
 
 .category-card small {
@@ -96,7 +98,7 @@
 }
 
 .card-match:hover {
-  box-shadow: 0 0 16px #cddc39aa;
+  box-shadow: 0 0 16px var(--primary-color)aa;
   transform: scale(1.015);
 }
 
@@ -110,8 +112,8 @@
 /* BADGE personalizado */
 .badge-custom {
   background-color: transparent;
-  border: 1px solid #cddc39;
-  color: #cddc39;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
   font-size: 0.65rem;
   padding: 0.25rem 0.6rem;
   border-radius: 1rem;
@@ -136,7 +138,7 @@
 
 .card-match .match-info i {
   width: 1.2rem;
-  color: #cddc39;
+  color: var(--primary-color);
 }
 
 /* Estado visual como badge */
@@ -148,8 +150,8 @@
   white-space: nowrap;
 
   background-color: transparent;
-  border: 1px solid #cddc39;
-  color: #cddc39;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
   font-size: 0.7rem;
   padding: 0.25rem 0.6rem;
   border-radius: 1rem;
@@ -184,7 +186,7 @@
 }
 
 .card-league:hover {
-  box-shadow: 0 0 16px #cddc39aa;
+  box-shadow: 0 0 16px var(--primary-color)aa;
   transform: scale(1.015);
 }
 
@@ -225,8 +227,8 @@
 /* Badge del slug estilo outline */
 .card-league .badge {
   display: inline-block;
-  border: 1px solid #cddc39;
-  color: #cddc39;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
   background-color: transparent !important;  /* ← fuerza eliminar el fondo gris */
   font-size: 0.75rem;
   padding: 0.35rem 0.75rem;
@@ -251,7 +253,7 @@
 
 .card-series:hover {
   transform: scale(1.03);
-  box-shadow: 0 0 16px #cddc39aa;
+  box-shadow: 0 0 16px var(--primary-color)aa;
 }
 
 .series-title {
@@ -270,8 +272,8 @@
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
-  color: #cddc39;
-  border: 1px solid #cddc39;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
   border-radius: 1.25rem;
   padding: 0.25rem 0.75rem;
   letter-spacing: 0.5px;
@@ -297,7 +299,7 @@
 
 .card-tournament-rich:hover {
   transform: scale(1.02);
-  box-shadow: 0 0 16px #cddc39aa;
+  box-shadow: 0 0 16px var(--primary-color)aa;
 }
 
 .tournament-title {

@@ -2,6 +2,7 @@
 .section-privacy {
   min-height: calc(100vh - 100px);
   position: relative;
+  font-family: var(--font-family-base);
 }
 
 .privacy-card ul {
@@ -11,13 +12,14 @@
 
 .privacy-card ul li::before {
   content: "✔";
-  color: #cddc39;
+  color: var(--primary-color);
   margin-right: 0.5rem;
 }
 
 .privacy-card p, .privacy-card li {
   font-size: 1rem;
   line-height: 1.6;
+  font-family: var(--font-family-base);
 }
 
 /* Ya tienes estas clases: .bg-black, .text-lime, .fade-up, .pop-in, .side-fill-img, etc. */

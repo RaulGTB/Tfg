@@ -32,10 +32,10 @@
 
 /* Colores y bordes */
 .text-lime {
-  color: #cddc39 !important;
+  color: var(--primary-color) !important;
 }
 .border-lime {
-  border-color: #cddc39 !important;
+  border-color: var(--primary-color) !important;
 }
 
 /* Hover glow */
@@ -43,12 +43,13 @@
   box-shadow: 0 0 12px rgba(205, 220, 57, 0.3);
   transform: scale(1.03);
   transition: 0.3s ease;
-  border-color: #cddc39 !important;
+  border-color: var(--primary-color) !important;
 }
 
 /* Fondo general negro corregido si hay problemas */
 .section-about-us {
   background-color: #121212 !important;
+  font-family: var(--font-family-base);
 }
 
 /* TIRAS LATERALES QUE OCUPAN LOS HUECOS NEGROS LATERALES */

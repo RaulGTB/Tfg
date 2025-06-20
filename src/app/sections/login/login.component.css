@@ -1,12 +1,13 @@
 .btn-register {
   background-color: transparent;
-  border: 1px solid #cddc39;
-  color: #cddc39;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
   transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: var(--font-family-base);
 }
 
 .btn-register:hover {
-  background-color: #cddc39;
+  background-color: var(--primary-color);
   color: #1a1a1a;
   transform: scale(1.03);
   box-shadow: 0 0 10px #cddc39aa;
@@ -14,7 +15,7 @@
 
 .register-section input:focus {
   outline: none;
-  box-shadow: 0 0 5px #cddc39;
+  box-shadow: 0 0 5px var(--primary-color);
 }
 .register-section {
   margin-top: 2%; /* o ajusta según necesidad */

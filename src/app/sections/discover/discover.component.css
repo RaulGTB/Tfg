@@ -2,6 +2,7 @@
 .section-wiki {
   background-color: #000;
   min-height: 100vh;
+  font-family: var(--font-family-base);
 }
 
 .esports-home {
@@ -13,9 +14,9 @@
 .section-title {
   font-size: 2.5rem;
   font-weight: bold;
-  border-left: 6px solid #cddc39;
+  border-left: 6px solid var(--primary-color);
   padding-left: 1rem;
-  color: #cddc39;
+  color: var(--primary-color);
   margin-bottom: 2rem;
 }
 
@@ -43,7 +44,7 @@
 .card-title-outside {
   margin-top: 0.75rem;
   font-size: 0.95rem;
-  color: #cddc39;
+  color: var(--primary-color);
   font-weight: 600;
   text-align: center;
 }
@@ -100,18 +101,18 @@
 
 .section-filters .btn {
   background-color: transparent;
-  border: 1px solid #cddc39;
-  color: #cddc39;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
   transition: all 0.3s ease;
 }
 
 .section-filters .btn:hover,
 .section-filters .btn:focus {
-  background-color: #cddc39;
+  background-color: var(--primary-color);
   color: #1a1a1a;
   transform: scale(1.05);
-  box-shadow: 0 0 8px #cddc39aa;
-  border-color: #cddc39;
+  box-shadow: 0 0 8px var(--primary-color)aa;
+  border-color: var(--primary-color);
 }
 
 .section-filters .btn:active {
@@ -122,7 +123,7 @@
 }
 
 .section-filters span {
-  color: #cddc39;
+  color: var(--primary-color);
   font-weight: 600;
 }
 
@@ -232,16 +233,16 @@
 
 .btn-circle:hover,
 .btn-circle.active {
-  border-color: #cddc39;
-  box-shadow: 0 0 10px #cddc39;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 10px var(--primary-color);
   background-color: #111;
   z-index: 1;
 }
 
 .btn-circle:hover,
 .btn-circle.active {
-  border-color: #cddc39;
-  box-shadow: 0 0 10px #cddc39;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 10px var(--primary-color);
   background-color: #111;
   z-index: 1;
 }
@@ -321,7 +322,7 @@
   position: absolute;
   bottom: -2rem;
   font-size: 1rem;
-  color: #cddc39;
+  color: var(--primary-color);
   white-space: nowrap;
   text-shadow: 0 0 4px #000;
   z-index: 1;
@@ -329,8 +330,8 @@
 
 .btn-circle-sm:hover,
 .btn-circle-sm.active {
-  border-color: #cddc39;
-  box-shadow: 0 0 8px #cddc39;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 8px var(--primary-color);
   background-color: #111;
   z-index: 1;
 }
