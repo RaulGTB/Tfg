@@ -70,3 +70,7 @@
   right: 0;
   transform: scaleX(-1); /* efecto espejo opcional */
 }
+.section-favorites {
+  min-height: calc(100vh - 100px); /* Ajusta 100px al alto real del footer */
+
+}
