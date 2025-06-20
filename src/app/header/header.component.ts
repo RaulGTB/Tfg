@@ -3,7 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../auth.service'; // ajusta ruta si hace falta
 import { NgIf } from '@angular/common';
 import { Subscription } from 'rxjs';
-
+declare var bootstrap: any;
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -44,6 +44,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   logout() {
     this.authService.logout();
   }
+  closeNavbar() {
+  const navbar = document.getElementById('navbarMenu');
+  const bsCollapse = bootstrap.Collapse.getInstance(navbar) || new bootstrap.Collapse(navbar);
+  bsCollapse.hide();
+}
+
 
 }
 

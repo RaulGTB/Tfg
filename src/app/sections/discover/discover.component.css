@@ -55,31 +55,31 @@
 }
 
 .abilitie-icon {
-  color: #ff4400; 
+  color: #ff4400;
 }
 
 .item-icon {
-  color: #0008ff; 
+  color: #0008ff;
 }
 
 .heroe-icon {
-  color: #ffffff; 
+  color: #ffffff;
 }
 
 .map-icon {
-  color: #ff8400; 
+  color: #ff8400;
 }
 
 .weapon-icon {
-  color: #fa0000; 
+  color: #fa0000;
 }
 
 .spell-icon {
-  color: #00ff00; 
+  color: #00ff00;
 }
 
 .rune-icon {
-  color: #8e8c8e; 
+  color: #8e8c8e;
 }
 
 /* ===== UTILIDADES ===== */
@@ -148,6 +148,37 @@
 
   .section-title {
     font-size: 2rem;
+  }
+  .btn-circle {
+    width: 45%;
+    aspect-ratio: 1 / 1;
+    height: auto; /* Esto combinado con aspect-ratio mantiene círculo */
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+
+  .wiki-filters {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .btn-circle-sm {
+    width: 42%;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+
+  .wiki-subsections {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .btn-circle-sm .btn-label {
+    font-size: 0.9rem;
+    bottom: -1.5rem;
   }
 }
 

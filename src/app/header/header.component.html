@@ -5,7 +5,7 @@
       <img src="assets/images/RJK-logo.png" alt="Logo RJK SCORE" class="brand-logo" />
     </a>
 
-    <!-- Botón hamburguesa a la derecha del logo -->
+    <!-- Botón hamburguesa -->
     <button class="navbar-toggler text-white ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
       <span class="navbar-toggler-icon">
         <div></div>
@@ -15,13 +15,13 @@
     <!-- Menú colapsable -->
     <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarMenu">
       <ul class="navbar-nav flex-lg-row flex-column gap-3 gap-lg-4 text-center">
-        <li class="nav-item"><a class="nav-link" routerLink="/home" routerLinkActive="active">HOME</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/categories" routerLinkActive="active">CATEGORIES</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/discover" routerLinkActive="active">WIKI</a></li>
-        <li class="nav-item" *ngIf="isLoggedIn"><a class="nav-link" routerLink="/favs" routerLinkActive="active">FAVS</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/aboutus" routerLinkActive="active">ABOUT US</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/home" routerLinkActive="active" (click)="closeNavbar()">HOME</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/categories" routerLinkActive="active" (click)="closeNavbar()">CATEGORIES</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/discover" routerLinkActive="active" (click)="closeNavbar()">WIKI</a></li>
+        <li class="nav-item" *ngIf="isLoggedIn"><a class="nav-link" routerLink="/favs" routerLinkActive="active" (click)="closeNavbar()">FAVS</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/aboutus" routerLinkActive="active" (click)="closeNavbar()">ABOUT US</a></li>
 
-        <!-- ✅ SOLO EN MÓVIL: monedas y botones -->
+        <!-- SOLO EN MÓVIL -->
         <li class="nav-item d-lg-none mt-3 text-center">
           <div *ngIf="isLoggedIn" class="virtual-coins d-flex justify-content-center align-items-center mb-2">
             <i class="bi bi-coin coin-icon"></i>
@@ -29,18 +29,18 @@
           </div>
 
           <ng-container *ngIf="isLoggedIn; else notLoggedMobile">
-            <a class="btn btn-register nav-link d-inline-block mb-2" routerLink="/account">ACCOUNT</a>
-            <button (click)="logout()" class="btn btn-register nav-link d-inline-block">LOG OUT</button>
+            <a class="btn btn-register nav-link d-inline-block mb-2" routerLink="/account" (click)="closeNavbar()">ACCOUNT</a>
+            <button (click)="logout(); closeNavbar()" class="btn btn-register nav-link d-inline-block">LOG OUT</button>
           </ng-container>
 
           <ng-template #notLoggedMobile>
-            <a class="btn btn-login nav-link d-inline-block mb-2" routerLink="/login">LOGIN</a>
-            <a class="btn btn-register nav-link d-inline-block" routerLink="/register">REGISTER</a>
+            <a class="btn btn-login nav-link d-inline-block mb-2" routerLink="/login" (click)="closeNavbar()">LOGIN</a>
+            <a class="btn btn-register nav-link d-inline-block" routerLink="/register" (click)="closeNavbar()">REGISTER</a>
           </ng-template>
         </li>
       </ul>
 
-      <!-- ✅ ESCRITORIO: sin tocar -->
+      <!-- ESCRITORIO -->
       <div class="d-none d-lg-flex flex-row align-items-center gap-2 ms-lg-auto">
         <div *ngIf="isLoggedIn" class="virtual-coins d-flex align-items-center">
           <i class="bi bi-coin coin-icon"></i>
@@ -54,7 +54,7 @@
 
         <ng-template #notLoggedDesktop>
           <a class="btn btn-login nav-link" routerLink="/login">LOGIN</a>
-          <a class="btn btn-register nav-link" routerLink="/register">REGISTER</a>
+          <a class="btn btn-login nav-link" routerLink="/register">REGISTER</a>
         </ng-template>
       </div>
     </div>
