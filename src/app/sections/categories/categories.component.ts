@@ -2,6 +2,24 @@ import { Component } from '@angular/core';
 import { DataService } from './../../data.service';
 import { CommonModule } from '@angular/common';
 
+export type PageKey =
+  | 'lolLeagues'
+  | 'lolSeries'
+  | 'lolTournaments'
+  | 'lolMatches'
+  | 'CSGOLeagues'
+  | 'CSGOSeries'
+  | 'CSGOTournaments'
+  | 'CSGOMatches'
+  | 'dota2Leagues'
+  | 'dota2Series'
+  | 'dota2Tournaments'
+  | 'dota2Matches'
+  | 'valorantLeagues'
+  | 'valorantSeries'
+  | 'valorantTournaments'
+  | 'valorantMatches';
+
 @Component({
   selector: 'app-categories',
   imports: [CommonModule],
@@ -34,7 +52,8 @@ export class CategoriesComponent {
   currentViewValorant: string = '';
 
   pageSize = 10;
-  pages: { [key: string]: number } = {
+
+  pages: Record<PageKey, number> = {
     lolLeagues: 1,
     lolSeries: 1,
     lolTournaments: 1,
@@ -73,7 +92,7 @@ export class CategoriesComponent {
   valorantTournaments: any[] = [];
   valorantMatches: any[] = [];
 
-  changePage(key: string, delta: number) {
+  changePage(key: PageKey, delta: number) {
     const next = (this.pages[key] || 1) + delta;
     if (next < 1) return;
     this.pages[key] = next;

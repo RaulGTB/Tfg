@@ -2,6 +2,21 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DataService } from '../../data.service';
 
+export type PageKey =
+  | 'maps'
+  | 'weapons'
+  | 'abilities'
+  | 'heroes'
+  | 'items'
+  | 'lolchamps'
+  | 'lolitems'
+  | 'lolrunes'
+  | 'lolspells'
+  | 'vabilities'
+  | 'vmaps'
+  | 'vweapons'
+  | 'vagents';
+
 @Component({
   selector: 'app-discover',
   imports: [CommonModule],
@@ -28,7 +43,7 @@ export class DiscoverComponent {
   vagents : any[] = [];
 
   pageSize = 10;
-  pages: { [key: string]: number } = {
+  pages: Record<PageKey, number> = {
     maps: 1,
     weapons: 1,
     abilities: 1,
@@ -49,7 +64,7 @@ export class DiscoverComponent {
     this.getCSGOweapons();
   }
 
-  changePage(key: string, delta: number) {
+  changePage(key: PageKey, delta: number) {
     const next = (this.pages[key] || 1) + delta;
     if (next < 1) return;
     this.pages[key] = next;
