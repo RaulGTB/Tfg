@@ -1,225 +1,32 @@
-/* ===== ANIMACIONES GLOBALES ===== */
-@keyframes fadeUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.home-page {
+  padding-top: 64px;
 }
 
-@keyframes popIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* ===== ESTILOS PRINCIPALES ===== */
-.esports-home {
-  padding-top: 3rem;
-  background-color: #1a1a1a;
-  min-height: 100vh;
-  animation: fadeUp 0.6s ease-in-out;
-}
-
-.section-title {
-  font-size: 2.2rem;
-  font-weight: bold;
-  border-left: 5px solid #cddc39;
-  padding-left: 1rem;
-  color: #cddc39;
-  margin-bottom: 2rem;
-  animation: fadeUp 0.5s ease forwards;
-}
-
-/* ===== ESTILO PARA TARJETAS ===== */
-.live-card,
-.category-card,
-.recommended-card,
-.reward-card {
-  background-color: #2a2a2a;
-  color: white;
-  transition: all 0.3s ease;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-  animation: popIn 0.5s ease;
-}
-
-.live-card:hover,
-.category-card:hover,
-.recommended-card:hover,
-.reward-card:hover {
-  transform: translateY(-4px) scale(1.03);
-  background-color: #3a3a3a !important;
-  box-shadow: 0 0 12px rgba(205, 220, 57, 0.2);
-  cursor: pointer;
-}
-
-/* ===== UTILIDADES ===== */
-.bg-secondary {
-  background-color: #2a2a2a !important;
-}
-
-.text-muted {
-  color: #bbb !important;
-}
-
-/* ===== FILTROS ===== */
-.section-filters {
-  padding: 2rem 0;
-  animation: fadeUp 0.4s ease;
-}
-
-.section-filters .btn {
-  background-color: transparent;
-  border: 1px solid #cddc39;
-  color: #cddc39;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-  border-radius: 8px;
-  padding: 0.5rem 1rem;
-}
-
-.section-filters .btn:hover,
-.section-filters .btn:focus {
-  background-color: #cddc39;
-  color: #1a1a1a;
-  transform: scale(1.08);
-  box-shadow: 0 0 10px #cddc39aa;
-  border-color: #cddc39;
-}
-
-.section-filters .btn:active {
-  background-color: #a0b92b;
-  border-color: #a0b92b;
-  color: #121212;
-  transform: scale(0.95);
-}
-
-.section-filters span {
-  color: #cddc39;
-  font-weight: 600;
-  font-size: 1rem;
-}
-/* === HERO HEADER MEJORADO === */
-.hero-header {
-  height: 300px;
+.section-hero {
   position: relative;
+  min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-  background-color: black;
+  background: url('assets/images/hero-bg.jpg') center/cover no-repeat;
+  color: var(--color-text-primary);
 }
 
-.hero-img {
+.section-hero .overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
 }
 
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.section-hero .hero-content {
+  position: relative;
   z-index: 1;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.85));
 }
 
-.hero-header .container {
-  z-index: 2;
+.section-dark {
+  background-color: var(--color-bg);
 }
 
-.text-shadow {
-  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
-}
-
-/* === GAME CARDS ESTILO NUEVO === */
-.game-card-container {
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-.game-card-container:hover {
-  transform: translateY(-3px) scale(1.02);
-}
-.game-card-img-wrapper {
-  height: 180px;
-  background-color: #000;
-}
-.game-card-img-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.65);
-  transition: filter 0.3s ease;
-}
-.game-card-container:hover img {
-  filter: brightness(0.8);
-}
-
-.text-shadow {
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
-}
-
-/* GAME CARD NUEVO ESTILO */
-.game-card-container {
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-.game-card-container:hover {
-  transform: translateY(-3px) scale(1.02);
-}
-
-.game-card-img-wrapper {
-  height: 180px;
-  background-color: #000;
-}
-
-.game-card-img-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.65);
-  transition: filter 0.3s ease;
-}
-
-.game-card-container:hover img {
-  filter: brightness(0.8);
-}
-
-/* TIRAS LATERALES QUE OCUPAN LOS HUECOS NEGROS LATERALES */
-.side-fill-img {
-  position: fixed;
-  top: 0;
-  height: 100vh;
-  width: calc((100vw - 1140px) / 2); /* 1140px = ancho máx. del container */
-  object-fit: cover;
-  opacity: 0.25;
-  z-index: 0;
-  pointer-events: none;
-  mask-image: linear-gradient(to right, transparent, black, transparent);
-}
-
-/* Izquierda alineada al borde */
-.side-left {
-  left: 0;
-}
-
-/* Derecha alineada al borde */
-.side-right {
-  right: 0;
-  transform: scaleX(-1); /* efecto espejo opcional */
+.text-accent {
+  color: var(--color-accent);
 }

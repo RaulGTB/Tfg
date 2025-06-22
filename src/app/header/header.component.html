@@ -1,60 +1,43 @@
-<nav class="navbar navbar-expand-lg full-width-navbar px-3">
-  <div class="container-fluid">
-    <!-- Logo -->
-    <a class="navbar-brand d-flex align-items-center me-3" routerLink="/">
-      <img src="assets/images/RJK-logo.png" alt="Logo RJK SCORE" class="brand-logo" />
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top py-3 accent-shadow">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" routerLink="/">
+      <img src="assets/images/RJK-logo.png" alt="RJK SCORE" class="logo me-2" />
     </a>
 
-    <!-- Botón hamburguesa -->
-    <button class="navbar-toggler text-white ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
-      <span class="navbar-toggler-icon">
-        <div></div>
-      </span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Menú colapsable -->
-    <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarMenu">
-      <ul class="navbar-nav flex-lg-row flex-column gap-3 gap-lg-4 text-center">
-        <li class="nav-item"><a class="nav-link" routerLink="/home" routerLinkActive="active" (click)="closeNavbar()">HOME</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/categories" routerLinkActive="active" (click)="closeNavbar()">CATEGORIES</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/discover" routerLinkActive="active" (click)="closeNavbar()">WIKI</a></li>
-        <li class="nav-item" *ngIf="isLoggedIn"><a class="nav-link" routerLink="/favs" routerLinkActive="active" (click)="closeNavbar()">FAVS</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/aboutus" routerLinkActive="active" (click)="closeNavbar()">ABOUT US</a></li>
-
-        <!-- SOLO EN MÓVIL -->
-        <li class="nav-item d-lg-none mt-3 text-center">
-          <div *ngIf="isLoggedIn" class="virtual-coins d-flex justify-content-center align-items-center mb-2">
-            <i class="bi bi-coin coin-icon"></i>
-            <span class="coin-amount">{{ coins }}</span>
+    <div class="collapse navbar-collapse" id="navbarMenu">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center gap-lg-4">
+        <li class="nav-item"><a class="nav-link" routerLink="/home" routerLinkActive="active" (click)="closeNavbar()">Home</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/categories" routerLinkActive="active" (click)="closeNavbar()">Categories</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/discover" routerLinkActive="active" (click)="closeNavbar()">Wiki</a></li>
+        <li class="nav-item" *ngIf="isLoggedIn"><a class="nav-link" routerLink="/favs" routerLinkActive="active" (click)="closeNavbar()">Favs</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/aboutus" routerLinkActive="active" (click)="closeNavbar()">About Us</a></li>
+        <li class="nav-item d-lg-none mt-3" *ngIf="isLoggedIn">
+          <div class="coins mb-2">
+            <i class="bi bi-coin"></i> {{ coins }}
           </div>
-
-          <ng-container *ngIf="isLoggedIn; else notLoggedMobile">
-            <a class="btn btn-register nav-link d-inline-block mb-2" routerLink="/account" (click)="closeNavbar()">ACCOUNT</a>
-            <button (click)="logout(); closeNavbar()" class="btn btn-register nav-link d-inline-block">LOG OUT</button>
-          </ng-container>
-
-          <ng-template #notLoggedMobile>
-            <a class="btn btn-login nav-link d-inline-block mb-2" routerLink="/login" (click)="closeNavbar()">LOGIN</a>
-            <a class="btn btn-register nav-link d-inline-block" routerLink="/register" (click)="closeNavbar()">REGISTER</a>
-          </ng-template>
+          <a class="btn btn-accent w-100 mb-2" routerLink="/account" (click)="closeNavbar()">Account</a>
+          <button class="btn btn-accent w-100" (click)="logout(); closeNavbar()">Log out</button>
+        </li>
+        <li class="nav-item d-lg-none mt-3" *ngIf="!isLoggedIn">
+          <a class="btn btn-accent w-100 mb-2" routerLink="/login" (click)="closeNavbar()">Login</a>
+          <a class="btn btn-accent w-100" routerLink="/register" (click)="closeNavbar()">Register</a>
         </li>
       </ul>
-
-      <!-- ESCRITORIO -->
-      <div class="d-none d-lg-flex flex-row align-items-center gap-2 ms-lg-auto">
-        <div *ngIf="isLoggedIn" class="virtual-coins d-flex align-items-center">
-          <i class="bi bi-coin coin-icon"></i>
-          <span class="coin-amount">{{ coins }}</span>
+      <div class="d-none d-lg-flex align-items-center gap-3 ms-lg-auto">
+        <div *ngIf="isLoggedIn" class="coins">
+          <i class="bi bi-coin"></i> {{ coins }}
         </div>
-
-        <ng-container *ngIf="isLoggedIn; else notLoggedDesktop">
-          <a class="btn btn-register nav-link" routerLink="/account">ACCOUNT</a>
-          <button (click)="logout()" class="btn btn-register nav-link">LOG OUT</button>
+        <ng-container *ngIf="isLoggedIn; else guest">
+          <a routerLink="/account" class="btn btn-accent btn-sm">Account</a>
+          <button (click)="logout()" class="btn btn-accent btn-sm">Log out</button>
         </ng-container>
-
-        <ng-template #notLoggedDesktop>
-          <a class="btn btn-login nav-link" routerLink="/login">LOGIN</a>
-          <a class="btn btn-login nav-link" routerLink="/register">REGISTER</a>
+        <ng-template #guest>
+          <a routerLink="/login" class="btn btn-accent btn-sm">Login</a>
+          <a routerLink="/register" class="btn btn-accent btn-sm">Register</a>
         </ng-template>
       </div>
     </div>
