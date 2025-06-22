@@ -52,6 +52,10 @@
           </div>
           }
         </div>
+        <div class="d-flex justify-content-between mt-3">
+          <button class="btn btn-secondary btn-sm" (click)="changePage('lolLeagues', -1)" [disabled]="pages.lolLeagues === 1">Anterior</button>
+          <button class="btn btn-secondary btn-sm" (click)="changePage('lolLeagues', 1)">Siguiente</button>
+        </div>
         }
 
         @if (currentViewLoL === 'series') {
@@ -86,6 +90,10 @@
             </div>
           </div>
           }
+        </div>
+        <div class="d-flex justify-content-between mt-3">
+          <button class="btn btn-secondary btn-sm" (click)="changePage('lolSeries', -1)" [disabled]="pages.lolSeries === 1">Anterior</button>
+          <button class="btn btn-secondary btn-sm" (click)="changePage('lolSeries', 1)">Siguiente</button>
         </div>
         }
 
@@ -129,6 +137,10 @@
             </div>
           </div>
           }
+        </div>
+        <div class="d-flex justify-content-between mt-3">
+          <button class="btn btn-secondary btn-sm" (click)="changePage('lolTournaments', -1)" [disabled]="pages.lolTournaments === 1">Anterior</button>
+          <button class="btn btn-secondary btn-sm" (click)="changePage('lolTournaments', 1)">Siguiente</button>
         </div>
         }
 
@@ -174,6 +186,10 @@
           </div>
           }
         </div>
+        <div class="d-flex justify-content-between mt-3">
+          <button class="btn btn-secondary btn-sm" (click)="changePage('lolMatches', -1)" [disabled]="pages.lolMatches === 1">Anterior</button>
+          <button class="btn btn-secondary btn-sm" (click)="changePage('lolMatches', 1)">Siguiente</button>
+        </div>
         }
       </div>
 
@@ -218,6 +234,10 @@
           </div>
           }
         </div>
+        <div class="d-flex justify-content-between mt-3">
+          <button class="btn btn-secondary btn-sm" (click)="changePage('CSGOLeagues', -1)" [disabled]="pages.CSGOLeagues === 1">Anterior</button>
+          <button class="btn btn-secondary btn-sm" (click)="changePage('CSGOLeagues', 1)">Siguiente</button>
+        </div>
         }
 
         @if (currentViewCSGO === 'series') {
@@ -241,6 +261,10 @@
             </div>
           </div>
           }
+        </div>
+        <div class="d-flex justify-content-between mt-3">
+          <button class="btn btn-secondary btn-sm" (click)="changePage('CSGOSeries', -1)" [disabled]="pages.CSGOSeries === 1">Anterior</button>
+          <button class="btn btn-secondary btn-sm" (click)="changePage('CSGOSeries', 1)">Siguiente</button>
         </div>
         }
 

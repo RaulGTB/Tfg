@@ -27,6 +27,12 @@ export class HomeComponent implements OnInit {
   successMsg: string = '';
   errorMsg: string = '';
 
+  pageSize = 10;
+  leaguesPage = 1;
+  teamsPage = 1;
+  playersPage = 1;
+  matchesPage = 1;
+
   // Lista local de favoritos guardados: {itemType, itemId}
   favorites: FavoriteResponse[] = [];
 
@@ -73,28 +79,28 @@ export class HomeComponent implements OnInit {
 
   // === Lógica de datos ===
   getDpts() {
-    this.data.getLeagues().subscribe((res: any) => {
+    this.data.getLeagues(this.leaguesPage, this.pageSize).subscribe((res: any) => {
       this.games = res;
       this.filteredGames = this.games;
     });
   }
 
   getTeams() {
-    this.data.getTeams().subscribe((res: any) => {
+    this.data.getTeams(this.teamsPage, this.pageSize).subscribe((res: any) => {
       this.teams = res;
       this.currentView = 'teams';
     });
   }
 
   getPlayers() {
-    this.data.getPlayers().subscribe((res: any) => {
+    this.data.getPlayers(this.playersPage, this.pageSize).subscribe((res: any) => {
       this.players = res;
       this.currentView = 'players';
     });
   }
 
   getMatches() {
-    this.data.getmatches().subscribe((res: any) => {
+    this.data.getmatches(this.matchesPage, this.pageSize).subscribe((res: any) => {
       this.matches = res;
       this.currentView = 'matches';
     });
@@ -116,6 +122,31 @@ export class HomeComponent implements OnInit {
 
   FiltrarOtros() {
     this.filteredGames = this.games.filter((g) => g.class_name === 'Other');
+  }
+
+  changePage(type: 'leagues' | 'teams' | 'players' | 'matches', delta: number) {
+    switch (type) {
+      case 'leagues':
+        if (this.leaguesPage + delta < 1) return;
+        this.leaguesPage += delta;
+        this.getDpts();
+        break;
+      case 'teams':
+        if (this.teamsPage + delta < 1) return;
+        this.teamsPage += delta;
+        this.getTeams();
+        break;
+      case 'players':
+        if (this.playersPage + delta < 1) return;
+        this.playersPage += delta;
+        this.getPlayers();
+        break;
+      case 'matches':
+        if (this.matchesPage + delta < 1) return;
+        this.matchesPage += delta;
+        this.getMatches();
+        break;
+    }
   }
 
   // Añadir favorito sin toggle (por si lo necesitas)

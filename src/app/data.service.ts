@@ -1,65 +1,71 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
+  private readonly baseUrl = 'https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api';
 
   constructor(private http: HttpClient) { }
 
+  private getPaginated<T>(path: string, page: number = 1, limit: number = 10): Observable<T> {
+    const params = new HttpParams().set('page', page).set('limit', limit);
+    return this.http.get<T>(`${this.baseUrl}/${path}`, { params });
+  }
+
   // General methods
 
-  getLeagues() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/leagues')
+  getLeagues(page: number = 1, limit: number = 10) {
+    return this.getPaginated('leagues', page, limit);
   }
 
-  getTeams() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/teams')
+  getTeams(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/teams', page, limit);
   }
 
-  getPlayers() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/players')
+  getPlayers(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/players', page, limit);
   }
 
-  getmatches() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/matches')
+  getmatches(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/matches', page, limit);
   }
 
   // Game-specific methods
 
   // League of Legends
 
-  getLolLeagues() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/lol/leagues')
+  getLolLeagues(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/lol/leagues', page, limit)
   }
 
-  getLolSeries() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/lol/series')
+  getLolSeries(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/lol/series', page, limit)
   }
 
-  getLolTournaments() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/lol/tournaments')
+  getLolTournaments(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/lol/tournaments', page, limit)
   }
 
-  getLolMatches() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/lol/matches')
+  getLolMatches(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/lol/matches', page, limit)
 }
 
-  getLolChampions() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/lol/champions')
+  getLolChampions(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/lol/champions', page, limit)
 
   }
-  getLolItemns() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/lol/items')
+  getLolItemns(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/lol/items', page, limit)
 
   }
-  getLolrunes() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/lol/runes-reforged')
+  getLolrunes(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/lol/runes-reforged', page, limit)
 
   }
-  getLolspells() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/lol/spells')
+  getLolspells(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/lol/spells', page, limit)
 
   }
 
@@ -68,88 +74,88 @@ export class DataService {
 
   // Counter-Strike: Global Offensive
 
-  getCSGOLeagues() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/csgo/leagues')
+  getCSGOLeagues(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/csgo/leagues', page, limit)
   }
 
-  getCSGOSeries() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/csgo/series')
+  getCSGOSeries(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/csgo/series', page, limit)
   }
 
-  getCSGOTournaments() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/csgo/tournaments')
+  getCSGOTournaments(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/csgo/tournaments', page, limit)
   }
 
-  getCSGOMatches() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/csgo/matches')
+  getCSGOMatches(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/csgo/matches', page, limit)
   }
 
-  getCSGOmaps() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/csgo/maps')
+  getCSGOmaps(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/csgo/maps', page, limit)
 
   }
-  getCSGOweapons() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/csgo/weapons')
+  getCSGOweapons(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/csgo/weapons', page, limit)
   }
 
   // Dota 2
 
-  getDota2Leagues() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/dota2/leagues')
+  getDota2Leagues(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/dota2/leagues', page, limit)
   }
 
-  getDota2Series() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/dota2/series')
+  getDota2Series(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/dota2/series', page, limit)
   }
 
-  getDota2Tournaments() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/dota2/tournaments')
+  getDota2Tournaments(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/dota2/tournaments', page, limit)
   }
 
-  getDota2Matches() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/dota2/matches')
+  getDota2Matches(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/dota2/matches', page, limit)
   }
 
-  getDota2Abilities() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/dota2/abilities')
+  getDota2Abilities(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/dota2/abilities', page, limit)
   }
-  getDota2heroes() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/dota2/heroes')
+  getDota2heroes(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/dota2/heroes', page, limit)
   }
-  getDota2items() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/dota2/items')
+  getDota2items(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/dota2/items', page, limit)
   }
 
 
 
   // Valorant
 
-  getValorantLeagues() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/valorant/leagues')
+  getValorantLeagues(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/valorant/leagues', page, limit)
   }
 
-  getValorantSeries() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/valorant/series')
+  getValorantSeries(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/valorant/series', page, limit)
   }
 
-  getValorantTournaments() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/valorant/tournaments')
+  getValorantTournaments(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/valorant/tournaments', page, limit)
   }
 
-  getValorantMatches() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/valorant/matches')
+  getValorantMatches(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/valorant/matches', page, limit)
   }
-  getValoranabilities() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/valorant/abilities')
+  getValoranabilities(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/valorant/abilities', page, limit)
   }
-  getValorantmaps() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/valorant/maps')
+  getValorantmaps(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/valorant/maps', page, limit)
   }
-  getValorantweapons() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/valorant/weapons')
+  getValorantweapons(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/valorant/weapons', page, limit)
   }
-  getValorantagents() {
-    return this.http.get('https://rjk-backend-hwb4bjfhexaybagg.spaincentral-01.azurewebsites.net/api/pandascore/valorant/agents')
+  getValorantagents(page: number = 1, limit: number = 10) {
+    return this.getPaginated('pandascore/valorant/agents', page, limit)
   }
 
 
