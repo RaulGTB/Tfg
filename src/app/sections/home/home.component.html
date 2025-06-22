@@ -1,87 +1,46 @@
 <main class="home-page">
-  <!-- HERO SECTION -->
-  <section class="hero-header position-relative overflow-hidden">
-    <!-- Imagen de fondo nítida -->
-    <img src="assets/images/hero-bg.jpg" alt="Fondo esports" class="hero-img">
-
-    <!-- Capa oscura encima -->
-    <div class="hero-overlay"></div>
-
-    <!-- Contenido encima de la imagen -->
-    <div class="container position-relative z-2 text-center py-5 hero-content">
-      <h1 class="display-4 fw-bold text-white text-shadow">RJK SCORE</h1>
-      <p class="lead text-light">Your live eSports platform for scores and rewards</p>
+  <section class="section-hero">
+    <div class="overlay"></div>
+    <div class="container hero-content text-center fade-up">
+      <h1 class="display-3 fw-bold mb-3">RJK SCORE</h1>
+      <p class="lead text-muted-soft">Your live eSports platform for scores and rewards</p>
     </div>
   </section>
 
-  <!-- TIRAS LATERALES DECORATIVAS -->
-  <div class="strip-container d-none d-xl-block">
-    <img src="assets/images/vertical-background.jpg" class="side-fill-img side-left d-none d-xl-block"
-      alt="Decoración izquierda" />
-    <img src="assets/images/vertical-background.jpg" class="side-fill-img side-right d-none d-xl-block"
-      alt="Decoración derecha" />
-  </div>
-
-
-  <!-- === GAME CARDS SECTION === -->
-  <section class="section-game-cards py-4 bg-black">
+  <section class="section-dark py-5">
     <div class="container">
       <div class="row g-4 justify-content-center">
-        <div class="col-6 col-md-3" *ngFor="let g of gameCards; let i = index">
-          <div class="game-card-container text-center text-light">
-            <!-- Imagen del juego -->
-            <div class="game-card-img-wrapper rounded overflow-hidden shadow-sm">
+        <div class="col-6 col-md-3" *ngFor="let g of gameCards; let i = index" (click)="toggleCard(i)" class="glow-hover">
+          <div class="card-dark text-center">
+            <div class="ratio ratio-1x1 mb-3 rounded overflow-hidden">
               <img [src]="g.img" [alt]="g.name" class="w-100 h-100 object-fit-cover" />
             </div>
-
-            <!-- Nombre del juego -->
-            <h5 class="fw-bold mt-3 mb-2 text-white">{{ g.name }}</h5>
-
-            <!-- Descripción -->
-            <p class="small text-muted">{{ g.desc }}</p>
+            <h5 class="fw-bold mb-2">{{ g.name }}</h5>
+            <p class="small text-muted-soft">{{ g.desc }}</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-
-
-  <!-- FILTROS -->
-  <section class="section-filters py-4 bg-black">
+  <section class="section-dark py-5">
     <div class="container">
-      <div class="d-flex flex-wrap gap-3 align-items-center">
-        <span class="me-3">Filtrar por:</span>
-        <button (click)="filteredGames = games" class="btn btn-outline-light btn-sm">Show All</button>
-        <button (click)="filtrarLol()" class="btn btn-outline-light btn-sm">League of Legends</button>
-        <button (click)="filtrarDota2()" class="btn btn-outline-light btn-sm">Dota 2</button>
-        <button (click)="filtrarCsgo()" class="btn btn-outline-light btn-sm">CS:GO</button>
-        <button (click)="FiltrarOtros()" class="btn btn-outline-light btn-sm">Others</button>
+      <div class="d-flex flex-wrap gap-3 align-items-center mb-4">
+        <span class="text-muted-soft">Filter:</span>
+        <button (click)="filteredGames = games" class="btn btn-accent btn-sm">All</button>
+        <button (click)="filtrarLol()" class="btn btn-accent btn-sm">LoL</button>
+        <button (click)="filtrarDota2()" class="btn btn-accent btn-sm">Dota 2</button>
+        <button (click)="filtrarCsgo()" class="btn btn-accent btn-sm">CS:GO</button>
+        <button (click)="FiltrarOtros()" class="btn btn-accent btn-sm">Others</button>
       </div>
-    </div>
-  </section>
-
-  <!-- EN VIVO HOY -->
-  <section class="section-filters py-4 bg-black">
-    <div class="container">
-      <h2 class="section-title mb-4">LIVE TODAY</h2>
-
+      <h2 class="h4 text-accent mb-4">Live Today</h2>
       <div class="row g-4">
         @for (f of filteredGames.slice(0, 10); track $index) {
         <div class="col-12 col-md-6">
-          <div class="live-card bg-dark border border-secondary p-3 rounded text-light shadow-sm h-100">
-            <h5 class="mb-2 text-info">
-              <i class="bi bi-trophy-fill me-2"></i>{{ f.name }}
-            </h5>
-            <p class="mb-1">
-              <i class="bi bi-controller me-2"></i><strong>Videogame:</strong> {{ f.class_name }}
-            </p>
-
-
-
-            <small class="text-success d-block mt-3">
-              <i class="bi bi-broadcast-pin me-1"></i>Live broadcast in progress
-            </small>
+          <div class="card-dark h-100 glow-hover">
+            <h5 class="mb-2 text-accent"><i class="bi bi-trophy-fill me-2"></i>{{ f.name }}</h5>
+            <p class="mb-1"><strong>Videogame:</strong> {{ f.class_name }}</p>
+            <small class="text-success d-block mt-2"><i class="bi bi-broadcast-pin me-1"></i>Live broadcast</small>
           </div>
         </div>
         }
@@ -89,180 +48,91 @@
     </div>
   </section>
 
-
-
-  <!-- RECOMENDADOS -->
-  <section class="section-filters py-4 bg-black">
+  <section class="section-dark py-5">
     <div class="container">
-      <div class="d-flex flex-wrap gap-3 align-items-center">
-        <span class="me-3">Filter by:</span>
+      <div class="d-flex flex-wrap gap-3 align-items-center mb-4">
+        <span class="text-muted-soft">Show:</span>
+        <button (click)="getPlayers()" class="btn btn-accent btn-sm">Players</button>
+        <button (click)="getTeams()" class="btn btn-accent btn-sm">Teams</button>
+        <button (click)="getMatches()" class="btn btn-accent btn-sm">Matches</button>
+      </div>
+      <h2 class="h4 text-accent mb-4">A Bit Of Everything</h2>
+      <div class="row g-4" *ngIf="currentView === 'players'">
+        @for (p of players; track $index) {
+        <div class="col-12 col-md-6">
+          <div class="card-dark h-100 glow-hover text-center">
+            <h5 class="mb-2 text-accent"><i class="bi bi-person-fill me-2"></i>{{ p.name }}</h5>
+            <p class="mb-1"><strong>Real name:</strong> {{ p.first_name || 'Unknown' }}</p>
+            <p class="mb-1"><strong>Videogame:</strong> {{ p.current_videogame.name }}</p>
+            <button class="btn btn-accent btn-sm mt-3 w-100" (click)="addToFavorites('player', p.id)"><i class="bi bi-star-fill"></i> Save</button>
+          </div>
+        </div>
+        }
+      </div>
 
+      <div class="row g-4" *ngIf="currentView === 'teams'">
+        @for (p of teams; track $index) {
+        <div class="col-12 col-md-6">
+          <div class="card-dark h-100 glow-hover text-center">
+            <h5 class="mb-2 text-accent"><i class="bi bi-people-fill me-2"></i>{{ p.name }}</h5>
+            <p class="mb-1"><strong>Location:</strong> {{ p.location || 'Unknown' }}</p>
+            <p class="mb-1"><strong>Videogame:</strong> {{ p.current_videogame.name }}</p>
+            <button class="btn btn-accent btn-sm mt-3 w-100" (click)="addToFavorites('team', p.id)"><i class="bi bi-star-fill"></i> Save</button>
+          </div>
+        </div>
+        }
+      </div>
 
-        <button (click)="getPlayers()" class="btn btn-outline-light btn-sm">PLAYERS</button>
-        <button (click)="getTeams()" class="btn btn-outline-light btn-sm">TEAMS</button>
-        <button (click)="getMatches()" class="btn btn-outline-light btn-sm">MATCHES</button>
-
-
-
-        <section class="section-recommended py-5">
-          <div class="container">
-            <h2 class="section-title mb-4">A BIT OF EVERYTHING</h2>
-            <div class="d-flex flex-wrap gap-4">
-
-              <!-- PLAYERS -->
-              @if (currentView === 'players') {
-              <div class="row g-4">
-                @for (p of players; track $index) {
-                <div class="col-12 col-md-6">
-                  <div class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow-sm h-100">
-                    <h5 class="mb-2 text-warning">
-                      <i class="bi bi-person-fill me-2"></i>{{ p.name }}
-                    </h5>
-                    <p class="mb-1">
-                      <strong>Real name:</strong> {{ p.first_name || 'Desconocido'}}
-                    </p>
-                    <p class="mb-1">
-                      <strong>Videojuego:</strong> {{ p.current_videogame.name }}
-                    </p>
-                    <small class="text-muted">
-                      <i class="bi bi-star-fill text-warning me-1"></i>Featured player
-                    </small>
-                    <button
-                      class="btn btn-sm btn-warning mt-3 w-100 d-flex align-items-center justify-content-center gap-2"
-                      (click)="addToFavorites('player', p.id)">
-                      <i class="bi bi-star-fill"></i>
-                      Save Favorite
-                    </button>
-
-                  </div>
-                </div>
-                }
-              </div>
-              <div class="d-flex justify-content-between mt-3">
-                <button class="btn btn-secondary btn-sm" (click)="changePage('players', -1)" [disabled]="playersPage === 1">Anterior</button>
-                <button class="btn btn-secondary btn-sm" (click)="changePage('players', 1)">Siguiente</button>
-              </div>
-              }
-
-
-              <!-- TEAMS -->
-              @if (currentView === 'teams') {
-              <div class="row g-4">
-                @for (p of teams; track $index) {
-                <div class="col-12 col-md-6">
-                  <div class="recommended-card bg-dark border border-secondary p-4 rounded text-light shadow-sm h-100">
-                    <h5 class="mb-2 text-info">
-                      <i class="bi bi-people-fill me-2"></i>{{ p.name }}
-                    </h5>
-                    <p class="mb-1">
-                      <strong>Location:</strong> {{ p.location || 'Desconocida' }}
-                    </p>
-                    <p class="mb-1">
-                      <strong>Videogame</strong> {{ p.current_videogame.name }}
-                    </p>
-                    <small class="text-muted">
-                      <i class="bi bi-trophy-fill text-info me-1"></i>Competitive team
-                    </small>
-                    <button
-                      class="btn btn-sm btn-warning mt-3 w-100 d-flex align-items-center justify-content-center gap-2"
-                      (click)="addToFavorites('team', p.id)">
-                      <i class="bi bi-star-fill"></i>
-                      Save Favorite
-                    </button>
-                  </div>
-                </div>
-                }
-              </div>
-              <div class="d-flex justify-content-between mt-3">
-                <button class="btn btn-secondary btn-sm" (click)="changePage('teams', -1)" [disabled]="teamsPage === 1">Anterior</button>
-                <button class="btn btn-secondary btn-sm" (click)="changePage('teams', 1)">Siguiente</button>
-              </div>
-              }
-
-
-              <!-- MATCHES -->
-              @if (currentView === 'matches') {
-              @for (p of matches; track $index) {
-              @if (p.opponents?.length === 2) {
-              <div class="recommended-card bg-dark border border-secondary p-4 rounded text-light w-100 shadow-sm">
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                  <!-- Team 1 -->
-                  <div class="text-center w-25">
-                    <img [src]="p.opponents[0].opponent.image_url" alt="{{ p.opponents[0].opponent.name }}"
-                      class="img-fluid rounded mb-2" style="max-width: 60px;">
-                    <p class="mb-0 small">{{ p.opponents[0].opponent.name }}</p>
-                  </div>
-
-                  <!-- VS info -->
-                  <div class="text-center w-50">
-                    <p class="fw-bold mb-1">VS</p>
-                    <p class="mb-1">
-                      <i class="bi bi-controller me-1"></i><strong>Videogame:</strong> {{ p.videogame?.name || 'Desconocido'
-                      }}
-                    </p>
-                    <p class="mb-0">
-                      <i class="bi bi-clock-fill me-1"></i><strong>Date:</strong> {{ p.scheduled_at | date: 'medium' }}
-                    </p>
-                  </div>
-
-                  <!-- Team 2 -->
-                  <div class="text-center w-25">
-                    <img [src]="p.opponents[1].opponent.image_url" alt="{{ p.opponents[1].opponent.name }}"
-                      class="img-fluid rounded mb-2" style="max-width: 60px;">
-                    <p class="mb-0 small">{{ p.opponents[1].opponent.name }}</p>
-                  </div>
-                </div>
-                <small class="text-muted d-block text-center">
-                  <i class="bi bi-broadcast-pin me-1 text-danger"></i>Live stream available
-                </small>
-                <button class="btn btn-sm btn-warning mt-3 w-100 d-flex align-items-center justify-content-center gap-2"
-                  (click)="addToFavorites('match', p.id)">
-                  <i class="bi bi-star-fill"></i>
-                  Save Favorite
-                </button>
-              </div>
-              }
-              }
-              <div class="d-flex justify-content-between mt-3">
-                <button class="btn btn-secondary btn-sm" (click)="changePage('matches', -1)" [disabled]="matchesPage === 1">Anterior</button>
-                <button class="btn btn-secondary btn-sm" (click)="changePage('matches', 1)">Siguiente</button>
-              </div>
-              }
+      <div *ngIf="currentView === 'matches'">
+        @for (p of matches; track $index) {
+        @if (p.opponents?.length === 2) {
+        <div class="card-dark glow-hover p-3 mb-3">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <div class="text-center w-25">
+              <img [src]="p.opponents[0].opponent.image_url" class="img-fluid rounded mb-2" style="max-width:60px" />
+              <p class="mb-0 small">{{ p.opponents[0].opponent.name }}</p>
+            </div>
+            <div class="text-center w-50">
+              <p class="fw-bold mb-1">VS</p>
+              <p class="mb-0"><strong>Videogame:</strong> {{ p.videogame?.name || 'Unknown' }}</p>
+            </div>
+            <div class="text-center w-25">
+              <img [src]="p.opponents[1].opponent.image_url" class="img-fluid rounded mb-2" style="max-width:60px" />
+              <p class="mb-0 small">{{ p.opponents[1].opponent.name }}</p>
             </div>
           </div>
-        </section>
-
-        <!-- RECOMPENSAS -->
+          <small class="text-success d-block text-center"><i class="bi bi-broadcast-pin me-1"></i>Live stream</small>
+          <button class="btn btn-accent btn-sm mt-3 w-100" (click)="addToFavorites('match', p.id)"><i class="bi bi-star-fill"></i> Save</button>
+        </div>
+        }
+        }
       </div>
     </div>
   </section>
-  <section class="section-rewards py-5 bg-black">
+
+  <section class="section-dark py-5">
     <div class="container">
-      <h2 class="section-title mb-4">REWARDS</h2>
+      <h2 class="h4 text-accent mb-4">Rewards</h2>
       <div class="row g-4 justify-content-center">
         <div class="col-12 col-md-4">
-          <div
-            class="reward-card bg-secondary p-4 rounded text-center shadow-sm border border-info h-100 d-flex flex-column justify-content-center">
-            <h4 class="text-warning mb-3">💰 500 coins</h4>
-            <p class="mb-0 text-light fw-semibold">For watching 3 live matches</p>
+          <div class="card-dark text-center p-4 glow-hover">
+            <h4 class="mb-3">💰 500 coins</h4>
+            <p class="mb-0">For watching 3 live matches</p>
           </div>
         </div>
         <div class="col-12 col-md-4">
-          <div
-            class="reward-card bg-secondary p-4 rounded text-center shadow-sm border border-info h-100 d-flex flex-column justify-content-center">
-            <h4 class="text-warning mb-3">🆕 Sign Up</h4>
-            <p class="mb-0 text-light fw-semibold">For signing up on the platform</p>
+          <div class="card-dark text-center p-4 glow-hover">
+            <h4 class="mb-3">🆕 Sign Up</h4>
+            <p class="mb-0">For signing up on the platform</p>
           </div>
         </div>
         <div class="col-12 col-md-4">
-          <div
-            class="reward-card bg-secondary p-4 rounded text-center shadow-sm border border-info h-100 d-flex flex-column justify-content-center">
-            <h4 class="text-warning mb-3">🏅 Golden badge</h4>
-            <p class="mb-0 text-light fw-semibold">For logging in 7 days in a row</p>
+          <div class="card-dark text-center p-4 glow-hover">
+            <h4 class="mb-3">🏅 Golden badge</h4>
+            <p class="mb-0">For logging in 7 days in a row</p>
           </div>
         </div>
       </div>
-
     </div>
   </section>
 </main>

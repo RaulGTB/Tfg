@@ -1,41 +1,24 @@
-<main class="esports-home bg-dark text-white d-flex align-items-center justify-content-center" style="min-height: 100vh;">
-  <section class="login-section bg-black p-5 rounded shadow" style="max-width: 600px; width: 100%;">
-    <h2 class="section-title mb-4 text-center">Iniciar Sesión</h2>
+<main class="d-flex align-items-center justify-content-center" style="min-height:100vh">
+  <section class="login-section card-dark p-5 shadow fade-up">
+    <h2 class="text-center mb-4">Iniciar Sesión</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
-
       <div class="mb-3">
-        <label for="usernameOrEmail" class="form-label text-white">Usuario o correo electrónico</label>
-        <input
-          id="usernameOrEmail"
-          type="text"
-          formControlName="usernameOrEmail"
-          class="form-control bg-secondary text-white border-0"
-          placeholder="usuario o correo"
-        />
+        <label for="usernameOrEmail" class="form-label">Usuario o correo electrónico</label>
+        <input id="usernameOrEmail" type="text" formControlName="usernameOrEmail" class="form-control" placeholder="usuario o correo" />
         <div *ngIf="submitted && f['usernameOrEmail'].errors">
           <div *ngIf="f['usernameOrEmail'].errors?.['required']" class="text-danger mt-1 small">Este campo es obligatorio.</div>
         </div>
       </div>
-
       <div class="mb-4">
-        <label for="password" class="form-label text-white">Contraseña</label>
-        <input
-          id="password"
-          type="password"
-          formControlName="password"
-          class="form-control bg-secondary text-white border-0"
-          placeholder="********"
-        />
+        <label for="password" class="form-label">Contraseña</label>
+        <input id="password" type="password" formControlName="password" class="form-control" placeholder="********" />
         <div *ngIf="submitted && f['password'].errors">
           <div *ngIf="f['password'].errors?.['required']" class="text-danger mt-1 small">La contraseña es obligatoria.</div>
         </div>
       </div>
-
-      <button type="submit" class="btn btn-outline-light w-100">Entrar</button>
-
+      <button type="submit" class="btn btn-accent w-100 btn-submit">Entrar</button>
       <div *ngIf="errorMsg" class="alert alert-danger mt-3">{{ errorMsg }}</div>
       <div *ngIf="successMsg" class="alert alert-success mt-3">{{ successMsg }}</div>
-
     </form>
   </section>
 </main>

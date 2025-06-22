@@ -1,23 +1,27 @@
-.btn-register {
-  background-color: transparent;
-  border: 1px solid #cddc39;
-  color: #cddc39;
-  transition: background-color 0.3s ease, color 0.3s ease;
+.login-section {
+  width: 100%;
+  max-width: 500px;
 }
 
-.btn-register:hover {
-  background-color: #cddc39;
-  color: #1a1a1a;
-  transform: scale(1.03);
-  box-shadow: 0 0 10px #cddc39aa;
+.login-section input {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-shadow);
+  color: var(--color-text-primary);
+  border-radius: 8px;
 }
 
-.register-section input:focus {
-  outline: none;
-  box-shadow: 0 0 5px #cddc39;
-}
-.register-section {
-  margin-top: 2%; /* o ajusta según necesidad */
-  margin-bottom: 8%; /* o ajusta según necesidad */
+.login-section input::placeholder {
+  color: var(--color-text-secondary);
 }
 
+.btn-submit {
+  background-color: var(--color-accent);
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 600;
+}
+.btn-submit:hover {
+  background-color: #00e6a0;
+}
