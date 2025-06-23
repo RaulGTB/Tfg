@@ -1,0 +1,39 @@
+.card-series {
+  background-color: #1c1c1c;
+  border-radius: 1.5rem;
+  border: 1px solid #2e2e2e;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(205, 220, 57, 0.08);
+  color: #eaeaea;
+}
+.card-series:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 16px #cddc39aa;
+}
+.series-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #5df0d9;
+  display: flex;
+  align-items: center;
+}
+.series-header {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #cddc39;
+  border: 1px solid #cddc39;
+  border-radius: 1.25rem;
+  padding: 0.25rem 0.75rem;
+  letter-spacing: 0.5px;
+  background-color: transparent;
+}
+.text-gold {
+  color: #fbc02d;
+}
+.card-series p,
+.card-series .text-muted,
+.card-series .small {
+  color: #fff !important;
+}

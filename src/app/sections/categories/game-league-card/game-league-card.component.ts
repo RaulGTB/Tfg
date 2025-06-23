@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule],
   templateUrl: './game-league-card.component.html',
-  styleUrls: ['./game-league-card.component.scss']
+  styleUrls: ['./game-league-card.component.css']
 })
 export class GameLeagueCardComponent {
   @Input() leagues: any[] | null = null;

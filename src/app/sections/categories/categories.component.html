@@ -29,20 +29,38 @@
             class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewLoL === 'matches'}">Matches</button>
         </div>
 
-        @if (currentViewLoL === 'leagues') {
-          <game-league-card [leagues]="lolLeagues"></game-league-card>
+        @if (currentViewLoL === 'leagues') {<app-paginator [totalItems]="lolLeagues.length"
+          [itemsPerPage]="itemsPerPage" [currentPage]="lolPageMap['leagues']"
+          (pageChanged)="lolChangePage('leagues', $event)">
+        </app-paginator>
+        <game-league-card [leagues]="paginatedLoLLeagues"></game-league-card>
+
         }
 
-        @if (currentViewLoL === 'series') {
-          <game-series-card [series]="lolSeries"></game-series-card>
+        @if (currentViewLoL === 'series') {<app-paginator [totalItems]="lolSeries.length" [itemsPerPage]="itemsPerPage"
+          [currentPage]="lolPageMap['series']" (pageChanged)="lolChangePage('series', $event)">
+        </app-paginator>
+        <game-series-card [series]="paginatedLoLSeries"></game-series-card>
+
+
         }
 
-        @if (currentViewLoL === 'tournaments') {
-          <game-tournament-card [tournaments]="lolTournaments"></game-tournament-card>
+        @if (currentViewLoL === 'tournaments') {<app-paginator [totalItems]="lolTournaments.length"
+          [itemsPerPage]="itemsPerPage" [currentPage]="lolPageMap['tournaments']"
+          (pageChanged)="lolChangePage('tournaments', $event)">
+        </app-paginator>
+        <game-tournament-card [tournaments]="paginatedLoLTournaments"></game-tournament-card>
+
+
         }
 
-        @if (currentViewLoL === 'matches') {
-          <game-match-card [matches]="lolMatches"></game-match-card>
+        @if (currentViewLoL === 'matches') {<app-paginator [totalItems]="lolMatches.length"
+          [itemsPerPage]="itemsPerPage" [currentPage]="lolPageMap['matches']"
+          (pageChanged)="lolChangePage('matches', $event)">
+        </app-paginator>
+        <game-match-card [matches]="paginatedLoLMatches"></game-match-card>
+
+
         }
       </div>
 
@@ -65,19 +83,31 @@
         </div>
 
         @if (currentViewCSGO === 'leagues') {
-          <game-league-card [leagues]="CSGOLeagues"></game-league-card>
+        <app-paginator [totalItems]="CSGOLeagues.length" [itemsPerPage]="itemsPerPage"
+          [currentPage]="csgoPageMap['leagues']" (pageChanged)="csgoChangePage('leagues', $event)">
+        </app-paginator>
+        <game-league-card [leagues]="paginatedCSGOLeagues"></game-league-card>
         }
 
         @if (currentViewCSGO === 'series') {
-          <game-series-card [series]="CSGOSeries"></game-series-card>
+        <app-paginator [totalItems]="CSGOSeries.length" [itemsPerPage]="itemsPerPage"
+          [currentPage]="csgoPageMap['series']" (pageChanged)="csgoChangePage('series', $event)">
+        </app-paginator>
+        <game-series-card [series]="paginatedCSGOSeries"></game-series-card>
         }
 
         @if (currentViewCSGO === 'tournaments') {
-          <game-tournament-card [tournaments]="CSGOTournaments"></game-tournament-card>
+        <app-paginator [totalItems]="CSGOTournaments.length" [itemsPerPage]="itemsPerPage"
+          [currentPage]="csgoPageMap['tournaments']" (pageChanged)="csgoChangePage('tournaments', $event)">
+        </app-paginator>
+        <game-tournament-card [tournaments]="paginatedCSGOTournaments"></game-tournament-card>
         }
 
         @if (currentViewCSGO === 'matches') {
-          <game-match-card [matches]="CSGOMatches"></game-match-card>
+        <app-paginator [totalItems]="CSGOMatches.length" [itemsPerPage]="itemsPerPage"
+          [currentPage]="csgoPageMap['matches']" (pageChanged)="csgoChangePage('matches', $event)">
+        </app-paginator>
+        <game-match-card [matches]="paginatedCSGOMatches"></game-match-card>
         }
       </div>
 
@@ -89,7 +119,8 @@
         <h3 class="game-title mb-3">Dota 2</h3>
         <div class="game-filters">
           <button (click)="currentViewDota2 === 'leagues' ? currentViewDota2 = '' : currentViewDota2 = 'leagues'"
-            class="btn btn-outline-light btn-sm" [ngClass]="{ 'active': currentViewDota2 === 'leagues' }">Leagues</button>
+            class="btn btn-outline-light btn-sm"
+            [ngClass]="{ 'active': currentViewDota2 === 'leagues' }">Leagues</button>
           <button (click)="currentViewDota2 === 'series' ? currentViewDota2 = '' : currentViewDota2 = 'series'"
             class="btn btn-outline-light btn-sm" [ngClass]="{ 'active': currentViewDota2 === 'series' }">Series</button>
           <button
@@ -102,20 +133,33 @@
         </div>
 
         @if (currentViewDota2 === 'leagues') {
-          <game-league-card [leagues]="dota2Leagues"></game-league-card>
+        <app-paginator [totalItems]="dota2Leagues.length" [itemsPerPage]="itemsPerPage"
+          [currentPage]="dota2PageMap['leagues']" (pageChanged)="dota2ChangePage('leagues', $event)">
+        </app-paginator>
+        <game-league-card [leagues]="paginatedDota2Leagues"></game-league-card>
         }
 
         @if (currentViewDota2 === 'series') {
-          <game-series-card [series]="dota2Series"></game-series-card>
+        <app-paginator [totalItems]="dota2Series.length" [itemsPerPage]="itemsPerPage"
+          [currentPage]="dota2PageMap['series']" (pageChanged)="dota2ChangePage('series', $event)">
+        </app-paginator>
+        <game-series-card [series]="paginatedDota2Series"></game-series-card>
         }
 
         @if (currentViewDota2 === 'tournaments') {
-          <game-tournament-card [tournaments]="dota2Tournaments"></game-tournament-card>
+        <app-paginator [totalItems]="dota2Tournaments.length" [itemsPerPage]="itemsPerPage"
+          [currentPage]="dota2PageMap['tournaments']" (pageChanged)="dota2ChangePage('tournaments', $event)">
+        </app-paginator>
+        <game-tournament-card [tournaments]="paginatedDota2Tournaments"></game-tournament-card>
         }
 
         @if (currentViewDota2 === 'matches') {
-          <game-match-card [matches]="dota2Matches"></game-match-card>
+        <app-paginator [totalItems]="dota2Matches.length" [itemsPerPage]="itemsPerPage"
+          [currentPage]="dota2PageMap['matches']" (pageChanged)="dota2ChangePage('matches', $event)">
+        </app-paginator>
+        <game-match-card [matches]="paginatedDota2Matches"></game-match-card>
         }
+
       </div>
 
       <!-- === Valorant === -->
@@ -125,32 +169,51 @@
         </ng-container>
         <h3 class="game-title mb-3">Valorant</h3>
         <div class="game-filters">
-          <button (click)="currentViewValorant === 'leagues' ? currentViewValorant = '' : currentViewValorant = 'leagues'"
-            class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewValorant === 'leagues'}">Leagues</button>
+          <button
+            (click)="currentViewValorant === 'leagues' ? currentViewValorant = '' : currentViewValorant = 'leagues'"
+            class="btn btn-outline-light btn-sm"
+            [ngClass]="{'active': currentViewValorant === 'leagues'}">Leagues</button>
           <button (click)="currentViewValorant === 'series' ? currentViewValorant = '' : currentViewValorant = 'series'"
-            class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewValorant === 'series'}">Series</button>
-          <button (click)="currentViewValorant === 'tournaments' ? currentViewValorant = '' : currentViewValorant = 'tournaments'"
+            class="btn btn-outline-light btn-sm"
+            [ngClass]="{'active': currentViewValorant === 'series'}">Series</button>
+          <button
+            (click)="currentViewValorant === 'tournaments' ? currentViewValorant = '' : currentViewValorant = 'tournaments'"
             class="btn btn-outline-light btn-sm"
             [ngClass]="{'active': currentViewValorant === 'tournaments'}">Tournaments</button>
-          <button (click)="currentViewValorant === 'matches' ? currentViewValorant = '' : currentViewValorant = 'matches'"
-            class="btn btn-outline-light btn-sm" [ngClass]="{'active': currentViewValorant === 'matches'}">Matches</button>
+          <button
+            (click)="currentViewValorant === 'matches' ? currentViewValorant = '' : currentViewValorant = 'matches'"
+            class="btn btn-outline-light btn-sm"
+            [ngClass]="{'active': currentViewValorant === 'matches'}">Matches</button>
         </div>
 
         @if (currentViewValorant === 'leagues') {
-          <game-league-card [leagues]="valorantLeagues"></game-league-card>
+        <app-paginator [totalItems]="valorantLeagues.length" [itemsPerPage]="itemsPerPage"
+          [currentPage]="valorantPageMap['leagues']" (pageChanged)="valorantChangePage('leagues', $event)">
+        </app-paginator>
+        <game-league-card [leagues]="paginatedValorantLeagues"></game-league-card>
         }
 
         @if (currentViewValorant === 'series') {
-          <game-series-card [series]="valorantSeries"></game-series-card>
+        <app-paginator [totalItems]="valorantSeries.length" [itemsPerPage]="itemsPerPage"
+          [currentPage]="valorantPageMap['series']" (pageChanged)="valorantChangePage('series', $event)">
+        </app-paginator>
+        <game-series-card [series]="paginatedValorantSeries"></game-series-card>
         }
 
         @if (currentViewValorant === 'tournaments') {
-          <game-tournament-card [tournaments]="valorantTournaments"></game-tournament-card>
+        <app-paginator [totalItems]="valorantTournaments.length" [itemsPerPage]="itemsPerPage"
+          [currentPage]="valorantPageMap['tournaments']" (pageChanged)="valorantChangePage('tournaments', $event)">
+        </app-paginator>
+        <game-tournament-card [tournaments]="paginatedValorantTournaments"></game-tournament-card>
         }
 
         @if (currentViewValorant === 'matches') {
-          <game-match-card [matches]="valorantMatches"></game-match-card>
+        <app-paginator [totalItems]="valorantMatches.length" [itemsPerPage]="itemsPerPage"
+          [currentPage]="valorantPageMap['matches']" (pageChanged)="valorantChangePage('matches', $event)">
+        </app-paginator>
+        <game-match-card [matches]="paginatedValorantMatches"></game-match-card>
         }
+
       </div>
     </div>
   </section>

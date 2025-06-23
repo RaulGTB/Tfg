@@ -5,6 +5,7 @@ import { GameLeagueCardComponent } from './game-league-card/game-league-card.com
 import { GameSeriesCardComponent } from './game-series-card/game-series-card.component';
 import { GameTournamentCardComponent } from './game-tournament-card/game-tournament-card.component';
 import { GameMatchCardComponent } from './game-match-card/game-match-card.component';
+import { PaginatorComponent } from "../../shared/paginator/paginator.component";
 
 @Component({
   selector: 'app-categories',
@@ -13,7 +14,8 @@ import { GameMatchCardComponent } from './game-match-card/game-match-card.compon
     GameLeagueCardComponent,
     GameSeriesCardComponent,
     GameTournamentCardComponent,
-    GameMatchCardComponent
+    GameMatchCardComponent,
+    PaginatorComponent
   ],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.css',
@@ -61,7 +63,7 @@ export class CategoriesComponent {
   valorantLeagues: any[] = [];
   valorantSeries: any[] = [];
   valorantTournaments: any[] = [];
-  valorantMatches: any[] = [];    
+  valorantMatches: any[] = [];
 
   // LoL
 
@@ -202,4 +204,152 @@ export class CategoriesComponent {
   formatSlug(slug: string): string {
     return slug ? slug.replace(/-/g, ' ').toUpperCase() : 'N/A';
   }
+
+  //Paginacion 
+  itemsPerPage = 6;
+
+  lolPageMap: Record<string, number> = {
+    leagues: 1,
+    series: 1,
+    tournaments: 1,
+    matches: 1
+  };
+  csgoPageMap: Record<string, number> = {
+    leagues: 1,
+    series: 1,
+    tournaments: 1,
+    matches: 1
+  };
+  dota2PageMap: Record<string, number> = {
+    leagues: 1,
+    series: 1,
+    tournaments: 1,
+    matches: 1
+  };
+  valorantPageMap: Record<string, number> = {
+    leagues: 1,
+    series: 1,
+    tournaments: 1,
+    matches: 1
+  };
+
+  // para acceder a los arrays originales
+  lolItemsMap: Record<string, any[]> = {
+    leagues: this.lolLeagues,
+    series: this.lolSeries,
+    tournaments: this.lolTournaments,
+    matches: this.lolMatches
+  };
+
+  csgoItemsMap: Record<string, any[]> = {
+    leagues: this.CSGOLeagues,
+    series: this.CSGOSeries,
+    tournaments: this.CSGOTournaments,
+    matches: this.CSGOMatches
+  };
+
+  dota2ItemsMap: Record<string, any[]> = {
+    leagues: this.dota2Leagues,
+    series: this.dota2Series,
+    tournaments: this.dota2Tournaments,
+    matches: this.dota2Matches
+  };
+
+  valorantItemsMap: Record<string, any[]> = {
+    leagues: this.valorantLeagues,
+    series: this.valorantSeries,
+    tournaments: this.valorantTournaments,
+    matches: this.valorantMatches
+  };
+
+
+  //lol
+  get paginatedLoLLeagues() {
+    const start = (this.lolPageMap['leagues'] - 1) * this.itemsPerPage;
+    return this.lolLeagues.slice(start, start + this.itemsPerPage);
+  }
+  get paginatedLoLSeries() {
+    const start = (this.lolPageMap['series'] - 1) * this.itemsPerPage;
+    return this.lolSeries.slice(start, start + this.itemsPerPage);
+  }
+
+  get paginatedLoLTournaments() {
+    const start = (this.lolPageMap['tournaments'] - 1) * this.itemsPerPage;
+    return this.lolTournaments.slice(start, start + this.itemsPerPage);
+  }
+
+  get paginatedLoLMatches() {
+    const start = (this.lolPageMap['matches'] - 1) * this.itemsPerPage;
+    return this.lolMatches.slice(start, start + this.itemsPerPage);
+  }
+  // crea también paginatedLoLSeries, etc.
+
+  lolChangePage(type: string, page: number) {
+    this.lolPageMap[type] = page;
+  }
+
+  // CSGO
+  get paginatedCSGOLeagues() {
+    const start = (this.csgoPageMap['leagues'] - 1) * this.itemsPerPage;
+    return this.CSGOLeagues.slice(start, start + this.itemsPerPage);
+  }
+  get paginatedCSGOSeries() {
+    const start = (this.csgoPageMap['series'] - 1) * this.itemsPerPage;
+    return this.CSGOSeries.slice(start, start + this.itemsPerPage);
+  }
+  get paginatedCSGOTournaments() {
+    const start = (this.csgoPageMap['tournaments'] - 1) * this.itemsPerPage;
+    return this.CSGOTournaments.slice(start, start + this.itemsPerPage);
+  }
+  get paginatedCSGOMatches() {
+    const start = (this.csgoPageMap['matches'] - 1) * this.itemsPerPage;
+    return this.CSGOMatches.slice(start, start + this.itemsPerPage);
+  }
+  csgoChangePage(type: string, page: number) {
+    this.csgoPageMap[type] = page;
+  }
+
+  // Dota 2
+  get paginatedDota2Leagues() {
+    const start = (this.dota2PageMap['leagues'] - 1) * this.itemsPerPage;
+    return this.dota2Leagues.slice(start, start + this.itemsPerPage);
+  }
+  get paginatedDota2Series() {
+    const start = (this.dota2PageMap['series'] - 1) * this.itemsPerPage;
+    return this.dota2Series.slice(start, start + this.itemsPerPage);
+  }
+  get paginatedDota2Tournaments() {
+    const start = (this.dota2PageMap['tournaments'] - 1) * this.itemsPerPage;
+    return this.dota2Tournaments.slice(start, start + this.itemsPerPage);
+  }
+  get paginatedDota2Matches() {
+    const start = (this.dota2PageMap['matches'] - 1) * this.itemsPerPage;
+    return this.dota2Matches.slice(start, start + this.itemsPerPage);
+  }
+  dota2ChangePage(type: string, page: number) {
+    this.dota2PageMap[type] = page;
+  }
+
+  // Valorant
+  get paginatedValorantLeagues() {
+    const start = (this.valorantPageMap['leagues'] - 1) * this.itemsPerPage;
+    return this.valorantLeagues.slice(start, start + this.itemsPerPage);
+  }
+  get paginatedValorantSeries() {
+    const start = (this.valorantPageMap['series'] - 1) * this.itemsPerPage;
+    return this.valorantSeries.slice(start, start + this.itemsPerPage);
+  }
+  get paginatedValorantTournaments() {
+    const start = (this.valorantPageMap['tournaments'] - 1) * this.itemsPerPage;
+    return this.valorantTournaments.slice(start, start + this.itemsPerPage);
+  }
+  get paginatedValorantMatches() {
+    const start = (this.valorantPageMap['matches'] - 1) * this.itemsPerPage;
+    return this.valorantMatches.slice(start, start + this.itemsPerPage);
+  }
+  valorantChangePage(type: string, page: number) {
+    this.valorantPageMap[type] = page;
+  }
+
+
 }

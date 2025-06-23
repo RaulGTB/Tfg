@@ -7,7 +7,7 @@ import { CommonModule, DatePipe, TitleCasePipe } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, DatePipe, TitleCasePipe],
   templateUrl: './game-match-card.component.html',
-  styleUrls: ['./game-match-card.component.scss']
+  styleUrls: ['./game-match-card.component.css']
 })
 export class GameMatchCardComponent {
   @Input() matches: any[] | null = null;

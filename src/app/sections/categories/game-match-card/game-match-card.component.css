@@ -1,0 +1,59 @@
+.card-match {
+  background-color: #141414;
+  border: 2px solid #2d2d2d;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  transition: all 0.25s ease;
+  color: #f2f2f2;
+}
+.card-match:hover {
+  box-shadow: 0 0 16px #cddc39aa;
+  transform: scale(1.015);
+}
+.card-match .card-header {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 0.5rem;
+}
+.card-match .match-title {
+  color: #5df0d9;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.card-match .match-info {
+  font-size: 0.88rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+.card-match .match-info i {
+  width: 1.2rem;
+  color: #cddc39;
+}
+
+.badge-custom {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 1px solid #cddc39;
+  color: #cddc39;
+  font-size: 0.7rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 1rem;
+  font-weight: 500;
+}
+.status-not_started {
+  background-color: #555;
+  color: #ccc;
+}
+.status-running {
+  background-color: #ff9800;
+  color: #fff;
+}
+.status-finished {
+  background-color: #4caf50;
+  color: #fff;
+}

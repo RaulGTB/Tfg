@@ -1,0 +1,15 @@
+<nav class="d-flex justify-content-center my-3">
+  <button class="btn btn-sm btn-light me-2"
+          [disabled]="currentPage === 1"
+          (click)="pageChanged.emit(currentPage - 1)">
+    Anterior
+  </button>
+
+  <span class="text-white align-self-center">Página {{ currentPage }} de {{ totalPages }}</span>
+
+  <button class="btn btn-sm btn-light ms-2"
+          [disabled]="currentPage === totalPages"
+          (click)="pageChanged.emit(currentPage + 1)">
+    Siguiente
+  </button>
+</nav>
