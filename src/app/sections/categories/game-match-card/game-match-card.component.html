@@ -1,0 +1,41 @@
+<ng-container *ngIf="matches?.length">
+  <div class="row g-4 mt-4">
+    <ng-container *ngFor="let match of matches">
+      <div class="col-12 col-md-6 col-xl-4">
+        <div class="card card-match h-100">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <div class="text-white small fw-semibold">
+              {{ match.league?.name }}
+            </div>
+            <span class="badge badge-custom text-uppercase">
+              {{ match.tournament?.slug ? match.tournament.slug.replace('-', ' ') : '' }}
+            </span>
+          </div>
+          <div class="card-body p-0">
+            <h5 class="match-title mb-3">{{ match.name }}</h5>
+            <ul class="list-unstyled match-info mb-0">
+              <li class="mb-1">
+                <i class="bi bi-calendar-event me-2 text-warning"></i>
+                {{ match.begin_at | date:'MMM d, y' }}
+              </li>
+              <li class="mb-1">
+                <i class="bi bi-controller me-2 text-success"></i>
+                Format: Bo{{ match.number_of_games }}
+              </li>
+              <li>
+                <span class="badge"
+                      [ngClass]="{
+                        'bg-warning text-dark': match.status === 'running',
+                        'bg-secondary': match.status === 'finished',
+                        'bg-success': match.status === 'not_started'
+                      }">
+                  {{ match.status | titlecase }}
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>
