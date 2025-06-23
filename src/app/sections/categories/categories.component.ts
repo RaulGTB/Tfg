@@ -1,10 +1,20 @@
 import { Component } from '@angular/core';
 import { DataService } from './../../data.service';
 import { CommonModule } from '@angular/common';
+import { GameLeagueCardComponent } from './game-league-card/game-league-card.component';
+import { GameSeriesCardComponent } from './game-series-card/game-series-card.component';
+import { GameTournamentCardComponent } from './game-tournament-card/game-tournament-card.component';
+import { GameMatchCardComponent } from './game-match-card/game-match-card.component';
 
 @Component({
   selector: 'app-categories',
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    GameLeagueCardComponent,
+    GameSeriesCardComponent,
+    GameTournamentCardComponent,
+    GameMatchCardComponent
+  ],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.css',
 })
