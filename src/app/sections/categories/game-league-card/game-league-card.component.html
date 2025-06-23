@@ -3,7 +3,8 @@
     <ng-container *ngFor="let league of leagues">
       <div class="col-12 col-md-6 col-xl-4">
         <div class="card card-league h-100 text-center">
-          <img [src]="league.image_url || 'assets/images/red-cross.png'" class="card-img-top img-fluid p-3" [alt]="league.name" />
+          <img [src]="league.image_url || 'assets/images/red-cross.png'" class="card-img-top img-fluid p-3"
+            [alt]="league.name" />
           <div class="card-body p-3">
             <h5 class="card-title mb-2">{{ league.name }}</h5>
             <p class="small mb-1">
@@ -13,6 +14,12 @@
             <span class="badge bg-secondary text-uppercase small">
               {{ league.slug ? league.slug.replace('-', ' ') : 'N/A' }}
             </span>
+            <button class="btn btn-sm btn-warning mt-3 w-100 d-flex align-items-center justify-content-center gap-2"
+              (click)="addToFavorites(league.id)" [disabled]="addedFavorites.has(league.id)">
+              <i class="bi bi-star-fill"></i>
+              {{ addedFavorites.has(league.id) ? 'Favorito guardado' : 'Guardar favorito' }}
+            </button>
+
           </div>
         </div>
       </div>

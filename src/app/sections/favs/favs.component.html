@@ -24,7 +24,7 @@
     <div *ngIf="successMsg" class="alert alert-success fade-up">{{ successMsg }}</div>
     <div *ngIf="errorMsg" class="alert alert-danger fade-up">{{ errorMsg }}</div>
 
-    <button class="btn btn-danger mb-4" (click)="deleteAllFavorites()">
+    <button *ngIf="hasFavorites()" class="btn btn-danger mb-4" (click)="deleteAllFavorites()">
       <i class="bi bi-trash-fill me-1"></i>Eliminar todos
     </button>
 
@@ -43,12 +43,20 @@
             <div class="d-flex align-items-center mb-3">
               <img *ngIf="fav.itemData?.image_url" [src]="fav.itemData.image_url" alt="imagen"
                 class="me-3 rounded-circle border border-light" width="50" height="50" />
-              <h5 class="mb-0 text-light">{{ fav.itemData?.name || ('ID ' + fav.itemId) }}</h5>
+              <h5 class="mb-0 text-light">{{ fav.itemData?.full_name || fav.itemData?.name || 'Sin nombre' }}</h5>
             </div>
 
             <!-- Contenido dinámico según tipo -->
             <div class="mb-3">
               <ng-container [ngSwitch]="fav.itemType">
+
+                <ng-container *ngSwitchCase="'series'">
+                  <p><strong>Nombre completo:</strong> {{ fav.itemData?.full_name || 'N/A' }}</p>
+                  <p><strong>Año:</strong> {{ fav.itemData?.year || 'N/A' }}</p>
+                  <p><strong>Juego:</strong> {{ fav.itemData?.videogame?.name || 'N/A' }}</p>
+                  <p><strong>Liga:</strong> {{ fav.itemData?.league?.name || 'N/A' }}</p>
+                </ng-container>
+
 
                 <!-- Jugador -->
                 <ng-container *ngSwitchCase="'player'">
@@ -74,12 +82,10 @@
                   <p><strong>Juego:</strong> {{ fav.itemData?.videogame?.name || 'N/A' }}</p>
                 </ng-container>
 
-                <ng-container *ngSwitchCase="'tournament'">
-                  <p><strong>Serie:</strong> {{ fav.itemData?.serie?.full_name || 'Sin serie' }}</p>
-                  <p><strong>Juego:</strong> {{ fav.itemData?.videogame?.name || 'N/A' }}</p>
-                </ng-container>
-
-                <ng-container *ngSwitchCase="'csgo_tournament'">
+                <ng-container *ngIf="fav.itemType?.includes('_tournament')">
+                  <p><strong>Nombre:</strong> {{ fav.itemData?.name || 'Sin nombre' }}</p>
+                  <p><strong>Tipo:</strong> {{ fav.itemData?.type || 'N/A' }}</p>
+                  <p><strong>Región:</strong> {{ fav.itemData?.region || 'N/A' }}</p>
                   <p><strong>Serie:</strong> {{ fav.itemData?.serie?.full_name || 'Sin serie' }}</p>
                   <p><strong>Juego:</strong> {{ fav.itemData?.videogame?.name || 'N/A' }}</p>
                 </ng-container>

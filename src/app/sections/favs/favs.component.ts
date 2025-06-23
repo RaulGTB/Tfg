@@ -27,7 +27,7 @@ export class FavsComponent implements OnInit {
   // Para usar Object.keys en el HTML
   objectKeys = Object.keys;
 
-  constructor(private data: DataService) {}
+  constructor(private data: DataService) { }
 
   ngOnInit() {
     this.loadFavorites();
@@ -59,26 +59,32 @@ export class FavsComponent implements OnInit {
   }
 
   getOpponentsNames(opponents: any[]): string {
-  if (!opponents || opponents.length === 0) return 'TBD';
-  return opponents.map(o => o.opponent?.name).filter(Boolean).join(' vs ');
-}
+    if (!opponents || opponents.length === 0) return 'TBD';
+    return opponents.map(o => o.opponent?.name).filter(Boolean).join(' vs ');
+  }
 
 
   removeFavorite(id: number) {
     this.data.removeFavorite(id).subscribe({
-      next: () => { this.successMsg = 'Favorito eliminado'; this.loadFavorites(); },
-      error: () => { this.errorMsg = 'No se pudo eliminar el favorito'; }
+      next: () => this.loadFavorites(),
+      error: () => console.error('No se pudo eliminar el favorito')
     });
   }
+
+
 
   deleteAllFavorites() {
     this.data.deleteAllFavorites().subscribe({
-      next: () => { this.successMsg = 'Favoritos eliminados'; this.loadFavorites(); },
-      error: () => { this.errorMsg = 'No se pudieron eliminar los favoritos'; }
+      next: () => this.loadFavorites(),
+      error: () => console.error('No se pudieron eliminar los favoritos')
     });
   }
 
 
+
+  hasFavorites(): boolean {
+    return Object.values(this.groupedFavorites).some(arr => arr.length > 0);
+  }
 
 
 }

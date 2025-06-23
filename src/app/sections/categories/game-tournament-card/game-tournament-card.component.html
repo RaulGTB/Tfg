@@ -22,11 +22,17 @@
               </li>
             </ul>
             <div *ngIf="tournament.teams?.length" class="d-flex flex-wrap gap-2 mt-auto">
-              <div *ngFor="let team of tournament.teams" class="team-pill d-flex align-items-center gap-2 px-2 py-1 rounded">
-                <img [src]="team.image_url || 'assets/images/red-cross.png'" [alt]="team.name" width="24" height="24" class="rounded-circle bg-dark border">
+              <div *ngFor="let team of tournament.teams"
+                class="team-pill d-flex align-items-center gap-2 px-2 py-1 rounded">
+                <img [src]="team.image_url || 'assets/images/red-cross.png'" [alt]="team.name" width="24" height="24"
+                  class="rounded-circle bg-dark border">
                 <span class="small text-light">{{ team.acronym }}</span>
               </div>
             </div>
+            <!-- <button class="btn btn-sm btn-warning w-100 d-flex align-items-center justify-content-center gap-2"
+              (click)="addToFavorites(tournament.id)">
+              <i class="bi bi-star-fill"></i> Guardar Favorito
+            </button> -->
           </div>
         </div>
       </div>

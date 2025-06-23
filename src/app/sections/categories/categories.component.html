@@ -49,7 +49,7 @@
           [itemsPerPage]="itemsPerPage" [currentPage]="lolPageMap['tournaments']"
           (pageChanged)="lolChangePage('tournaments', $event)">
         </app-paginator>
-        <game-tournament-card [tournaments]="paginatedLoLTournaments"></game-tournament-card>
+        <game-tournament-card [tournaments]="paginatedLoLTournaments" game ="lol"></game-tournament-card>
 
 
         }
@@ -100,7 +100,7 @@
         <app-paginator [totalItems]="CSGOTournaments.length" [itemsPerPage]="itemsPerPage"
           [currentPage]="csgoPageMap['tournaments']" (pageChanged)="csgoChangePage('tournaments', $event)">
         </app-paginator>
-        <game-tournament-card [tournaments]="paginatedCSGOTournaments"></game-tournament-card>
+        <game-tournament-card [tournaments]="paginatedCSGOTournaments" game="csgo"></game-tournament-card>
         }
 
         @if (currentViewCSGO === 'matches') {
@@ -150,7 +150,7 @@
         <app-paginator [totalItems]="dota2Tournaments.length" [itemsPerPage]="itemsPerPage"
           [currentPage]="dota2PageMap['tournaments']" (pageChanged)="dota2ChangePage('tournaments', $event)">
         </app-paginator>
-        <game-tournament-card [tournaments]="paginatedDota2Tournaments"></game-tournament-card>
+        <game-tournament-card [tournaments]="paginatedDota2Tournaments" game="dota2"></game-tournament-card>
         }
 
         @if (currentViewDota2 === 'matches') {
@@ -204,7 +204,7 @@
         <app-paginator [totalItems]="valorantTournaments.length" [itemsPerPage]="itemsPerPage"
           [currentPage]="valorantPageMap['tournaments']" (pageChanged)="valorantChangePage('tournaments', $event)">
         </app-paginator>
-        <game-tournament-card [tournaments]="paginatedValorantTournaments"></game-tournament-card>
+        <game-tournament-card [tournaments]="paginatedValorantTournaments" game="valorant"></game-tournament-card>
         }
 
         @if (currentViewValorant === 'matches') {
