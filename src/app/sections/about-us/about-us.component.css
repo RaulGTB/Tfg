@@ -72,7 +72,7 @@
 }
 
 .vision-card {
-  background-color: #000000 !important; /* fondo ligeramente distinto al negro puro si quieres diferenciar */
+  background-color: #212529 !important; /* fondo ligeramente distinto al negro puro si quieres diferenciar */
   border: 1px solid #444;
   border-radius: 1.5rem;
   padding: 2rem;
