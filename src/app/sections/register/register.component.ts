@@ -50,12 +50,12 @@ export class RegisterComponent implements OnInit {
 
     this.authService.register({ username, email, password }).subscribe({
       next: () => {
-        this.successMsg = 'Registro correcto, ya puedes iniciar sesión.';
+        this.successMsg = 'Registration successful, you can now log in.';
         this.registerForm.reset();
         this.submitted = false;
       },
       error: err => {
-        this.errorMsg = err?.error?.message || 'Error al registrar el usuario';
+        this.errorMsg = err?.error?.message || 'Error registering the user. Please try again.';
       }
     });
   }

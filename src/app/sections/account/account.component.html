@@ -1,52 +1,43 @@
 <section class="section-account py-5 bg-black text-white border-secondary fade-up">
   <div class="container">
-    <h2 class="section-title mb-5 text-center text-lime pop-in">TU CUENTA</h2>
+    <h2 class="section-title mb-5 text-center text-lime pop-in">YOUR ACCOUNT</h2>
 
 
 
     <div class="col-md-8">
       <form #form="ngForm" (ngSubmit)="saveChanges()" novalidate>
         <div class="mb-3">
-          <label for="name" class="form-label text-lime">Nombre</label>
-           <small class="text-secondary d-block mb-1">Actual: {{ user?.username }}</small>
+          <label for="name" class="form-label text-lime">Name</label>
+          <small class="text-secondary d-block mb-1">Current: {{ user?.username }}</small>
           <input type="text" id="name" class="form-control bg-dark text-white border-secondary" [(ngModel)]="editName"
             name="name" required />
         </div>
 
         <div class="mb-3">
           <label for="email" class="form-label text-lime">Email</label>
-          <small class="text-secondary d-block mb-1">Actual: {{ user?.email }}</small>
+          <small class="text-secondary d-block mb-1">Current: {{ user?.email }}</small>
           <input type="email" id="email" class="form-control bg-dark text-white border-secondary"
             [(ngModel)]="editEmail" name="email" required email />
         </div>
 
-       <div class="mb-3 position-relative">
-  <label for="password" class="form-label text-lime">Nueva Contraseña</label>
-  <small class="text-secondary d-block mb-1">Actual: ********</small>
+        <div class="mb-3 position-relative">
+          <label for="password" class="form-label text-lime">New password</label>
 
-  <input
-    [type]="passwordVisible ? 'text' : 'password'"
-    id="password"
-    class="form-control bg-dark text-white border-secondary"
-    [(ngModel)]="editPassword"
-    name="password"
-  />
+          <input [type]="passwordVisible ? 'text' : 'password'" id="password"
+            class="form-control bg-dark text-white border-secondary" [(ngModel)]="editPassword" name="password" />
 
-  <button
-    type="button"
-    class="btn btn-sm btn-lime-outline password-toggle-btn"
-    (click)="passwordVisible = !passwordVisible"
-    [attr.aria-label]="passwordVisible ? 'Ocultar contraseña' : 'Mostrar contraseña'"
-  >
-    <i [class]="passwordVisible ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
-  </button>
-</div>
+          <button type="button" class="btn btn-sm btn-lime-outline password-toggle-btn mt-3"
+            (click)="passwordVisible = !passwordVisible"
+            [attr.aria-label]="passwordVisible ? 'Hide password' : 'Show password'">
+            <i [class]="passwordVisible ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
+          </button>
+        </div>
 
 
 
 
         <button class="btn btn-lime-outline" type="submit" [disabled]="loading || !form.form.valid">
-          {{ loading ? 'Guardando...' : 'Guardar cambios' }}
+          {{ loading ? 'Saving...' : 'Save changes' }}
         </button>
 
         <div class="mt-3">
@@ -59,8 +50,8 @@
 
   <div class="row text-center mt-4 fade-up">
     <div class="col">
-      <button class="btn btn-lime-outline me-3" (click)="logout()">Cerrar sesión</button>
-      <button class="btn btn-lime-outline" (click)="refreshUser()">Actualizar datos</button>
+      <button class="btn btn-lime-outline me-3" (click)="logout()">Log out</button>
+      <button class="btn btn-lime-outline" (click)="refreshUser()">Update information</button>
     </div>
   </div>
 
