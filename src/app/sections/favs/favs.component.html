@@ -1,31 +1,25 @@
 <section class="section-favorites py-5 bg-black text-white border-top border-secondary fade-up">
 
-  <div class="strip-container d-none d-xl-block">
-    <img src="assets/images/vertical-background.jpg" class="side-fill-img side-left d-none d-xl-block"
-      alt="Decoración izquierda" />
-    <img src="assets/images/vertical-background.jpg" class="side-fill-img side-right d-none d-xl-block"
-      alt="Decoración derecha" />
-  </div>
-
   <div class="container">
 
     <div class="d-flex justify-content-between align-items-center mb-4 fade-up">
       <h4 class="text-light mb-0">
-        <i class="bi bi-bookmark-check-fill me-2 text-warning"></i>Gestionar favoritos
+        <i class="bi bi-bookmark-check-fill me-2 text-warning"></i>Manage favorites
       </h4>
 
     </div>
 
     <!-- Título -->
     <h2 class="section-title mb-5 text-center text-lime pop-in">
-      <i class="bi bi-star-fill me-2 text-warning"></i>Mis favoritos
-    </h2>
+      <i class="bi bi-star-fill me-2 text-warning"></i>My favorites
+      <i class="bi bi-star-fill ms-2 text-warning"></i>
+    </h2> 
 
     <div *ngIf="successMsg" class="alert alert-success fade-up">{{ successMsg }}</div>
     <div *ngIf="errorMsg" class="alert alert-danger fade-up">{{ errorMsg }}</div>
 
     <button *ngIf="hasFavorites()" class="btn btn-danger mb-4" (click)="deleteAllFavorites()">
-      <i class="bi bi-trash-fill me-1"></i>Eliminar todos
+      <i class="bi bi-trash-fill me-1"></i>Delete all
     </button>
 
     <!-- Grupo por tipo -->
@@ -51,56 +45,56 @@
               <ng-container [ngSwitch]="fav.itemType">
 
                 <ng-container *ngSwitchCase="'series'">
-                  <p><strong>Nombre completo:</strong> {{ fav.itemData?.full_name || 'N/A' }}</p>
-                  <p><strong>Año:</strong> {{ fav.itemData?.year || 'N/A' }}</p>
-                  <p><strong>Juego:</strong> {{ fav.itemData?.videogame?.name || 'N/A' }}</p>
-                  <p><strong>Liga:</strong> {{ fav.itemData?.league?.name || 'N/A' }}</p>
+                  <p><strong>Complete name:</strong> {{ fav.itemData?.full_name || 'N/A' }}</p>
+                  <p><strong>Year:</strong> {{ fav.itemData?.year || 'N/A' }}</p>
+                  <p><strong>Videogame:</strong> {{ fav.itemData?.videogame?.name || 'N/A' }}</p>
+                  <p><strong>League:</strong> {{ fav.itemData?.league?.name || 'N/A' }}</p>
                 </ng-container>
 
 
                 <!-- Jugador -->
                 <ng-container *ngSwitchCase="'player'">
-                  <p *ngIf="fav.itemData?.first_name"><strong>Nombre real:</strong> {{ fav.itemData.first_name }}</p>
-                  <p *ngIf="fav.itemData?.current_videogame?.name"><strong>Juego:</strong> {{
+                  <p *ngIf="fav.itemData?.first_name"><strong>Real name:</strong> {{ fav.itemData.first_name }}</p>
+                  <p *ngIf="fav.itemData?.current_videogame?.name"><strong>Videogame:</strong> {{
                     fav.itemData.current_videogame.name }}</p>
                 </ng-container>
 
                 <!-- Equipo -->
                 <ng-container *ngSwitchCase="'team'">
-                  <p><strong>Acrónimo:</strong> {{ fav.itemData?.acronym || 'N/A' }}</p>
-                  <p><strong>Juego:</strong> {{ fav.itemData?.current_videogame?.name || 'N/A' }}</p>
+                  <p><strong>Acronym:</strong> {{ fav.itemData?.acronym || 'N/A' }}</p>
+                  <p><strong>Videogame:</strong> {{ fav.itemData?.current_videogame?.name || 'N/A' }}</p>
                 </ng-container>
 
                 <ng-container *ngSwitchCase="'csgo_team'">
-                  <p><strong>Acrónimo:</strong> {{ fav.itemData?.acronym || 'N/A' }}</p>
-                  <p><strong>Juego:</strong> {{ fav.itemData?.current_videogame?.name || 'N/A' }}</p>
+                  <p><strong>Acronym:</strong> {{ fav.itemData?.acronym || 'N/A' }}</p>
+                  <p><strong>Videogame:</strong> {{ fav.itemData?.current_videogame?.name || 'N/A' }}</p>
                 </ng-container>
 
                 <!-- Liga / Torneo -->
                 <ng-container *ngSwitchCase="'league'">
                   <p><strong>Serie:</strong> {{ fav.itemData?.serie?.full_name || 'Sin serie' }}</p>
-                  <p><strong>Juego:</strong> {{ fav.itemData?.videogame?.name || 'N/A' }}</p>
+                  <p><strong>Videogame:</strong> {{ fav.itemData?.videogame?.name || 'N/A' }}</p>
                 </ng-container>
 
                 <ng-container *ngIf="fav.itemType?.includes('_tournament')">
-                  <p><strong>Nombre:</strong> {{ fav.itemData?.name || 'Sin nombre' }}</p>
-                  <p><strong>Tipo:</strong> {{ fav.itemData?.type || 'N/A' }}</p>
-                  <p><strong>Región:</strong> {{ fav.itemData?.region || 'N/A' }}</p>
+                  <p><strong>Name:</strong> {{ fav.itemData?.name || 'Sin nombre' }}</p>
+                  <p><strong>Type:</strong> {{ fav.itemData?.type || 'N/A' }}</p>
+                  <p><strong>Region:</strong> {{ fav.itemData?.region || 'N/A' }}</p>
                   <p><strong>Serie:</strong> {{ fav.itemData?.serie?.full_name || 'Sin serie' }}</p>
-                  <p><strong>Juego:</strong> {{ fav.itemData?.videogame?.name || 'N/A' }}</p>
+                  <p><strong>Videogame:</strong> {{ fav.itemData?.videogame?.name || 'N/A' }}</p>
                 </ng-container>
 
                 <!-- Partidos -->
                 <ng-container *ngSwitchCase="'match'">
-                  <p><strong>Fecha:</strong> {{ fav.itemData?.begin_at ? (fav.itemData.begin_at | date:'short') : 'Por
+                  <p><strong>Date:</strong> {{ fav.itemData?.begin_at ? (fav.itemData.begin_at | date:'short') : 'Por
                     definir' }}</p>
-                  <p><strong>Equipos:</strong> {{ getOpponentsNames(fav.itemData?.opponents) }}</p>
+                  <p><strong>Teams:</strong> {{ getOpponentsNames(fav.itemData?.opponents) }}</p>
                 </ng-container>
 
                 <ng-container *ngSwitchCase="'csgo_match'">
-                  <p><strong>Fecha:</strong> {{ fav.itemData?.begin_at ? (fav.itemData.begin_at | date:'short') : 'Por
+                  <p><strong>Date:</strong> {{ fav.itemData?.begin_at ? (fav.itemData.begin_at | date:'short') : 'Por
                     definir' }}</p>
-                  <p><strong>Equipos:</strong> {{ getOpponentsNames(fav.itemData?.opponents) }}</p>
+                  <p><strong>Teams:</strong> {{ getOpponentsNames(fav.itemData?.opponents) }}</p>
                 </ng-container>
 
               </ng-container>
@@ -113,7 +107,7 @@
               </span>
 
               <button class="btn btn-sm btn-danger" (click)="removeFavorite(fav.favoriteId)">
-                <i class="bi bi-trash-fill me-1"></i>Eliminar
+                <i class="bi bi-trash-fill me-1"></i>Delete
               </button>
 
             </div>
@@ -122,6 +116,5 @@
         </div>
       </div>
     </div>
-
   </div>
 </section>

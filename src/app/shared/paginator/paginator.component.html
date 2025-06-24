@@ -2,14 +2,14 @@
   <button class="btn btn-sm btn-light me-2"
           [disabled]="currentPage === 1"
           (click)="pageChanged.emit(currentPage - 1)">
-    Anterior
+    Previous
   </button>
 
-  <span class="text-white align-self-center">Página {{ currentPage }} de {{ totalPages }}</span>
+  <span class="text-white align-self-center">Page {{ currentPage }} of {{ totalPages }}</span>
 
   <button class="btn btn-sm btn-light ms-2"
           [disabled]="currentPage === totalPages"
           (click)="pageChanged.emit(currentPage + 1)">
-    Siguiente
+    Next
   </button>
 </nav>

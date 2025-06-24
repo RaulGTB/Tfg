@@ -52,8 +52,8 @@ export class FavsComponent implements OnInit {
         this.errorMsg = '';
       },
       error: (err) => {
-        console.error('Error al cargar favoritos', err);
-        this.errorMsg = 'No se pudieron cargar los favoritos.';
+        console.error('Error loading favorites.', err);
+        this.errorMsg = 'Favorites could not be loaded.';
       }
     });
   }
@@ -67,7 +67,7 @@ export class FavsComponent implements OnInit {
   removeFavorite(id: number) {
     this.data.removeFavorite(id).subscribe({
       next: () => this.loadFavorites(),
-      error: () => console.error('No se pudo eliminar el favorito')
+      error: () => console.error('The favorite could not be deleted.')
     });
   }
 
@@ -76,7 +76,7 @@ export class FavsComponent implements OnInit {
   deleteAllFavorites() {
     this.data.deleteAllFavorites().subscribe({
       next: () => this.loadFavorites(),
-      error: () => console.error('No se pudieron eliminar los favoritos')
+      error: () => console.error('Favorites could not be deleted.')
     });
   }
 
