@@ -2,6 +2,9 @@
 
 **RJK Score** es una plataforma desarrollada con Angular que permite explorar competiciones de videojuegos en tiempo real, consultar estadísticas, y guardar favoritos. El proyecto fue creado como parte del Trabajo de Fin de Grado (TFG) y está conectado a la API de [PandaScore](https://pandascore.co/).
 
+🔗 **Versión en producción**:  
+👉 [https://lemon-field-01fd3301e.1.azurestaticapps.net/home](https://lemon-field-01fd3301e.1.azurestaticapps.net/home)
+
 ## 🚀 Funcionalidades Principales
 
 - 🎮 Visualización de ligas y partidos en vivo de juegos como **League of Legends**, **Dota 2**, **CS:GO**, entre otros.
