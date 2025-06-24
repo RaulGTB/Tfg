@@ -1,106 +1,155 @@
 <!-- ABOUT US -->
-<section class="section-about-us py-5 bg-black text-white  border-secondary fade-up">
+<section class="section-about-us py-5 bg-black text-white  border-secondary">
 
   <div class="container">
 
     <!-- Título principal -->
-    <h2 class="section-title mb-5 text-center text-lime pop-in">SOBRE NOSOTROS</h2>
+    <h2 class="section-title mb-5 text-center text-lime pop-in">About Us</h2>
 
     <!-- Introducción -->
-    <div class="row mb-5 align-items-center fade-up">
-      <div class="col-md-8">
-        <p class="lead text-light-emphasis mb-3">
-          Nuestra plataforma nace de la pasión por los eSports y el desarrollo web. Buscamos ofrecer una experiencia
-          completa a los fanáticos, con estadísticas en tiempo real, partidos en vivo y recompensas por interactuar.
+    <div class="row mb-5 align-items-center text-center">
+      <div class="col-md-8 order-2 order-md-1 about-text">
+        <p class="lead text-white mb-3">
+          RJK Score is a web application born from our passion for eSports and modern web development. It aims to
+          centralize and visualize real-time data from competitive video game tournaments, helping fans access key
+          information that is often scattered across platforms.
         </p>
-        <p class="text-white-50">
-          Este proyecto forma parte de nuestro Trabajo de Fin de Grado y utiliza la API de <strong>PandaScore</strong>
-          para mostrar datos actualizados sobre juegos como <em>League of Legends</em>, <em>CS:GO</em>, <em>Dota 2</em>
-          y muchos más.
+        <p class="lead text-white mb-3">
+          Our goal is to offer an engaging and ethical alternative to betting-focused sites by introducing symbolic
+          rewards, personalized content, and interactive features that enhance the fan experience (without monetary
+          transactions).
         </p>
+        <p class="lead text-white">
+          Built as part of our final academic project using Angular, Spring Boot and the PandaScore API, RJK Score
+          provides live matches, historical stats, team and player profiles, and a favorites section.
+        </p>
+
       </div>
-      <div class="col-md-4 text-center">
-        <i class="bi bi-controller display-3 text-lime"></i>
+      <!-- Imagen derecha / debajo en móvil -->
+      <div
+        class="col-12 col-md-4 order-1 order-md-2 about-image my-3 my-md-0 d-flex justify-content-center align-items-center">
+        <!-- Pon tu ruta en src -->
+        <img src="assets/images/about-us-photo.jpg" alt="Equipo de desarrollo y eSports"
+          class="img-fluid rounded-3 shadow">
+      </div>
+
+    </div>
+
+    <!-- VISION -->
+    <div class="row mb-5 justify-content-center">
+      <div class="col-md-10 col-lg-8">
+        <div class="vision-card bg-dark border border-secondary rounded-4 shadow-lg p-4 text-center">
+          <h3 class="text-lime mb-3 pop-in">Our Vision</h3>
+          <p class="text-white fs-5">
+            We envision an ecosystem where eSports are not just followed, but truly lived. Our goal is to build a
+            committed digital community where users don’t just check scores, but actively engage, personalize their
+            experience, and feel part of something bigger.
+            <br><br>
+            This platform is only the beginning. We aim to expand its features, integrate new competitions, and offer
+            valuable tools for both fans and professionals in the competitive gaming scene.
+          </p>
+        </div>
       </div>
     </div>
 
-    <!-- VISIÓN -->
-    <div class="row mb-5 fade-up">
-      <div class="col text-center">
-        <h3 class="text-lime mb-3 pop-in">Nuestra visión</h3>
-        <p class="text-white-50 fs-5 px-md-5">
-          Apostamos por una comunidad donde los eSports no solo se sigan, sino que se vivan. Queremos impulsar una red
-          de usuarios que compitan, ganen recompensas y crezcan con nosotros.
-          Esta es solo la primera fase de una plataforma más ambiciosa que seguirá evolucionando.
-        </p>
-      </div>
-    </div>
 
     <!-- VIDEO -->
     <div class="row mb-5 justify-content-center fade-up">
       <div class="col-12 text-center">
-        <h3 class="mb-3 text-lime pop-in">Un video que nos inspiró</h3>
+        <h3 class="mb-3 text-lime pop-in">A Video That Inspired Us</h3>
         <div class="ratio ratio-16x9 rounded-4 overflow-hidden shadow-lg border border-lime">
-
           <iframe width="560" height="315" src="https://www.youtube.com/embed/xBCBOoHyeSU?si=BckrwZWOak3mwvfj"
-            title="Inspiración eSports" frameborder="0"
+            title="eSports Inspiration" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
-        <small class="text-muted d-block mt-2">Este video refleja el impacto global de los eSports y nos motivó a crear
-          este sitio.</small>
+        <small class="text-white d-block mt-2">
+          This video captures the global impact of eSports and played a key role in motivating us to create this
+          platform.
+        </small>
       </div>
     </div>
 
-    <!-- EQUIPO -->
-    <div class="row mb-5 fade-up">
-      <h3 class="mb-4 text-center text-lime pop-in">Nuestro equipo</h3>
-      <div class="col-md-4 text-center mb-4">
-        <div class="team-card bg-dark rounded-4 p-4 shadow h-100 border border-secondary">
-          <img src="assets/images/raul-granados.jpg" alt="Miembro 1: Raúl Granados" class="img-fluid rounded-circle mb-3 border border-lime"
-            style="width: 100px;">
-          <h5 class="text-lime">Raúl Granados</h5>
-          <p class="text-muted mb-1">Frontend & Diseño</p>
-          <p class="small">Uno de los guardianes del <i>frontend</i> y encargado de la su conexión con el <i>backend</i>. Caballero de armadura reluciente y espada afilada.</p>
+
+    <!-- TEAM -->
+    <div class="row mb-5 fade-up justify-content-center">
+      <h3 class="mb-4 text-center text-lime pop-in w-100">Our Team</h3>
+
+      <!-- Raúl -->
+      <div class="col-12 col-md-6 col-lg-4 mb-4">
+        <div class="team-card bg-dark border border-secondary rounded-4 shadow h-100 d-flex flex-column">
+          <div class="team-img-wrapper">
+            <img src="assets/images/raul-granados.jpg" alt="Raúl Granados" class="img-fluid team-img">
+          </div>
+          <div class="team-body text-center p-4 flex-grow-1 d-flex flex-column">
+            <h5 class="text-lime mb-1">Raúl Granados</h5>
+            <p class="text-muted mb-2">Frontend & UI Design</p>
+            <p class="small flex-grow-1">
+              Focused on clean interfaces and seamless integration with the backend. If it looks good and works even
+              better, chances are Raúl is behind it.
+            </p>
+          </div>
         </div>
       </div>
-      <div class="col-md-4 text-center mb-4">
-        <div class="team-card bg-dark rounded-4 p-4 shadow h-100 border border-secondary">
-          <img src="assets/images/kevin-paul.jpg" alt="Miembro 2: Kevin Paul" class="img-fluid rounded-circle mb-3 border border-lime"
-            style="width: 100px;">
-          <h5 class="text-lime">Kevin</h5>
-          <p class="text-muted mb-1">Backend & APIs</p>
-          <p class="small">A sus hombros carga la totalidad del <i>backend</i>. Bestia del código, indomable.</p>
+
+      <!-- Kevin -->
+      <div class="col-12 col-md-6 col-lg-4 mb-4">
+        <div class="team-card bg-dark border border-secondary rounded-4 shadow h-100 d-flex flex-column">
+          <div class="team-img-wrapper">
+            <img src="assets/images/kevin-paul.jpg" alt="Kevin Paul" class="img-fluid team-img">
+          </div>
+          <div class="team-body text-center p-4 flex-grow-1 d-flex flex-column">
+            <h5 class="text-lime mb-1">Kevin</h5>
+            <p class="text-muted mb-2">Backend & API Integration</p>
+            <p class="small flex-grow-1">
+              The engine room of the platform. Kevin handles the backend logic and data flow with surgical precision—and
+              a bit of dark magic.
+            </p>
+          </div>
         </div>
       </div>
-      <div class="col-md-4 text-center mb-4">
-        <div class="team-card bg-dark rounded-4 p-4 shadow h-100 border border-secondary">
-          <img src="assets/images/juan-provencio.jpg" alt="Miembro 3" class="img-fluid rounded-circle mb-3 border border-lime"
-            style="width: 100px;">
-          <h5 class="text-lime">Juan Provencio</h5>
-          <p class="text-muted mb-1">Guardián del <i>frontend</i>, seguidor de las sagradas escrituras, redactando la documentación en las sombras. Vagabundo filosófico como Diógenes.</p>
-          <p class="small">Supervisión del desarrollo general, conexión entre frontend y backend.</p>
+
+      <!-- Juan -->
+      <div class="col-12 col-md-6 col-lg-4 mb-4">
+        <div class="team-card bg-dark border border-secondary rounded-4 shadow h-100 d-flex flex-column">
+          <div class="team-img-wrapper">
+            <img src="assets/images/juan-provencio.jpg" alt="Juan Provencio" class="img-fluid team-img">
+          </div>
+          <div class="team-body text-center p-4 flex-grow-1 d-flex flex-column">
+            <h5 class="text-lime mb-1">Juan Provencio</h5>
+            <p class="text-muted mb-2">Coordination & Documentation</p>
+            <p class="small flex-grow-1">
+              The connective tissue between design, code and structure. Juan oversees development and documentation with
+              a critical eye—and a philosophical spirit.
+            </p>
+          </div>
         </div>
       </div>
     </div>
+
 
     <!-- CONTACTO -->
+    <!-- CONTACT -->
     <div class="row text-center mb-4 fade-up">
-      <h3 class="mb-4 text-lime pop-in">¿Quieres contactarnos?</h3>
-      <p class="text-white-50 mb-4">Estamos disponibles para consultas, sugerencias o colaboraciones.</p>
+      <h3 class="mb-4 text-lime pop-in">Get in Touch</h3>
+      <p class="text-white mb-4">We’re happy to answer questions, hear your ideas, or discuss potential
+        collaborations.</p>
+
       <div class="col-md-6 mb-4">
         <div class="contact-card bg-dark border border-secondary rounded-4 p-4 shadow h-100 hover-glow">
-          <h5 class="text-lime"><i class="bi bi-envelope-fill me-2"></i>Correo Electrónico</h5>
-          <p class="mb-0">esports.team.contacto&#64;gmail.com</p>
+          <h5 class="text-lime"><i class="bi bi-envelope-fill me-2"></i>Email</h5>
+          <p class="mb-0">rjk-score&#64;gmail.com</p>
         </div>
       </div>
+
       <div class="col-md-6 mb-4">
         <div class="contact-card bg-dark border border-secondary rounded-4 p-4 shadow h-100 hover-glow">
-          <h5 class="text-lime"><i class="bi bi-telephone-fill me-2"></i>Teléfono</h5>
-          <p class="mb-0">+34 612 345 678</p>
+          <h5 class="text-lime"><i class="bi bi-telephone-fill me-2"></i>Phone</h5>
+          <p class="mb-0">+34&nbsp;123&nbsp;456&nbsp;789</p>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
