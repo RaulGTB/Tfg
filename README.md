@@ -1,4 +1,4 @@
-# 🕹️ eSports Insight – Visualización de Competiciones y Estadísticas
+# 🕹️ RJK Score – Visualización de Competiciones y Estadísticas
 
 **RJK Score** es una plataforma desarrollada con Angular que permite explorar competiciones de videojuegos en tiempo real, consultar estadísticas, y guardar favoritos. El proyecto fue creado como parte del Trabajo de Fin de Grado (TFG) y está conectado a la API de [PandaScore](https://pandascore.co/).
 
